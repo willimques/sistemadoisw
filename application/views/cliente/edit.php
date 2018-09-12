@@ -44,7 +44,7 @@
                         <?php 
                                 foreach($all_precos as $preco)
                                 {
-                                    $selected = ($preco['IDPreco'] == $this->input->post('tabelaPreco')) ? ' selected="selected"' : "";
+                                    $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
 
                         echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
                     } 

@@ -43,7 +43,7 @@ class Precopessoa_model extends CI_Model
      */
     function update_precopessoa($IDPreco,$params)
     {
-        $this->db->where('IDPreco',$IDPreco);
+        $this->db->where('IDPessoa',$IDPreco);
         return $this->db->update('PrecoPessoa',$params);
     }
     

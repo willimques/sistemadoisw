@@ -90,11 +90,23 @@ class Cliente extends CI_Controller{
                 $params = array(
                   
                     'limite' => $this->input->post('limite'),
-                    'IDPreco' => $this->input->post('IDPreco'),
+                  
                 );
                 
-                $this->Cliente_model->update_cliente($IDCliente,$params);            
+                $this->Cliente_model->update_cliente($IDCliente,$params); 
+                
+                $params = array(
+                  
+                   'IDPreco' => $this->input->post('IDPreco'),
+                  
+                );
+                  
+                $this->load->model('Precopessoa_model');
+                
+                $precopessoa_id = $this->Precopessoa_model->update_precopessoa($IDCliente,$params);
+
                 redirect('cliente/index');
+                
             }
             else
             {   

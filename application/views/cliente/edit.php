@@ -31,27 +31,38 @@
             <div class="row float-right mr-5">
                 <div class="col-md-12">
                     <span class="badge badge-secondary">Tabela atual</span> 
-                <p class="text-primary"><?php echo $pessoapreco['descricao']?></p>
+                    <p class="text-primary"><?php echo $pessoapreco['descricao']?></p>
                 </div>
-                
+
             </div>
 
             <div class="form-group">
-                <label for="tabelaPreco" class="col-md-4 control-label">Preco</label>              
+                <label for="IDPreco" class="col-md-4 control-label">Preco</label>              
                 <div class="col-md-8">
                     <select name="IDPreco" class="form-control">
                         <option value="">Selecione Tabela de Preço</option>
                         <?php 
-                                foreach($all_precos as $preco)
-                                {
-                                    $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
+                            foreach($all_precos as $preco)
+                            {
+                                $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
 
-                        echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
-                    } 
-                 ?>
-               </select>
+                                echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
+                            } 
+                                                ?>
+                    </select>
+                </div>
+            </div>            
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
+
+            <?php echo form_close(); ?>
+            
+
+            <?php echo form_open('cliente/edit/'.$cliente['IDCliente'],array("class"=>"form-horizontal")); ?>
+
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>
                 <div class="col-md-8">

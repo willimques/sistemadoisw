@@ -16,6 +16,7 @@ class Revendedor_model extends CI_Model
      */
     function get_revendedor($IDRevendedor)
     {
+        $this->db->join('pessoa', 'pessoa.IDPessoa = revendedor.IDRevendedor');        
         return $this->db->get_where('Revendedor',array('IDRevendedor'=>$IDRevendedor))->row_array();
     }
         
@@ -23,7 +24,10 @@ class Revendedor_model extends CI_Model
      * Get all revendedores
      */
     function get_all_revendedores()
+        
+        
     {
+        $this->db->join('pessoa', 'pessoa.IDPessoa = revendedor.IDRevendedor');
         $this->db->order_by('IDRevendedor', 'desc');
         return $this->db->get('Revendedor')->result_array();
     }

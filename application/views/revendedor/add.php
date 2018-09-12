@@ -55,44 +55,12 @@
                         {
                             $selected = ($preco['IDPreco'] == $this->input->post('tabelaPreco')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['IDPreco'].'</option>';
+                            echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
                         } 
                         ?>
                     </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="IDEmpresaria" class="col-md-4 control-label">Empresaria</label>
-                <div class="col-md-8">
-                    <select name="IDEmpresaria" class="form-control">
-                        <option value="">select empresaria</option>
-                        <?php 
-                        foreach($all_empresarias as $empresaria)
-                        {
-                            $selected = ($empresaria['IDEmpresaria'] == $this->input->post('IDEmpresaria')) ? ' selected="selected"' : "";
-
-                            echo '<option value="'.$empresaria['IDEmpresaria'].'" '.$selected.'>'.$empresaria['IDEmpresaria'].'</option>';
-                        } 
-                        ?>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="IDExecutiva" class="col-md-4 control-label">Executiva</label>
-                <div class="col-md-8">
-                    <select name="IDExecutiva" class="form-control">
-                        <option value="">select executiva</option>
-                        <?php 
-                        foreach($all_executivas as $executiva)
-                        {
-                            $selected = ($executiva['IDExecutiva'] == $this->input->post('IDExecutiva')) ? ' selected="selected"' : "";
-
-                            echo '<option value="'.$executiva['IDExecutiva'].'" '.$selected.'>'.$executiva['IDExecutiva'].'</option>';
-                        } 
-                        ?>
-                    </select>
-                </div>
-            </div>
+            </div>                       
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>
                 <div class="col-md-8">
@@ -102,7 +70,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
 

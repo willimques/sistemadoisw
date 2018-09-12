@@ -15,7 +15,8 @@ class Executiva_model extends CI_Model
      * Get executiva by IDExecutiva
      */
     function get_executiva($IDExecutiva)
-    {
+    {           
+                $this->db->join('pessoa', 'pessoa.IDPessoa = executiva.IDExecutiva');
         return $this->db->get_where('Executiva',array('IDExecutiva'=>$IDExecutiva))->row_array();
     }
         
@@ -24,6 +25,7 @@ class Executiva_model extends CI_Model
      */
     function get_all_executivas()
     {
+        $this->db->join('pessoa', 'pessoa.IDPessoa = executiva.IDExecutiva');
         $this->db->order_by('IDExecutiva', 'desc');
         return $this->db->get('Executiva')->result_array();
     }

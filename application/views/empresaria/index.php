@@ -31,8 +31,7 @@
             <table id="dataTable"class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>IDEmpresaria</th>
-                        <th>IDExecutiva</th>
+                        <th>Empresaria</th>                       
                         <th>Limite</th>
                         <th>Ação</th>
                     </tr>
@@ -40,8 +39,7 @@
                 
                 <?php foreach($empresarias as $E){ ?>
                 <tr>
-                    <td><?php echo $E['IDEmpresaria']; ?></td>
-                    <td><?php echo $E['IDExecutiva']; ?></td>
+                    <td><?php echo $E['nome']; ?></td>               
                     <td><?php echo $E['limite']; ?></td>
                     <td>
                         <a href="<?php echo site_url('empresaria/edit/'.$E['IDEmpresaria']); ?>" class="btn btn-info btn-xs">Editar</a> 

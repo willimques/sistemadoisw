@@ -8,7 +8,9 @@ class Revendedor extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Revendedor_model');
+        $this->load->model('Revendedor_model');    
+         
+        
     } 
 
     /*
@@ -17,7 +19,6 @@ class Revendedor extends CI_Controller{
     function index()
     {
         $data['revendedores'] = $this->Revendedor_model->get_all_revendedores();
-        
         $data['_view'] = 'revendedor/index';
         $this->load->view('layouts/main',$data);
     }
@@ -31,14 +32,21 @@ class Revendedor extends CI_Controller{
         {   
             $params = array(
                 
-				'IDRevendedor' => $this->input->post('IDRevendedor'),
-				'tabelaPreco' => $this->input->post('tabelaPreco'),
-				//'IDEmpresaria' => $this->input->post('IDEmpresaria'),
-				//'IDExecutiva' => $this->input->post('IDExecutiva'),
+				'IDRevendedor' => $this->input->post('IDRevendedor'),						
 				'limite' => $this->input->post('limite'),
             );
             
-            $revendedor_id = $this->Revendedor_model->add_revendedor($params);
+            $revendedor_id = $this->Revendedor_model->add_revendedor($params);            
+            
+            $params = array(
+
+                'IDPreco' => $this->input->post('tabelaPreco'),
+                'IDPessoa' => $this->input->post('IDRevendedor'),
+
+            );
+
+            $this->load->model('Precopessoa_model');
+            $precopessoa_id = $this->Precopessoa_model->add_precopessoa($params);         
             redirect('revendedor/index');
         }
         else
@@ -48,12 +56,6 @@ class Revendedor extends CI_Controller{
             
 			$this->load->model('Preco_model');
 			$data['all_precos'] = $this->Preco_model->get_all_precos();
-
-			$this->load->model('Empresaria_model');
-			$data['all_empresarias'] = $this->Empresaria_model->get_all_empresarias();
-
-			$this->load->model('Executiva_model');
-			$data['all_executivas'] = $this->Executiva_model->get_all_executivas();
             
             $data['_view'] = 'revendedor/add';
             $this->load->view('layouts/main',$data);
@@ -72,27 +74,42 @@ class Revendedor extends CI_Controller{
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
-                $params = array(
-					'tabelaPreco' => $this->input->post('tabelaPreco'),
-					'IDEmpresaria' => $this->input->post('IDEmpresaria'),
-					'IDExecutiva' => $this->input->post('IDExecutiva'),
-					'limite' => $this->input->post('limite'),
-                );
+               if(!$this->input->post('limite')==null)
+                   {
+                       $params = array(
 
-                $this->Revendedor_model->update_revendedor($IDRevendedor,$params);            
+                           'limite' => $this->input->post('limite'),                    
+
+                       );
+
+                       $this->Revendedor_model->update_revendedor($IDRevendedor,$params); 
+                   }
+
+                   if(!$this->input->post('IDPreco')==null)
+                      {
+                          $params = array(
+
+                              'IDPreco' => $this->input->post('IDPreco'),
+
+                          );  
+
+                          $this->load->model('Precopessoa_model');
+
+                          $precopessoa_id = $this->Precopessoa_model->update_precopessoa($IDRevendedor,$params);
+                      }
+
+                
+                
                 redirect('revendedor/index');
             }
             else
-            {
+            {   
+                $this->load->model('Precopessoa_model');
+                $data['pessoapreco'] = $this->Precopessoa_model->get_precopessoa($IDRevendedor);
+                
 				$this->load->model('Preco_model');
 				$data['all_precos'] = $this->Preco_model->get_all_precos();
-
-				$this->load->model('Empresaria_model');
-				$data['all_empresarias'] = $this->Empresaria_model->get_all_empresarias();
-
-				$this->load->model('Executiva_model');
-				$data['all_executivas'] = $this->Executiva_model->get_all_executivas();
-
+				
                 $data['_view'] = 'revendedor/edit';
                 $this->load->view('layouts/main',$data);
             }
@@ -111,6 +128,9 @@ class Revendedor extends CI_Controller{
         // check if the revendedor exists before trying to delete it
         if(isset($revendedor['IDRevendedor']))
         {
+            $this->load->model('Precopessoa_model');
+            $this->Precopessoa_model->delete_precopessoa($IDRevendedor);
+            
             $this->Revendedor_model->delete_revendedor($IDRevendedor);
             redirect('revendedor/index');
         }

@@ -28,54 +28,41 @@
         <div class="card-body">
             <?php echo form_open('revendedor/edit/'.$revendedor['IDRevendedor'],array("class"=>"form-horizontal")); ?>
 
-            <div class="form-group">
-                <label for="tabelaPreco" class="col-md-4 control-label">Preco</label>
-                <div class="col-md-8">
-                    <select name="tabelaPreco" class="form-control">
-                        <option value="">select preco</option>
-                        <?php 
-                        foreach($all_precos as $preco)
-                        {
-                            $selected = ($preco['IDPreco'] == $revendedor['tabelaPreco']) ? ' selected="selected"' : "";
+            <div class="row float-right mr-5">
+                <div class="col-md-12">
+                    <span class="badge badge-secondary">Tabela atual</span> 
+                    <p class="text-primary"><?php echo $pessoapreco['descricao']?></p>
+                </div>
 
-                            echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['IDPreco'].'</option>';
-                        } 
+            </div>
+
+            <div class="form-group">
+                <label for="IDPreco" class="col-md-4 control-label">Preco</label>              
+                <div class="col-md-8">
+                    <select name="IDPreco" class="form-control">
+                        <option value="">Selecione Tabela de Preço</option>
+                        <?php 
+    foreach($all_precos as $preco)
+    {
+        $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
+
+        echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
+    } 
                         ?>
                     </select>
                 </div>
-            </div>
+            </div>            
             <div class="form-group">
-                <label for="IDEmpresaria" class="col-md-4 control-label">Empresaria</label>
-                <div class="col-md-8">
-                    <select name="IDEmpresaria" class="form-control">
-                        <option value="">select empresaria</option>
-                        <?php 
-                        foreach($all_empresarias as $empresaria)
-                        {
-                            $selected = ($empresaria['IDEmpresaria'] == $revendedor['IDEmpresaria']) ? ' selected="selected"' : "";
-
-                            echo '<option value="'.$empresaria['IDEmpresaria'].'" '.$selected.'>'.$empresaria['IDEmpresaria'].'</option>';
-                        } 
-                        ?>
-                    </select>
+                <div class="col-sm-offset-4 col-sm-8">
+                    <button type="submit" class="btn btn-success float-right">Salvar</button>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="IDExecutiva" class="col-md-4 control-label">Executiva</label>
-                <div class="col-md-8">
-                    <select name="IDExecutiva" class="form-control">
-                        <option value="">select executiva</option>
-                        <?php 
-                        foreach($all_executivas as $executiva)
-                        {
-                            $selected = ($executiva['IDExecutiva'] == $revendedor['IDExecutiva']) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$executiva['IDExecutiva'].'" '.$selected.'>'.$executiva['IDExecutiva'].'</option>';
-                        } 
-                        ?>
-                    </select>
-                </div>
-            </div>
+            <?php echo form_close(); ?>
+            
+             <?php echo form_open('revendedor/edit/'.$revendedor['IDRevendedor'],array("class"=>"form-horizontal")); ?>
+            
+
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>
                 <div class="col-md-8">

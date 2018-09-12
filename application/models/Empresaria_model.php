@@ -15,7 +15,8 @@ class Empresaria_model extends CI_Model
      * Get empresaria by IDEmpresaria
      */
     function get_empresaria($IDEmpresaria)
-    {
+    {           
+         $this->db->join('pessoa', 'pessoa.IDPessoa = empresaria.IDEmpresaria');
         return $this->db->get_where('Empresaria',array('IDEmpresaria'=>$IDEmpresaria))->row_array();
     }
         
@@ -23,7 +24,8 @@ class Empresaria_model extends CI_Model
      * Get all empresarias
      */
     function get_all_empresarias()
-    {
+    {   
+        $this->db->join('pessoa', 'pessoa.IDPessoa = empresaria.IDEmpresaria');
         $this->db->order_by('IDEmpresaria', 'desc');
         return $this->db->get('Empresaria')->result_array();
     }

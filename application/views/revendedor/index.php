@@ -29,24 +29,18 @@
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>IDRevendedor</th>
-                        <th>TabelaPreco</th>
-                        <th>IDEmpresaria</th>
-                        <th>IDExecutiva</th>
+                        <th>Revendedor</th>                                         
                         <th>Limite</th>
-                        <th>Actions</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <?php foreach($revendedores as $R){ ?>
                 <tr>
-                    <td><?php echo $R['IDRevendedor']; ?></td>
-                    <td><?php echo $R['tabelaPreco']; ?></td>
-                    <td><?php echo $R['IDEmpresaria']; ?></td>
-                    <td><?php echo $R['IDExecutiva']; ?></td>
+                    <td><?php echo $R['nome']; ?></td>                               
                     <td><?php echo $R['limite']; ?></td>
                     <td>
-                        <a href="<?php echo site_url('revendedor/edit/'.$R['IDRevendedor']); ?>" class="btn btn-info btn-xs">Edit</a> 
-                        <a href="<?php echo site_url('revendedor/remove/'.$R['IDRevendedor']); ?>" class="btn btn-danger btn-xs">Delete</a>
+                        <a href="<?php echo site_url('revendedor/edit/'.$R['IDRevendedor']); ?>" class="btn btn-info btn-xs">Editar</a> 
+                        <a href="<?php echo site_url('revendedor/remove/'.$R['IDRevendedor']); ?>" class="btn btn-danger btn-xs">Remover</a>
                         <a href="<?php echo site_url('pessoa/profile/'.$R['IDRevendedor']); ?>" class="btn btn-info btn-xs">Visualizar</a>
                     </td>
                 </tr>

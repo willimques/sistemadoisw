@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label for="tabelaPreco" class="col-md-4 control-label">Preco</label>              
                 <div class="col-md-8">
-                    <select name="tabelaPreco" class="form-control">
+                    <select name="IDPreco" class="form-control">
                         <option value="">Selecione Tabela de Preço</option>
                         <?php 
                                 foreach($all_precos as $preco)

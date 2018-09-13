@@ -36,16 +36,28 @@ class Executiva extends CI_Controller{
             );
 
             $executiva_id = $this->Executiva_model->add_executiva($params);
+
+            $params = array(
+
+                'IDPreco' => $this->input->post('tabelaPreco'),
+                'IDPessoa' => $this->input->post('IDExecutiva'),
+
+            );
+
+            $this->load->model('Precopessoa_model');
+            $precopessoa_id = $this->Precopessoa_model->add_precopessoa($params);   
+
+
             redirect('executiva/index');
         }
         else
         {   
             $this->load->model('Preco_model');
-			$data['all_precos'] = $this->Preco_model->get_all_precos();
+            $data['all_precos'] = $this->Preco_model->get_all_precos();
 
             $this->load->model('Pessoa_model');
             $data['all_pessoas'] = $this->Pessoa_model->get_all_pessoas();   
-            
+
             $data['_view'] = 'executiva/add';
             $this->load->view('layouts/main',$data);
         }
@@ -63,38 +75,65 @@ class Executiva extends CI_Controller{
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
-                $params = array(
-                    'limite' => $this->input->post('limite'),
-                );
+                if(!$this->input->post('limite')==null)
+                {
+                    $params = array(
 
-                $this->Executiva_model->update_executiva($IDExecutiva,$params);            
+                        'limite' => $this->input->post('limite'),                    
+
+                    );
+
+                    $this->Executiva_model->update_executiva($IDExecutiva,$params);
+                }
+                    if(!$this->input->post('IDPreco')==null)
+                    {
+                        $params = array(
+
+                            'IDPreco' => $this->input->post('IDPreco'),
+
+                        );  
+
+                        $this->load->model('Precopessoa_model');
+
+                        $precopessoa_id = $this->Precopessoa_model->update_precopessoa($IDExecutiva,$params);
+                    }
+
+                    redirect('executiva/index');
+                }
+                else
+                {
+                    $this->load->model('Precopessoa_model');
+                    $data['pessoapreco'] = $this->Precopessoa_model->get_precopessoa($IDExecutiva);
+
+                    $this->load->model('Preco_model');
+                    $data['all_precos'] = $this->Preco_model->get_all_precos();
+
+                    $data['_view'] = 'executiva/edit';
+                    $this->load->view('layouts/main',$data);
+                }
+            }
+            else
+                show_error('The executiva you are trying to edit does not exist.');
+        } 
+
+        /*
+     * Deleting executiva
+     */
+        function remove($IDExecutiva)
+        {
+            $executiva = $this->Executiva_model->get_executiva($IDExecutiva);
+
+            // check if the executiva exists before trying to delete it
+            if(isset($executiva['IDExecutiva']))
+            {   
+                $this->load->model('Precopessoa_model');
+                $this->Precopessoa_model->delete_precopessoa($IDExecutiva);
+
+                $this->Executiva_model->delete_executiva($IDExecutiva);
                 redirect('executiva/index');
             }
             else
-            {
-                $data['_view'] = 'executiva/edit';
-                $this->load->view('layouts/main',$data);
-            }
+                show_error('The executiva you are trying to delete does not exist.');
         }
-        else
-            show_error('The executiva you are trying to edit does not exist.');
-    } 
 
-    /*
-     * Deleting executiva
-     */
-    function remove($IDExecutiva)
-    {
-        $executiva = $this->Executiva_model->get_executiva($IDExecutiva);
-
-        // check if the executiva exists before trying to delete it
-        if(isset($executiva['IDExecutiva']))
-        {
-            $this->Executiva_model->delete_executiva($IDExecutiva);
-            redirect('executiva/index');
-        }
-        else
-            show_error('The executiva you are trying to delete does not exist.');
     }
-
-}

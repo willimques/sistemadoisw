@@ -49,7 +49,7 @@
                 <label for="tabelaPreco" class="col-md-4 control-label">Preco</label>
                 <div class="col-md-8">
                     <select name="tabelaPreco" class="form-control">
-                        <option value="">select preco</option>
+                        <option value="">Selecione preco</option>
                         <?php 
                         foreach($all_precos as $preco)
                         {

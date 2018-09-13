@@ -52,17 +52,7 @@
                     </select>
                 </div>
             </div>            
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success">Salvar</button>
-                </div>
-            </div>
-
-            <?php echo form_close(); ?>
             
-
-            <?php echo form_open('cliente/edit/'.$cliente['IDCliente'],array("class"=>"form-horizontal")); ?>
-
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>
                 <div class="col-md-8">

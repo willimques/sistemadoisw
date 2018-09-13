@@ -16,15 +16,8 @@ class Unidade extends CI_Controller{
      */
     function index()
     {
-        $params['limit'] = RECORDS_PER_PAGE; 
-        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
-        
-        $config = $this->config->item('pagination');
-        $config['base_url'] = site_url('unidade/index?');
-        $config['total_rows'] = $this->Unidade_model->get_all_unidades_count();
-        $this->pagination->initialize($config);
-
-        $data['unidades'] = $this->Unidade_model->get_all_unidades($params);
+    
+        $data['unidades'] = $this->Unidade_model->get_all_unidades();
         
         $data['_view'] = 'unidade/index';
         $this->load->view('layouts/main',$data);

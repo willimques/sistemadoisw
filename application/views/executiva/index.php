@@ -25,26 +25,31 @@
     </div>       
     <div class="container-fluid">
         <div class="card-body"> 
-
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>#ID</th>
+                        <th>Código</th>
                         <th>Executiva</th>
                         <th>Limite</th>
-                        <th>Actions</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <?php foreach($executivas as $E){ ?>
-                <tr>
-                    <td><?php echo $E['nome']; ?></td>
-                    <td><?php echo $E['limite']; ?></td>
-                    <td>
-                        <a href="<?php echo site_url('executiva/edit/'.$E['IDExecutiva']); ?>" class="btn btn-info btn-xs">Edit</a> 
-                        <a href="<?php echo site_url('executiva/remove/'.$E['IDExecutiva']); ?>" class="btn btn-danger btn-xs">Delete</a>
-                        <a href="<?php echo site_url('pessoa/profile/'.$E['IDExecutiva']); ?>" class="btn btn-info btn-xs">Visualizar</a>
-                    </td>
-                </tr>
-                <?php } ?>
+                <tbody>
+                    <tr>
+                        <td><?php echo $E['IDExecutiva']; ?></td>
+                        <td><?php echo $E['codigo']; ?></td>
+                        <td><?php echo $E['nome']; ?></td>
+                        <td><?php echo $E['limite']; ?></td>
+                        <td>
+                            <a href="<?php echo site_url('executiva/edit/'.$E['IDExecutiva']); ?>" class="btn btn-info btn-xs">Editar</a> 
+                            <a href="<?php echo site_url('executiva/remove/'.$E['IDExecutiva']); ?>" class="btn btn-danger btn-xs">Remover</a>
+                            <a href="<?php echo site_url('pessoa/profile/'.$E['IDExecutiva']); ?>" class="btn btn-info btn-xs">Visualizar</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
             </table>
         </div>
     </div>

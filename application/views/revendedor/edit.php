@@ -41,28 +41,18 @@
                 <div class="col-md-8">
                     <select name="IDPreco" class="form-control">
                         <option value="">Selecione Tabela de Preço</option>
-                        <?php 
-    foreach($all_precos as $preco)
-    {
-        $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
+                            <?php 
+                            foreach($all_precos as $preco)
+                            {
+                                $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
 
-        echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
-    } 
-                        ?>
+                                echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
+                            } 
+                                                ?>
                     </select>
                 </div>
             </div>            
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success float-right">Salvar</button>
-                </div>
-            </div>
-
-            <?php echo form_close(); ?>
-            
-             <?php echo form_open('revendedor/edit/'.$revendedor['IDRevendedor'],array("class"=>"form-horizontal")); ?>
-            
-
+           
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>
                 <div class="col-md-8">

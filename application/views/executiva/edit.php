@@ -25,24 +25,53 @@
         </div>
     </div>       
     <div class="container-fluid">
-        <div class="card-body"> 
-
+        <div class="card-body">
             <?php echo form_open('executiva/edit/'.$executiva['IDExecutiva'],array("class"=>"form-horizontal")); ?>
+
+            <div class="row float-right mr-5">
+                <div class="col-md-12">
+                    <span class="badge badge-secondary">Tabela atual</span> 
+                    <p class="text-primary"><?php echo $pessoapreco['descricao']?></p>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="IDPreco" class="col-md-4 control-label">Preco</label>              
+                <div class="col-md-8">
+                    <select name="IDPreco" class="form-control">
+                        <option value="">Selecione Tabela de Preço</option>
+                        <?php 
+                                foreach($all_precos as $preco)
+                                {
+                                    $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
+                                } 
+                                                    ?>
+                    </select>
+                </div>
+            </div>            
 
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>
                 <div class="col-md-8">
                     <input type="text" name="limite" value="<?php echo ($this->input->post('limite') ? $this->input->post('limite') : $executiva['limite']); ?>" class="form-control" id="limite" />
                 </div>
-            </div>
+            </div>          
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <button type="submit" class="btn btn-success float-right">Salvar</button>
                 </div>
-            </div>
+            </div>  
 
             <?php echo form_close(); ?>
+
+
         </div>
+
+
+
     </div>
 </div>

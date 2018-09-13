@@ -29,10 +29,7 @@ class Cliente extends CI_Controller{
     {   
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('limite','Limite','numeric');
-        $this->form_validation->set_rules('IDRevendedor','IDRevendedor','integer');
-        $this->form_validation->set_rules('IDExecutiva','IDExecutiva','integer');
-        $this->form_validation->set_rules('IDEmpresaria','IDEmpresaria','integer');
+        $this->form_validation->set_rules('limite','Limite','numeric');   
 
         if($this->form_validation->run())     
         {   
@@ -43,7 +40,7 @@ class Cliente extends CI_Controller{
             );
 
             $cliente_id = $this->Cliente_model->add_cliente($params);
-
+            
             $params = array(
 
                 'IDPreco' => $this->input->post('tabelaPreco'),

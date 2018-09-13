@@ -29,6 +29,8 @@
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>#ID</th>
+                        <th>Código</th>
                         <th>Cliente</th>
                         <th>Limite</th>
                         <th>Ações</th>
@@ -37,6 +39,8 @@
                 <tbody>
                     <?php foreach($clientes as $C){ ?>
                     <tr>
+                        <td><?php echo $C['IDCliente']; ?></td>
+                        <td><?php echo $C['codigo']; ?></td>
                         <td><?php echo $C['nome']; ?></td>
                         <td><?php echo $C['limite']; ?></td>
                         <td>

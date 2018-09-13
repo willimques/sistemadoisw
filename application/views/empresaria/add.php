@@ -49,13 +49,13 @@
                 <label for="tabelaPreco" class="col-md-4 control-label">Preco</label>
                 <div class="col-md-8">
                     <select name="tabelaPreco" class="form-control">
-                        <option value="">select preco</option>
+                        <option value="">Selecione tabela preco</option>
                         <?php 
                         foreach($all_precos as $preco)
                         {
                             $selected = ($preco['IDPreco'] == $this->input->post('tabelaPreco')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['IDPreco'].'</option>';
+                            echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
                         } 
                         ?>
                     </select>

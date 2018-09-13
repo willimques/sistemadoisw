@@ -17,11 +17,10 @@
 
                 <div class="col-md-4">
                     <div class="pull-right">
-                       <a href="<?php echo site_url('fornecedor/add'); ?>" class="btn btn-success float-right mr-3">Adicionar</a> 
+                        <a href="<?php echo site_url('fornecedor/add'); ?>" class="btn btn-success float-right mr-3">Adicionar</a> 
                     </div>
                 </div>
             </div> 
-
         </div>
     </div>       
     <div class="container-fluid">
@@ -30,20 +29,26 @@
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>IDFornecedor</th>
-                        <th>Actions</th>
+                        <th>#ID</th>
+                        <th>Codigo</th>
+                        <th>Fornecedor</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <?php foreach($fornecedores as $F){ ?>
-                <tr>
+                <tbody>                <tr>
                     <td><?php echo $F['IDFornecedor']; ?></td>
+                    <td><?php echo $F['codigo']; ?></td>
+                    <td><?php echo $F['nome']; ?></td>
                     <td>
-                        <a href="<?php echo site_url('fornecedor/edit/'.$F['IDFornecedor']); ?>" class="btn btn-info btn-xs">Edit</a> 
+                        <!--                        <a href="</?php echo site_url('fornecedor/edit/'.$F['IDFornecedor']); ?>" class="btn btn-info btn-xs">Edit</a> -->
                         <a href="<?php echo site_url('fornecedor/remove/'.$F['IDFornecedor']); ?>" class="btn btn-danger btn-xs">Delete</a>
                         <a href="<?php echo site_url('pessoa/profile/'.$F['IDFornecedor']); ?>" class="btn btn-info btn-xs">Visualizar</a>
                     </td>
-                </tr>
-                <?php } ?>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+
             </table>
         </div>
     </div>

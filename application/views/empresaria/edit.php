@@ -29,23 +29,30 @@
 
             <?php echo form_open('empresaria/edit/'.$empresaria['IDEmpresaria'],array("class"=>"form-horizontal")); ?>
 
-            <div class="form-group">
-                <label for="IDExecutiva" class="col-md-4 control-label">Executiva</label>
-                <div class="col-md-8">
-                    <select name="IDExecutiva" class="form-control">
-                        <option value="">select executiva</option>
-                        <?php 
-                        foreach($all_executivas as $executiva)
-                        {
-                            $selected = ($executiva['IDExecutiva'] == $empresaria['IDExecutiva']) ? ' selected="selected"' : "";
-
-                            echo '<option value="'.$executiva['IDExecutiva'].'" '.$selected.'>'.$executiva['IDExecutiva'].'</option>';
-                        } 
-                        ?>
-                    </select>
-                    <span class="text-danger"><?php echo form_error('IDExecutiva');?></span>
+             <div class="row float-right mr-5">
+                <div class="col-md-12">
+                    <span class="badge badge-secondary">Tabela atual</span> 
+                    <p class="text-primary"><?php echo $pessoapreco['descricao']?></p>
                 </div>
+
             </div>
+
+            <div class="form-group">
+                <label for="IDPreco" class="col-md-4 control-label">Preco</label>              
+                <div class="col-md-8">
+                    <select name="IDPreco" class="form-control">
+                        <option value="">Selecione Tabela de Preço</option>
+                        <?php 
+                                foreach($all_precos as $preco)
+                                {
+                                    $selected = ($preco['IDPreco'] == $this->input->post('IDPreco')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$preco['IDPreco'].'" '.$selected.'>'.$preco['descricao'].'</option>';
+                                } 
+                                                    ?>
+                    </select>
+                </div>
+            </div>         
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>
                 <div class="col-md-8">

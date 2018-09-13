@@ -16,6 +16,7 @@ class Fornecedor_model extends CI_Model
      */
     function get_fornecedor($IDFornecedor)
     {
+            $this->db->join('pessoa', 'pessoa.IDPessoa = fornecedor.IDFornecedor');
         return $this->db->get_where('Fornecedor',array('IDFornecedor'=>$IDFornecedor))->row_array();
     }
         
@@ -24,6 +25,7 @@ class Fornecedor_model extends CI_Model
      */
     function get_all_fornecedores()
     {
+        $this->db->join('pessoa', 'pessoa.IDPessoa = fornecedor.IDFornecedor');
         $this->db->order_by('IDFornecedor', 'desc');
         return $this->db->get('Fornecedor')->result_array();
     }

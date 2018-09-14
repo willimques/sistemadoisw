@@ -34,6 +34,17 @@ class Pessoa_model extends CI_Model
         $this->db->order_by('IDPessoa', 'desc');
         return $query=$this->db->get ()->result_array();;
     }
+    
+    function get_pessoas_semCad()
+        
+    {        
+        $this->db->select ( '*' ); 
+        $this->db->from ( 'Pessoa' ); 
+        $this->db->where('IDTipoCadastro',0);
+        $this->db->join ( 'PessoaTipo' ,  'Pessoa.IDPessoaTipo = PessoaTipo.IDPessoaTipo' ); 
+        $this->db->order_by('IDPessoa', 'desc');
+        return $query=$this->db->get ()->result_array();;
+    }
     /*
      * function to add new pessoa
      */

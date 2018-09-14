@@ -58,6 +58,7 @@
                         ?>
                     </select>
                 </div>
+                <span class="text-danger"><?php echo form_error('tabelaPreco');?></span>
             </div>
 
             <div class="form-group">
@@ -65,6 +66,7 @@
                 <div class="col-md-8">
                     <input type="text" name="limite" value="<?php echo $this->input->post('limite'); ?>" class="form-control" id="limite" />
                 </div>
+                <span class="text-danger"><?php echo form_error('limite');?></span>
             </div>
 
             <div class="form-group">

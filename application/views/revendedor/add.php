@@ -60,6 +60,7 @@
                         ?>
                     </select>
                 </div>
+                <span class="text-danger"><?php echo form_error('tabelaPreco');?></span>
             </div>                       
             <div class="form-group">
                 <label for="limite" class="col-md-4 control-label">Limite</label>

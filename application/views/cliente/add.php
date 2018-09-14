@@ -42,6 +42,7 @@
                     } 
                     ?>
                 </select>
+                  <span class="text-danger"><?php echo form_error('IDCliente');?></span>
             </div>
 
             <div class="form-group">
@@ -58,6 +59,7 @@
                         } 
                         ?>
                     </select>
+                      <span class="text-danger"><?php echo form_error('tabelaPreco');?></span>
                 </div>
             </div>
             <div class="form-group">
@@ -66,6 +68,7 @@
                     <input type="text" name="limite" value="<?php echo $this->input->post('limite'); ?>" class="form-control" id="limite" />
                     <span class="text-danger"><?php echo form_error('limite');?></span>
                 </div>
+                
             </div>
 
             <div class="form-group">

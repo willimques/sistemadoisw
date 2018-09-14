@@ -28,8 +28,18 @@ class Revendedor extends CI_Controller{
      */
     function add()
     {   
-        if(isset($_POST) && count($_POST) > 0)     
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('limite','Limite','numeric');   
+        $this->form_validation->set_rules('tabelaPreco','Tabela','required');   
+
+        if($this->form_validation->run())        
         {   
+             // Recebe os valores do para atualizar a tabela pessoa 
+            $id = 2;
+            $IDPessoa = $this->input->post('IDRevendedor');           
+            
+            
             $params = array(
                 
 				'IDRevendedor' => $this->input->post('IDRevendedor'),						
@@ -46,13 +56,25 @@ class Revendedor extends CI_Controller{
             );
 
             $this->load->model('Precopessoa_model');
-            $precopessoa_id = $this->Precopessoa_model->add_precopessoa($params);         
+            $precopessoa_id = $this->Precopessoa_model->add_precopessoa($params);
+            
+             //atualiza a tabela pessoa com o tipo de cadastro 
+
+            $params = array(
+
+                'IDTipoCadastro' =>  $id,                 
+            );
+
+
+            $this->load->model('Pessoa_model');
+            $this->Pessoa_model->update_pessoa($IDPessoa,$params);  
+            
             redirect('revendedor/index');
         }
         else
         {
             $this->load->model('Pessoa_model');
-			$data['all_pessoas'] = $this->Pessoa_model->get_all_pessoas();
+			  $data['all_pessoas'] = $this->Pessoa_model->get_pessoas_semCad();   
             
 			$this->load->model('Preco_model');
 			$data['all_precos'] = $this->Preco_model->get_all_precos();
@@ -98,8 +120,6 @@ class Revendedor extends CI_Controller{
                           $precopessoa_id = $this->Precopessoa_model->update_precopessoa($IDRevendedor,$params);
                       }
 
-                
-                
                 redirect('revendedor/index');
             }
             else
@@ -132,6 +152,16 @@ class Revendedor extends CI_Controller{
             $this->Precopessoa_model->delete_precopessoa($IDRevendedor);
             
             $this->Revendedor_model->delete_revendedor($IDRevendedor);
+            
+            $params = array(
+
+                'IDTipoCadastro' =>  $id = 0,               
+            );
+
+            $this->load->model('Pessoa_model');
+            $this->Pessoa_model->update_pessoa($IDRevendedor,$params);
+
+            
             redirect('revendedor/index');
         }
         else

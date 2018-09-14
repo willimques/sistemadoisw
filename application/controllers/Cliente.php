@@ -9,7 +9,7 @@ class Cliente extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Cliente_model');
-               
+
     } 
 
     /*
@@ -30,9 +30,15 @@ class Cliente extends CI_Controller{
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('limite','Limite','numeric');   
+        $this->form_validation->set_rules('tabelaPreco','Tabela','required');   
 
         if($this->form_validation->run())     
         {   
+            // Recebe os valores do para atualizar a tabela pessoa 
+            $id = 1;
+            $IDPessoa = $this->input->post('IDCliente');
+            
+            // atualiza a tabela cliente
             $params = array(
 
                 'IDCliente' => $this->input->post('IDCliente'),
@@ -41,6 +47,19 @@ class Cliente extends CI_Controller{
 
             $cliente_id = $this->Cliente_model->add_cliente($params);
             
+            //atualiza a tabela pessoa com o tipo de cadastro 
+
+            $params = array(
+
+                'IDTipoCadastro' =>  $id,                 
+            );
+
+
+            $this->load->model('Pessoa_model');
+            $this->Pessoa_model->update_pessoa($IDPessoa,$params);
+            
+            // adiciona a tabela de preco 
+            
             $params = array(
 
                 'IDPreco' => $this->input->post('tabelaPreco'),
@@ -48,16 +67,16 @@ class Cliente extends CI_Controller{
 
             );
 
-            $this->load->model('Precopessoa_model');
-            $precopessoa_id = $this->Precopessoa_model->add_precopessoa($params);
+            $this->load->model('Precopessoa_model');            
+            $precopessoa_id = $this->Precopessoa_model->add_precopessoa($params);  
 
-
+           
             redirect('cliente/index');
         }
         else
         {   
             $this->load->model('Pessoa_model');
-            $data['all_pessoas'] = $this->Pessoa_model->get_all_pessoas();   
+            $data['all_pessoas'] = $this->Pessoa_model->get_pessoas_semCad();   
 
             $this->load->model('Preco_model');
             $data['all_precos'] = $this->Preco_model->get_all_precos();
@@ -85,68 +104,78 @@ class Cliente extends CI_Controller{
             if($this->form_validation->run())     
             {   
 
-                  if(!$this->input->post('limite')==null)
-                   {
-                       $params = array(
+                if(!$this->input->post('limite')==null)
+                {
+                    $params = array(
 
-                           'limite' => $this->input->post('limite'),                    
+                        'limite' => $this->input->post('limite'),                    
 
-                       );
+                    );
 
-                       $this->Cliente_model->update_cliente($IDCliente,$params); 
-                   }
+                    $this->Cliente_model->update_cliente($IDCliente,$params); 
+                }
 
-                   if(!$this->input->post('IDPreco')==null)
-                      {
-                          $params = array(
+                if(!$this->input->post('IDPreco')==null)
+                {
+                    $params = array(
 
-                              'IDPreco' => $this->input->post('IDPreco'),
+                        'IDPreco' => $this->input->post('IDPreco'),
 
-                          );  
+                    );  
 
-                          $this->load->model('Precopessoa_model');
+                    $this->load->model('Precopessoa_model');
 
-                          $precopessoa_id = $this->Precopessoa_model->update_precopessoa($IDCliente,$params);
-                      }
+                    $precopessoa_id = $this->Precopessoa_model->update_precopessoa($IDCliente,$params);
+                }
 
-                      redirect('cliente/index');
+                redirect('cliente/index');
 
-                      }
-                      else
-                      {   
-                          $this->load->model('Precopessoa_model');
-                          $data['pessoapreco'] = $this->Precopessoa_model->get_precopessoa($IDCliente);
+            }
+            else
+            {   
+                $this->load->model('Precopessoa_model');
+                $data['pessoapreco'] = $this->Precopessoa_model->get_precopessoa($IDCliente);
 
-                          $this->load->model('Preco_model');
-                          $data['all_precos'] = $this->Preco_model->get_all_precos();
+                $this->load->model('Preco_model');
+                $data['all_precos'] = $this->Preco_model->get_all_precos();
 
-                          $data['_view'] = 'cliente/edit';
-                          $this->load->view('layouts/main',$data);
-                      }
-                      }
-                      else
-                      show_error('The cliente you are trying to edit does not exist.');
-                      } 
+                $data['_view'] = 'cliente/edit';
+                $this->load->view('layouts/main',$data);
+            }
+        }
+        else
+            show_error('The cliente you are trying to edit does not exist.');
+    } 
 
-                      /*
+    /*
      * Deleting cliente
      */
-                      function remove($IDCliente)
-                      {
-                          $cliente = $this->Cliente_model->get_cliente($IDCliente);
+    function remove($IDCliente)
+    {
+        $cliente = $this->Cliente_model->get_cliente($IDCliente);
 
-                          // check if the cliente exists before trying to delete it
-                          if(isset($cliente['IDCliente']))
-                          {
-                              $this->load->model('Precopessoa_model');
-                              $this->Precopessoa_model->delete_precopessoa($IDCliente);
+        // check if the cliente exists before trying to delete it
+        if(isset($cliente['IDCliente']))
+        {
+            
+            $this->load->model('Precopessoa_model');
+            
+            $this->Precopessoa_model->delete_precopessoa($IDCliente);
 
+            $this->Cliente_model->delete_cliente($IDCliente);
 
-                              $this->Cliente_model->delete_cliente($IDCliente);
-                              redirect('cliente/index');
-                          }
-                          else
-                              show_error('The cliente you are trying to delete does not exist.');
-                      }
+            $params = array(
 
-                      }
+                'IDTipoCadastro' =>  $id = 0,               
+            );
+
+            $this->load->model('Pessoa_model');
+            $this->Pessoa_model->update_pessoa($IDCliente,$params);
+
+            redirect('cliente/index');
+        }
+        else
+            show_error('The cliente you are trying to delete does not exist.');
+    }
+
+}

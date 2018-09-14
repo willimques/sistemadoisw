@@ -59,7 +59,9 @@
                         } 
                         ?>
                     </select>
+                    <span class="text-danger"><?php echo form_error('tabelaPreco');?></span>
                 </div>
+                
             </div>
             
             <div class="form-group">

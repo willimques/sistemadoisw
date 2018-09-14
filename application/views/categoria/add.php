@@ -30,7 +30,7 @@
             <?php echo form_open('categoria/add',array("class"=>"form-horizontal")); ?>
 
             <div class="form-group">
-                <label for="descricao" class="col-md-4 control-label">Descricao</label>
+                <label for="descricao" class="col-md-4 control-label">Descrição</label>
                 <div class="col-md-8">
                     <input type="text" name="descricao" value="<?php echo $this->input->post('descricao'); ?>" class="form-control" id="descricao" />
                     <span class="text-danger"><?php echo form_error('descricao');?></span>

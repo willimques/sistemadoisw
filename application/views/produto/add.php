@@ -33,13 +33,13 @@
                 <label for="IDGrupo" class="col-md-4 control-label">Grupo</label>
                 <div class="col-md-8">
                     <select name="IDGrupo" class="form-control">
-                        <option value="">Selecione o Grupo</option>
+                        <option value="">Selecione Grupo</option>
                         <?php 
                         foreach($all_grupos as $grupo)
                         {
-                            $selected = ($grupo['descricao'] == $this->input->post('descricao')) ? ' selected="selected"' : "";
+                            $selected = ($grupo['IDGrupo'] == $this->input->post('IDGrupo')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$grupo['descricao'].'" '.$selected.'>'.$grupo['descricao'].'</option>';
+                            echo '<option value="'.$grupo['IDGrupo'].'" '.$selected.'>'.$grupo['descricao'].'</option>';
                         } 
                         ?>
                     </select>
@@ -49,13 +49,13 @@
                 <label for="IDCategoria" class="col-md-4 control-label">Categoria</label>
                 <div class="col-md-8">
                     <select name="IDCategoria" class="form-control">
-                        <option value="">Selecione a Categoria</option>
+                        <option value="">Selecione Categoria</option>
                         <?php 
                         foreach($all_categorias as $categoria)
                         {
-                            $selected = ($categoria['descricao'] == $this->input->post('descricao')) ? ' selected="selected"' : "";
+                            $selected = ($categoria['IDCategoria'] == $this->input->post('IDCategoria')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$categoria['descricao'].'" '.$selected.'>'.$categoria['descricao'].'</option>';
+                            echo '<option value="'.$categoria['IDCategoria'].'" '.$selected.'>'.$categoria['descricao'].'</option>';
                         } 
                         ?>
                     </select>
@@ -65,13 +65,13 @@
                 <label for="IDMarcas" class="col-md-4 control-label">Marca</label>
                 <div class="col-md-8">
                     <select name="IDMarcas" class="form-control">
-                        <option value="">Selecione a Marca</option>
+                        <option value="">Selecione Marca</option>
                         <?php 
                         foreach($all_marcas as $marca)
                         {
-                            $selected = ($marca['Descricao'] == $this->input->post('Descricao')) ? ' selected="selected"' : "";
+                            $selected = ($marca['IDMarcas'] == $this->input->post('IDMarcas')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$marca['Descricao'].'" '.$selected.'>'.$marca['Descricao'].'</option>';
+                            echo '<option value="'.$marca['IDMarcas'].'" '.$selected.'>'.$marca['Descricao'].'</option>';
                         } 
                         ?>
                     </select>
@@ -81,13 +81,13 @@
                 <label for="IDfornecedor" class="col-md-4 control-label">Fornecedor</label>
                 <div class="col-md-8">
                     <select name="IDfornecedor" class="form-control">
-                        <option value="">Selecione o Fornecedor</option>
+                        <option value="">Selecione Fornecedor</option>
                         <?php 
                         foreach($all_fornecedores as $fornecedor)
                         {
                             $selected = ($fornecedor['IDFornecedor'] == $this->input->post('IDfornecedor')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$fornecedor['IDFornecedor'].'" '.$selected.'>'.$fornecedor['IDFornecedor'].'</option>';
+                            echo '<option value="'.$fornecedor['IDFornecedor'].'" '.$selected.'>'.$fornecedor['nome'].'</option>';
                         } 
                         ?>
                     </select>
@@ -97,13 +97,13 @@
                 <label for="IDUnidade" class="col-md-4 control-label">Unidade</label>
                 <div class="col-md-8">
                     <select name="IDUnidade" class="form-control">
-                        <option value="">Selecione a Unidade</option>
+                        <option value="">Selecione Unidade</option>
                         <?php 
                         foreach($all_unidades as $unidade)
                         {
-                            $selected = ($unidade['descricao'] == $this->input->post('descricao')) ? ' selected="selected"' : "";
+                            $selected = ($unidade['IDUnidades'] == $this->input->post('IDUnidade')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$unidade['descricao'].'" '.$selected.'>'.$unidade['descricao'].'</option>';
+                            echo '<option value="'.$unidade['IDUnidades'].'" '.$selected.'>'.$unidade['descricao'].'</option>';
                         } 
                         ?>
                     </select>

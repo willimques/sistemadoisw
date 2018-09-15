@@ -97,13 +97,13 @@
                 <label for="IDUnidade" class="col-md-4 control-label">Unidade</label>
                 <div class="col-md-8">
                     <select name="IDUnidade" class="form-control">
-                        <option value="">select unidade</option>
+                        <option value="">Selecione a Unidade</option>
                         <?php 
                         foreach($all_unidades as $unidade)
                         {
-                            $selected = ($unidade['IDUnidades'] == $this->input->post('IDUnidade')) ? ' selected="selected"' : "";
+                            $selected = ($unidade['descricao'] == $this->input->post('descricao')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$unidade['IDUnidades'].'" '.$selected.'>'.$unidade['IDUnidades'].'</option>';
+                            echo '<option value="'.$unidade['descricao'].'" '.$selected.'>'.$unidade['descricao'].'</option>';
                         } 
                         ?>
                     </select>
@@ -116,37 +116,37 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="codigo" class="col-md-4 control-label">Codigo</label>
+                <label for="codigo" class="col-md-4 control-label">Código</label>
                 <div class="col-md-8">
                     <input type="text" name="codigo" value="<?php echo $this->input->post('codigo'); ?>" class="form-control" id="codigo" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="precoCusto" class="col-md-4 control-label">PrecoCusto</label>
+                <label for="precoCusto" class="col-md-4 control-label">Preço Custo</label>
                 <div class="col-md-8">
                     <input type="text" name="precoCusto" value="<?php echo $this->input->post('precoCusto'); ?>" class="form-control" id="precoCusto" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="precoVenda" class="col-md-4 control-label">PrecoVenda</label>
+                <label for="precoVenda" class="col-md-4 control-label">Preço Venda</label>
                 <div class="col-md-8">
                     <input type="text" name="precoVenda" value="<?php echo $this->input->post('precoVenda'); ?>" class="form-control" id="precoVenda" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="situacao" class="col-md-4 control-label">Situacao</label>
+                <label for="situacao" class="col-md-4 control-label">Situação</label>
                 <div class="col-md-8">
                     <input type="text" name="situacao" value="<?php echo $this->input->post('situacao'); ?>" class="form-control" id="situacao" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="descricao" class="col-md-4 control-label">Descricao</label>
+                <label for="descricao" class="col-md-4 control-label">Descrição</label>
                 <div class="col-md-8">
                     <input type="text" name="descricao" value="<?php echo $this->input->post('descricao'); ?>" class="form-control" id="descricao" />
                 </div>
             </div>
             <div class="form-group">
-                <label for="codBarras" class="col-md-4 control-label">CodBarras</label>
+                <label for="codBarras" class="col-md-4 control-label">Cod. Barras</label>
                 <div class="col-md-8">
                     <input type="text" name="codBarras" value="<?php echo $this->input->post('codBarras'); ?>" class="form-control" id="codBarras" />
                 </div>
@@ -158,7 +158,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="dataCadastro" class="col-md-4 control-label">DataCadastro</label>
+                <label for="dataCadastro" class="col-md-4 control-label">Data Cadastro</label>
                 <div class="col-md-8">
                     <input type="text" name="dataCadastro" value="<?php echo $this->input->post('dataCadastro'); ?>" class="form-control" id="dataCadastro" />
                 </div>
@@ -166,7 +166,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
 

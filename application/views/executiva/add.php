@@ -28,6 +28,7 @@
         <div class="card-body"> 
 
             <?php echo form_open('executiva/add',array("class"=>"form-horizontal")); ?>
+			<label for="tabelaPreco" class="col-md-4 control-label">Nome</label>
                <div class="col-md-8">
                     <select name="IDExecutiva" class="form-control">
                         <option value="">Selecione o Cadastro</option>
@@ -44,7 +45,7 @@
                 </div>
             
             <div class="form-group">
-                <label for="tabelaPreco" class="col-md-4 control-label">Preco</label>
+                <label for="tabelaPreco" class="col-md-4 control-label">Preço</label>
                 <div class="col-md-8">
                     <select name="tabelaPreco" class="form-control">
                         <option value="">Selecione preco</option>
@@ -71,7 +72,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
 

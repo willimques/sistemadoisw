@@ -27,8 +27,7 @@
         <div class="card-body"> 
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
-                    <tr>
-                        <th>#ID</th>
+                    <tr>                     
                         <th>Código</th>
                         <th>Executiva</th>
                         <th>Limite</th>
@@ -37,8 +36,7 @@
                 </thead>
                 <?php foreach($executivas as $E){ ?>
                 <tbody>
-                    <tr>
-                        <td><?php echo $E['IDExecutiva']; ?></td>
+                    <tr>                     
                         <td><?php echo $E['codigo']; ?></td>
                         <td><?php echo $E['nome']; ?></td>
                         <td><?php echo $E['limite']; ?></td>

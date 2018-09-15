@@ -34,12 +34,7 @@
                 <tbody>
                     <?php foreach($produtos as $P){ ?>
                     <tr>
-                        <td><?php echo $P['IDProduto']; ?></td>
-		                <td><?php echo $P['IDGrupo']; ?></td>
-		                <td><?php echo $P['IDCategoria']; ?></td>
-		                <td><?php echo $P['IDMarcas']; ?></td>
-		                <td><?php echo $P['IDfornecedor']; ?></td>
-		                <td><?php echo $P['IDUnidade']; ?></td>
+					    			
 		                <td><?php echo $P['nome']; ?></td>
 		                <td><?php echo $P['codigo']; ?></td>
 		                <td><?php echo $P['precoCusto']; ?></td>
@@ -51,8 +46,8 @@
 		                <td><?php echo $P['dataCadastro']; ?></td>
                         <td>
                         
-                        <a href="<?php echo site_url('produto/edit/'.$G['IDProduto']); ?>" class="btn btn-info btn-xs">Edit</a> 
-                        <a href="<?php echo site_url('produto/remove/'.$G['IDProduto']); ?>" class="btn btn-danger btn-xs">Delete</a>
+                        <a href="<?php echo site_url('produto/edit/'.$P['IDProduto']); ?>" class="btn btn-info btn-xs">Editar</a> 
+                        <a href="<?php echo site_url('produto/remove/'.$P['IDProduto']); ?>" class="btn btn-danger btn-xs">Remover</a>
                         </td>
                     </tr>
                     <?php } ?>

@@ -43,12 +43,13 @@ class Produto extends CI_Controller{
 				'descricao' => $this->input->post('descricao'),
 				'codBarras' => $this->input->post('codBarras'),
 				'foto' => $this->input->post('foto'),
-				'dataCadastro' => $this->input->post('dataCadastro'),
+				'dataCadastro' => $this->input->post('dataCadastro'),			
             );
             
             $produto_id = $this->Produto_model->add_produto($params);
             redirect('produto/index');
         }
+	
         else
         {
 			$this->load->model('Grupo_model');
@@ -70,7 +71,7 @@ class Produto extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }  
-
+	
     /*
      * Editing a produto
      */

@@ -19,14 +19,14 @@
             <table id="dataTable" class="table table-striped table-bordered" >
                 <thead>
                     <tr>                     
-					   <th>Descricão</th>
+					   <th>Descrição</th>
 		               <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach($grupos as $G){ ?>
                     <tr>
-                        <td><?php echo $G['IDGrupo']; ?></td>
+                   
 		                <td><?php echo $G['descricao']; ?></td>
                         <td>        
                         <a href="<?php echo site_url('grupo/edit/'.$G['IDGrupo']); ?>" class="btn btn-info btn-xs">Edit</a> 

@@ -33,13 +33,13 @@
                 <label for="IDProduto" class="col-md-4 control-label"><span class="text-danger">*</span>Produto</label>
                 <div class="col-md-8">
                     <select name="IDProduto" class="form-control">
-                        <option value="">select produto</option>
+                        <option value="">Selecione Produto</option>
                         <?php 
                         foreach($all_produtos as $produto)
                         {
                             $selected = ($produto['IDProduto'] == $this->input->post('IDProduto')) ? ' selected="selected"' : "";
 
-                            echo '<option value="'.$produto['IDProduto'].'" '.$selected.'>'.$produto['IDProduto'].'</option>';
+                            echo '<option value="'.$produto['IDProduto'].'" '.$selected.'>'.$produto['descricao'].'</option>';
                         } 
                         ?>
                     </select>
@@ -50,7 +50,7 @@
                 <label for="IDFilial" class="col-md-4 control-label"><span class="text-danger">*</span>Filial</label>
                 <div class="col-md-8">
                     <select name="IDFilial" class="form-control">
-                        <option value="">select filial</option>
+                        <option value="">Selecione Filial</option>
                         <?php 
                         foreach($all_filiais as $filial)
                         {
@@ -77,14 +77,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="estMinimo" class="col-md-4 control-label">EstMinimo</label>
+                <label for="estMinimo" class="col-md-4 control-label">Estoque Mínimo</label>
                 <div class="col-md-8">
                     <input type="text" name="estMinimo" value="<?php echo $this->input->post('estMinimo'); ?>" class="form-control" id="estMinimo" />
                     <span class="text-danger"><?php echo form_error('estMinimo');?></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="estMaximo" class="col-md-4 control-label">EstMaximo</label>
+                <label for="estMaximo" class="col-md-4 control-label">Estoque Máximo</label>
                 <div class="col-md-8">
                     <input type="text" name="estMaximo" value="<?php echo $this->input->post('estMaximo'); ?>" class="form-control" id="estMaximo" />
                     <span class="text-danger"><?php echo form_error('estMaximo');?></span>
@@ -93,7 +93,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
 

@@ -28,21 +28,19 @@
 
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
-                    <tr>
-                        <th>#ID</th>
-                        <th>Codigo</th>
+                    <tr>                      
+                        <th>Código</th>
                         <th>Fornecedor</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <?php foreach($fornecedores as $F){ ?>
-                <tbody>                <tr>
-                    <td><?php echo $F['IDFornecedor']; ?></td>
+                <tbody>                <tr>                  
                     <td><?php echo $F['codigo']; ?></td>
                     <td><?php echo $F['nome']; ?></td>
                     <td>
                         <!--                        <a href="</?php echo site_url('fornecedor/edit/'.$F['IDFornecedor']); ?>" class="btn btn-info btn-xs">Edit</a> -->
-                        <a href="<?php echo site_url('fornecedor/remove/'.$F['IDFornecedor']); ?>" class="btn btn-danger btn-xs">Delete</a>
+                        <a href="<?php echo site_url('fornecedor/remove/'.$F['IDFornecedor']); ?>" class="btn btn-danger btn-xs">Remover</a>
                         <a href="<?php echo site_url('pessoa/profile/'.$F['IDFornecedor']); ?>" class="btn btn-info btn-xs">Visualizar</a>
                     </td>
                     </tr>

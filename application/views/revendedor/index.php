@@ -11,7 +11,7 @@
         <div class="card-title">
             <div class="row">
                 <div class="col-md-8">
-                    <h3>Revendedor  </h3>
+                    <h3>Revendedor</h3>
                 </div>
 
                 <div class="col-md-4">
@@ -28,8 +28,7 @@
 
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
-                    <tr>
-                        <th>#ID</th>                                         
+                    <tr>                                                        
                         <th>Codigo</th>                                         
                         <th>Revendedor</th>                                         
                         <th>Limite</th>
@@ -38,8 +37,7 @@
                 </thead>
                 <?php foreach($revendedores as $R){ ?>
                 <tbody>
-                    <tr>
-                        <td><?php echo $R['IDRevendedor']; ?></td>                               
+                    <tr>                                                  
                         <td><?php echo $R['codigo']; ?></td>                               
                         <td><?php echo $R['nome']; ?></td>                               
                         <td><?php echo $R['limite']; ?></td>

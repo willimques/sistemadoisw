@@ -33,7 +33,7 @@
                 <label for="IDPessoaFilial" class="col-md-4 control-label">Pessoa</label>
                 <div class="col-md-8">
                     <select name="IDPessoaFilial" class="form-control">
-                        <option value="">select pessoa</option>
+                        <option value="">Selecione Pessoa</option>
                         <?php 
                         foreach($all_pessoas as $pessoa)
                         {
@@ -48,7 +48,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>
 

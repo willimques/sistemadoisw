@@ -10,7 +10,7 @@
 				{
 					$selected = ($grupo['IDGrupo'] == $produto['IDGrupo']) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$grupo['IDGrupo'].'" '.$selected.'>'.$grupo['IDGrupo'].'</option>';
+					echo '<option value="'.$grupo['IDGrupo'].'" '.$selected.'>'.$grupo['descricao'].'</option>';
 				} 
 				?>
 			</select>
@@ -26,7 +26,7 @@
 				{
 					$selected = ($categoria['IDCategoria'] == $produto['IDCategoria']) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$categoria['IDCategoria'].'" '.$selected.'>'.$categoria['IDCategoria'].'</option>';
+					echo '<option value="'.$categoria['IDCategoria'].'" '.$selected.'>'.$categoria['descricao'].'</option>';
 				} 
 				?>
 			</select>
@@ -42,7 +42,7 @@
 				{
 					$selected = ($marca['IDMarcas'] == $produto['IDMarcas']) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$marca['IDMarcas'].'" '.$selected.'>'.$marca['IDMarcas'].'</option>';
+					echo '<option value="'.$marca['IDMarcas'].'" '.$selected.'>'.$marca['Descricao'].'</option>';
 				} 
 				?>
 			</select>
@@ -58,7 +58,7 @@
 				{
 					$selected = ($fornecedor['IDFornecedor'] == $produto['IDfornecedor']) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$fornecedor['IDFornecedor'].'" '.$selected.'>'.$fornecedor['IDFornecedor'].'</option>';
+					echo '<option value="'.$fornecedor['IDFornecedor'].'" '.$selected.'>'.$fornecedor['nome'].'</option>';
 				} 
 				?>
 			</select>
@@ -74,7 +74,7 @@
 				{
 					$selected = ($unidade['IDUnidades'] == $produto['IDUnidade']) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$unidade['IDUnidades'].'" '.$selected.'>'.$unidade['IDUnidades'].'</option>';
+					echo '<option value="'.$unidade['IDUnidades'].'" '.$selected.'>'.$unidade['descricao'].'</option>';
 				} 
 				?>
 			</select>
@@ -87,37 +87,37 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="codigo" class="col-md-4 control-label">Codigo</label>
+		<label for="codigo" class="col-md-4 control-label">Código</label>
 		<div class="col-md-8">
 			<input type="text" name="codigo" value="<?php echo ($this->input->post('codigo') ? $this->input->post('codigo') : $produto['codigo']); ?>" class="form-control" id="codigo" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="precoCusto" class="col-md-4 control-label">PrecoCusto</label>
+		<label for="precoCusto" class="col-md-4 control-label">Preço Custo</label>
 		<div class="col-md-8">
 			<input type="text" name="precoCusto" value="<?php echo ($this->input->post('precoCusto') ? $this->input->post('precoCusto') : $produto['precoCusto']); ?>" class="form-control" id="precoCusto" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="precoVenda" class="col-md-4 control-label">PrecoVenda</label>
+		<label for="precoVenda" class="col-md-4 control-label">Preço Venda</label>
 		<div class="col-md-8">
 			<input type="text" name="precoVenda" value="<?php echo ($this->input->post('precoVenda') ? $this->input->post('precoVenda') : $produto['precoVenda']); ?>" class="form-control" id="precoVenda" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="situacao" class="col-md-4 control-label">Situacao</label>
+		<label for="situacao" class="col-md-4 control-label">Situação</label>
 		<div class="col-md-8">
 			<input type="text" name="situacao" value="<?php echo ($this->input->post('situacao') ? $this->input->post('situacao') : $produto['situacao']); ?>" class="form-control" id="situacao" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="descricao" class="col-md-4 control-label">Descricao</label>
+		<label for="descricao" class="col-md-4 control-label">Descrição</label>
 		<div class="col-md-8">
 			<input type="text" name="descricao" value="<?php echo ($this->input->post('descricao') ? $this->input->post('descricao') : $produto['descricao']); ?>" class="form-control" id="descricao" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="codBarras" class="col-md-4 control-label">CodBarras</label>
+		<label for="codBarras" class="col-md-4 control-label">Cod. Barras</label>
 		<div class="col-md-8">
 			<input type="text" name="codBarras" value="<?php echo ($this->input->post('codBarras') ? $this->input->post('codBarras') : $produto['codBarras']); ?>" class="form-control" id="codBarras" />
 		</div>
@@ -129,15 +129,15 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="dataCadastro" class="col-md-4 control-label">DataCadastro</label>
+		<label for="dataCadastro" class="col-md-4 control-label">Data Cadastro</label>
 		<div class="col-md-8">
-			<input type="text" name="dataCadastro" value="<?php echo ($this->input->post('dataCadastro') ? $this->input->post('dataCadastro') : $produto['dataCadastro']); ?>" class="form-control" id="dataCadastro" />
+			<input type="date" name="dataCadastro" value="<?php echo ($this->input->post('dataCadastro') ? $this->input->post('dataCadastro') : $produto['dataCadastro']); ?>" class="form-control" id="dataCadastro" />
 		</div>
 	</div>
 	
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
-			<button type="submit" class="btn btn-success">Save</button>
+			<button type="submit" class="btn btn-success">Salvar</button>
         </div>
 	</div>
 	

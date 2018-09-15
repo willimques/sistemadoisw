@@ -30,15 +30,13 @@
 
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
-                    <tr>
-                        <th>IDCategoria</th>
+                    <tr>                     
                         <th>Descrição</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <?php foreach($categorias as $C){ ?>
-                <tr>
-                    <td><?php echo $C['IDCategoria']; ?></td>
+                <tr>            
                     <td><?php echo $C['descricao']; ?></td>
                     <td>
                         <a href="<?php echo site_url('categoria/edit/'.$C['IDCategoria']); ?>" class="btn btn-info btn-xs">Editar</a> 

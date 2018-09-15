@@ -30,6 +30,7 @@
             <?php echo form_open('empresaria/add',array("class"=>"form-horizontal")); ?>
 
             <div class="form-group">
+			   <label for="tabelaPreco" class="col-md-4 control-label">Cliente</label>
                <div class="col-md-8">
                     <select name="IDEmpresaria" class="form-control">
                         <option value="">Selecione o Cadastro</option>

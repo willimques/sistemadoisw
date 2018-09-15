@@ -26,9 +26,8 @@
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>IDUnidades</th>
-                        <th>Descricao</th>
-                        <th>Actions</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
                     </tr>
                      </thead>
                     <?php foreach($unidades as $U){ ?>

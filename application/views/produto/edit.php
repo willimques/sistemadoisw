@@ -1,10 +1,10 @@
 <?php echo form_open('produto/edit/'.$produto['IDProduto'],array("class"=>"form-horizontal")); ?>
 
-	<div class="form-group">
-		<label for="IDGrupo" class="col-md-4 control-label">Grupo</label>
+ <div class="form-group">
+	 <label for="IDGrupo" class="col-md-4 control-label">Grupo</label>
 		<div class="col-md-8">
 			<select name="IDGrupo" class="form-control">
-				<option value="">select grupo</option>
+				<option value="">selecione grupo</option>
 				<?php 
 				foreach($all_grupos as $grupo)
 				{

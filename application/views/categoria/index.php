@@ -31,8 +31,8 @@
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Descricao</th>
+                        <th>IDCategoria</th>
+                        <th>Descrição</th>
                         <th>Ações</th>
                     </tr>
                 </thead>

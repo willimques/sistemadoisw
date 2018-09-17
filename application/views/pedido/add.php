@@ -83,67 +83,66 @@
             </div>
             <div>
                 <div id="list" class="row">
-                    
-                <div class="row">
-                <div class="form-group col-md-1">
-                        <label for="data" class=" control-label">Código</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+
+                    <div class="row ml-3">
+                        <div class="form-group col-md-1 p-1">
+                            <label for="data" class=" control-label">Código</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
                         </div>
+                        <div class="form-group col-md-3 p-1">
+                            <label for="data" class=" control-label">Descrição</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-1 p-1">
+                            <label for="data" class=" control-label">Unidade</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-1 p-1">
+                            <label for="data" class=" control-label">Quantidade</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-1 p-1">
+                            <label for="data" class=" control-label">Preço Tab</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-1 p-1">
+                            <label for="data" class=" control-label">Desc %</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-1 p-1">
+                            <label for="data" class=" control-label">Preço Un</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 p-1">
+                            <label for="data" class=" control-label">Preço total</label>
+                            <div class="">                    
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            </div>
+                        </div> 
+                        <div class="form-group col-md-1 p-2 mt-1">
+                            <label for="data" class=" control-label"></label>
+                            <div class="">                    
+                                <a  name="data" class="btn btn-success active" onclick="AddTableRow()" id="data">Incluir</a>
+                            </div>
+                        </div>                    
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="data" class=" control-label">Descrição</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
-                    </div>
-                    <div class="form-group col-md-1">
-                        <label for="data" class=" control-label">Unidade</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
-                    </div>
-                    <div class="form-group col-md-1">
-                        <label for="data" class=" control-label">Quantidade</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
-                    </div>
-                    <div class="form-group col-md-1">
-                        <label for="data" class=" control-label">Preço Tab</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
-                    </div>
-                    <div class="form-group col-md-1">
-                        <label for="data" class=" control-label">Desc %</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
-                    </div>
-                    <div class="form-group col-md-1">
-                        <label for="data" class=" control-label">Preço Un</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="data" class=" control-label">Preço total</label>
-                        <div class="">                    
-                            <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
-                    </div> 
-                      <div class="form-group col-md-2">
-                        <label for="data" class=" control-label">Preço total</label>
-                        <div class="">                    
-                        <a href="#" name="data" class="btn btn-success" id="data"> </a>
-                        </div>
-                    </div>
-                    
-                </div>
 
                     <div class="table-responsive col-md-12">
-                        <table class="table table-striped" cellspacing="0" cellpadding="0">
+                        <table id="itensPedido"class="table table-striped" cellspacing="0" cellpadding="0">
                             <thead>
                                 <tr>
                                     <th>Código</th>
@@ -168,12 +167,9 @@
                                     <td>100,00</td>
                                     <td>1000,00</td>
                                     <td class="actions">
-                                        <a class="" href="view.html">Visualizar</a>
-                                        <a class="" href="edit.html">Editar</a>
-                                        <a class=""  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                                        <a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a> 
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
 
@@ -241,3 +237,27 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    function AddTableRow(){
+
+        $('#itensPedido').append('<tr><td>1001</td>'+'<td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>'+'<td>Un</td>'+
+                                 ' <td>10</td>'+
+                                 ' <td>100,00</td>'+
+                                 '<td>0</td>'+
+                                 ' <td>100,00</td>'+
+                                 ' <td>1000,00</td>'+
+                                 '<td class="actions">'+
+                                 '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
+                                 '</td></tr>');
+    }
+
+    function RemoveTableRow ($hander){
+
+        var tr =$hander.closest('tr');
+            
+         tr.remove();
+    }
+
+</script>

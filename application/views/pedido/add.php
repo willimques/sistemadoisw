@@ -51,10 +51,9 @@
                         </div>
                     </div>
                     <div class="form-group col-md-5">
-                        <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>
-                        <div class="">
-                            <select name="IDPessoa" class="form-control">
-                                <option value="">select pessoa</option>
+                        <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>                        
+                            <select id="selPessoa" data-live-search="true" name="IDPessoa" class="form-control">
+                                <option value="">Selecione um cliente </option>
                                 <?php 
                                 foreach($all_pessoas as $pessoa)
                                 {
@@ -64,7 +63,7 @@
                                 } 
                                 ?>
                             </select>
-                        </div>
+                     
                     </div>
                     <div class="form-group col-md-2">
                         <label for="data" class=" control-label">Numero Pedido</label>
@@ -88,7 +87,7 @@
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Código</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="produto" />
                             </div>
                         </div>
                         <div class="form-group col-md-3 p-1">
@@ -156,30 +155,13 @@
                                     <th class="actions">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1001</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                                    <td>Un</td>
-                                    <td>10</td>
-                                    <td>100,00</td>
-                                    <td>0</td>
-                                    <td>100,00</td>
-                                    <td>1000,00</td>
-                                    <td class="actions">
-                                        <a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a> 
-                                    </td>
-                                </tr>
+                            <tbody id="itens">
+
                             </tbody>
                         </table>
 
                     </div>
                 </div> <!-- /#list -->
-
-
-
-
-
             </div>
 
             <div class="shadow p-3 mb-5 bg-white rounded">
@@ -209,7 +191,6 @@
                                 foreach($all_situacaopedidos as $situacaopedido)
                                 {
                                     $selected = ($situacaopedido['IDSituacao'] == $this->input->post('situacaoPedido')) ? ' selected="selected"' : "";
-
                                     echo '<option value="'.$situacaopedido['IDSituacao'].'" '.$selected.'>'.$situacaopedido['IDSituacao'].'</option>';
                                 } 
                                 ?>
@@ -232,7 +213,6 @@
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </div>
-
             <?php echo form_close(); ?>
         </div>
     </div>
@@ -242,22 +222,42 @@
 
     function AddTableRow(){
 
-        $('#itensPedido').append('<tr><td>1001</td>'+'<td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>'+'<td>Un</td>'+
-                                 ' <td>10</td>'+
-                                 ' <td>100,00</td>'+
-                                 '<td>0</td>'+
-                                 ' <td>100,00</td>'+
-                                 ' <td>1000,00</td>'+
-                                 '<td class="actions">'+
-                                 '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
-                                 '</td></tr>');
+        $.get('<?php echo base_url('Produto/get_produto/1')?>', function (data) {
+
+            dados = JSON.parse(data);
+            // console.log(dados);
+            $('#itens').append('<tr><td>'+dados.IDProduto+'</td>'+
+                               '<td>'+dados.nome+'</td>'+
+                               '<td>'+dados.IDUnidade+'</td>'+
+                               '<td>'+'</td>'+
+                               '<td>'+dados.precoVenda+'</td>'+
+                               '<td>'+'</td>'+
+                               '<td>'+'</td>'+
+                               '<td>'+'</td>'+                                     
+                               '<td class="actions">'+
+                               '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
+                               '</td></tr>');
+
+        });
+
     }
 
     function RemoveTableRow ($hander){
 
         var tr =$hander.closest('tr');
-            
-         tr.remove();
+
+        tr.remove();
     }
 
+</script>
+
+<script>
+
+$(document).ready(function(){   
+    
+$('#selPessoa').selectpicker()
+
+    
+ 
+});
 </script>

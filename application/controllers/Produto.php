@@ -146,4 +146,13 @@ class Produto extends CI_Controller{
             show_error('The produto you are trying to delete does not exist.');
     }
     
+    function get_produto($IDProduto)
+    {
+        
+        $produto = $this->Produto_model->get_produto($IDProduto);
+        echo json_encode($produto);       
+        
+    }
+        
+    
 }

@@ -35,7 +35,7 @@
             <div class="shadow p-3 mb-5 bg-white rounded">
                 <div class="row"> 
                     <div class="form-group col-md-3">
-                        <label for="tipoPedido" class="control-label">Tipo de pedido</label>
+                        <label> Tipo de pedido</label>
                         <div class="">
                             <select name="tipoPedido" class="form-control">
                                 <option value="">Selecione o Tipo Pedido</option>
@@ -52,18 +52,18 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>                        
-                            <select id="selPessoa" data-live-search="true" name="IDPessoa" class="form-control">
-                                <option value="">Selecione um cliente </option>
-                                <?php 
-                                foreach($all_pessoas as $pessoa)
-                                {
-                                    $selected = ($pessoa['IDPessoa'] == $this->input->post('IDPessoa')) ? ' selected="selected"' : "";
+                        <select id="selPessoa" data-live-search="true" name="IDPessoa" class="form-control">
+                            <option value="">Selecione um cliente </option>
+                            <?php 
+                            foreach($all_pessoas as $pessoa)
+                            {
+                                $selected = ($pessoa['IDPessoa'] == $this->input->post('IDPessoa')) ? ' selected="selected"' : "";
 
-                                    echo '<option value="'.$pessoa['IDPessoa'].'" '.$selected.'>'.$pessoa['nome'].'</option>';
-                                } 
-                                ?>
-                            </select>
-                     
+                                echo '<option value="'.$pessoa['IDPessoa'].'" '.$selected.'>'.$pessoa['nome'].'</option>';
+                            } 
+                            ?>
+                        </select>
+
                     </div>
                     <div class="form-group col-md-2">
                         <label for="data" class=" control-label">Numero Pedido</label>
@@ -80,6 +80,16 @@
 
                 </div>
             </div>
+            <div class="form-group">
+                <form action="" method="post" enctype="multipart/form-data" id="form_busca">
+                    <label>
+                        <span>Buscar Produto</span>
+                        <input type="text" name="buscar" id="busca" />
+                    </label>
+                </form>
+            </div>
+            <div id="resultado_busca"></div>
+
             <div>
                 <div id="list" class="row">
 
@@ -253,11 +263,33 @@
 
 <script>
 
-$(document).ready(function(){   
-    
-$('#selPessoa').selectpicker()
+    $(function(){
+        
+        $('#busca').keyup(function(){
 
-    
- 
-});
+            var buscaTexto = $(this).val();
+            if(buscaTexto.length >= 3){
+            
+            $.ajax({
+                type:'post',               
+                dataType: 'json',	//Definimos o tipo de retorno
+                url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
+                success: function(data){
+                
+                    console.log(data);
+                    
+                }
+            });
+            }
+
+        });
+    });
+
+    $(document).ready(function(){   
+
+        $('#selPessoa').selectpicker()
+
+
+
+    });
 </script>

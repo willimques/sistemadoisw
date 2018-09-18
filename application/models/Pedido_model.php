@@ -9,6 +9,8 @@ class Pedido_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->output->enable_profiler(TRUE);
+        
     }
     
     /*

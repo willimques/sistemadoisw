@@ -10,6 +10,8 @@
         <link rel="icon" href="<?php echo base_url('assets/_img/icon.ico')?>" type="image/ico"/>
 
         <title>DOISWTI </title>
+        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
         <!-- Bootstrap 4 core CSS-->
         <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
@@ -34,7 +36,9 @@
         <!-- Custom CSS   -->
         <link rel="stylesheet" href = "<?php echo base_url('assets/css/style.css')?>">
         
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        
+        
+        <script src="<?php echo base_url('assets/jquery/jquery.min.js')?>"></script>
         
     </head>
 

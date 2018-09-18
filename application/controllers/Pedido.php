@@ -123,4 +123,25 @@ class Pedido extends CI_Controller{
             show_error('The pedido you are trying to delete does not exist.');
     }
     
+    public function autoCompleteProduto()
+    {
+        
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $this->Pedido_model->autoCompleteProduto($q);
+        }
+
+    }
+
+    public function autoCompleteCliente()
+    {
+
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $this->vendas_model->autoCompleteCliente($q);
+        }
+
+    }
+
+    
 }

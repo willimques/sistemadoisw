@@ -35,7 +35,7 @@
             <div class="shadow p-3 mb-5 bg-white rounded">
                 <div class="row"> 
                     <div class="form-group col-md-3">
-                        <label for="tipoPedido" class="control-label">Tipo de pedido</label>
+                        <label> Tipo de pedido</label>
                         <div class="">
                             <select name="tipoPedido" class="form-control">
                                 <option value="">Selecione o Tipo Pedido</option>
@@ -51,20 +51,19 @@
                         </div>
                     </div>
                     <div class="form-group col-md-5">
-                        <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>
-                        <div class="">
-                            <select name="IDPessoa" class="form-control">
-                                <option value="">select pessoa</option>
-                                <?php 
-                                foreach($all_pessoas as $pessoa)
-                                {
-                                    $selected = ($pessoa['IDPessoa'] == $this->input->post('IDPessoa')) ? ' selected="selected"' : "";
+                        <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>                        
+                        <select id="selPessoa" data-live-search="true" name="IDPessoa" class="form-control">
+                            <option value="">Selecione um cliente </option>
+                            <?php 
+                            foreach($all_pessoas as $pessoa)
+                            {
+                                $selected = ($pessoa['IDPessoa'] == $this->input->post('IDPessoa')) ? ' selected="selected"' : "";
 
-                                    echo '<option value="'.$pessoa['IDPessoa'].'" '.$selected.'>'.$pessoa['nome'].'</option>';
-                                } 
-                                ?>
-                            </select>
-                        </div>
+                                echo '<option value="'.$pessoa['IDPessoa'].'" '.$selected.'>'.$pessoa['nome'].'</option>';
+                            } 
+                            ?>
+                        </select>
+
                     </div>
                     <div class="form-group col-md-2">
                         <label for="data" class=" control-label">Numero Pedido</label>
@@ -81,6 +80,16 @@
 
                 </div>
             </div>
+            <div class="form-group">
+                <form action="" method="post" enctype="multipart/form-data" id="form_busca">
+                    <label>
+                        <span>Buscar Produto</span>
+                        <input type="text" name="buscar" id="busca" />
+                    </label>
+                </form>
+            </div>
+            <div id="resultado_busca"></div>
+
             <div>
                 <div id="list" class="row">
 
@@ -88,7 +97,7 @@
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Código</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="produto" />
                             </div>
                         </div>
                         <div class="form-group col-md-3 p-1">
@@ -156,30 +165,13 @@
                                     <th class="actions">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1001</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                                    <td>Un</td>
-                                    <td>10</td>
-                                    <td>100,00</td>
-                                    <td>0</td>
-                                    <td>100,00</td>
-                                    <td>1000,00</td>
-                                    <td class="actions">
-                                        <a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a> 
-                                    </td>
-                                </tr>
+                            <tbody id="itens">
+
                             </tbody>
                         </table>
 
                     </div>
                 </div> <!-- /#list -->
-
-
-
-
-
             </div>
 
             <div class="shadow p-3 mb-5 bg-white rounded">
@@ -209,7 +201,6 @@
                                 foreach($all_situacaopedidos as $situacaopedido)
                                 {
                                     $selected = ($situacaopedido['IDSituacao'] == $this->input->post('situacaoPedido')) ? ' selected="selected"' : "";
-
                                     echo '<option value="'.$situacaopedido['IDSituacao'].'" '.$selected.'>'.$situacaopedido['IDSituacao'].'</option>';
                                 } 
                                 ?>
@@ -232,7 +223,6 @@
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </div>
-
             <?php echo form_close(); ?>
         </div>
     </div>
@@ -242,22 +232,64 @@
 
     function AddTableRow(){
 
-        $('#itensPedido').append('<tr><td>1001</td>'+'<td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>'+'<td>Un</td>'+
-                                 ' <td>10</td>'+
-                                 ' <td>100,00</td>'+
-                                 '<td>0</td>'+
-                                 ' <td>100,00</td>'+
-                                 ' <td>1000,00</td>'+
-                                 '<td class="actions">'+
-                                 '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
-                                 '</td></tr>');
+        $.get('<?php echo base_url('Produto/get_produto/1')?>', function (data) {
+
+            dados = JSON.parse(data);
+            // console.log(dados);
+            $('#itens').append('<tr><td>'+dados.IDProduto+'</td>'+
+                               '<td>'+dados.nome+'</td>'+
+                               '<td>'+dados.IDUnidade+'</td>'+
+                               '<td>'+'</td>'+
+                               '<td>'+dados.precoVenda+'</td>'+
+                               '<td>'+'</td>'+
+                               '<td>'+'</td>'+
+                               '<td>'+'</td>'+                                     
+                               '<td class="actions">'+
+                               '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
+                               '</td></tr>');
+
+        });
+
     }
 
     function RemoveTableRow ($hander){
 
         var tr =$hander.closest('tr');
-            
-         tr.remove();
+
+        tr.remove();
     }
 
+</script>
+
+<script>
+
+    $(function(){
+        
+        $('#busca').keyup(function(){
+
+            var buscaTexto = $(this).val();
+            if(buscaTexto.length >= 3){
+            
+            $.ajax({
+                type:'post',               
+                dataType: 'json',	//Definimos o tipo de retorno
+                url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
+                success: function(data){
+                
+                    console.log(data);
+                    
+                }
+            });
+            }
+
+        });
+    });
+
+    $(document).ready(function(){   
+
+        $('#selPessoa').selectpicker()
+
+
+
+    });
 </script>

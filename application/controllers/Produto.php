@@ -9,6 +9,7 @@ class Produto extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Produto_model');
+        
     } 
 
     /*
@@ -141,9 +142,18 @@ class Produto extends CI_Controller{
         {
             $this->Produto_model->delete_produto($IDProduto);
             redirect('produto/index');
-        }
-        else
+            }
+            else
             show_error('The produto you are trying to delete does not exist.');
     }
+    
+    function get_produto($teste)
+    {
+        $produto = $this->Produto_model->get_like_produto($teste);
+        
+        echo json_encode($produto);
+        
+    }
+        
     
 }

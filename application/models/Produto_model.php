@@ -23,16 +23,18 @@ class Produto_model extends CI_Model
 
     function get_like_produto($busca)   
     {
-        $this->db->select('*');
+        $this->db->select('IDProduto,nome');
         $this->db->from('produto');
         $this->db->like("nome","$busca");
         $query=$this->db->get()->result_array(); 
         $row = $this->db->affected_rows();
-        if ( $row > 0){
-            return json_encode($query);
+        if ( $row > 0){            
+            $retorno['produto'] = $query;
+            $retorno['qtd']=$row;
+           return json_encode($retorno);
         }else
         {
-            $msg = "Produto nao encontrado";
+            $msg = false;
             return json_encode($msg);
         }
 

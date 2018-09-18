@@ -150,10 +150,14 @@ class Produto extends CI_Controller{
     function get_produto($teste)
     {
         $produto = $this->Produto_model->get_like_produto($teste);
-        
+    
+            
         echo json_encode($produto);
         
-    }
+		}
+        
+       
+  
         
     
 }

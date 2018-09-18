@@ -263,27 +263,57 @@
 
 <script>
 
-    $(function(){
+        $('#busca').keyup(function(e){
         
-        $('#busca').keyup(function(){
-
             var buscaTexto = $(this).val();
-            if(buscaTexto.length >= 3){
             
-            $.ajax({
-                type:'post',               
-                dataType: 'json',	//Definimos o tipo de retorno
-                url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
-                success: function(data){
-                
-                    console.log(data);
-                    
-                }
-            });
-            }
+            if(buscaTexto.length >= 3){
 
+                $.ajax({
+                    type:'post',               
+                    dataType: 'json',	//Definimos o tipo de retorno
+                    url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
+                    success: function(data){
+
+                        dados = JSON.parse(data)
+
+                        if(dados==false){
+
+                            $('#resultado_busca').html('<p>Produto Não Encontrado</p>');
+
+                        }else{
+                            
+                                   while(dados.qtd < i){
+                                   var i=0;
+                                    var conteudo =  '<p>'+dados.produto[i].nome+'</p>';
+                                    
+                                    i++;
+                                };
+                                                
+                             
+
+                          
+                            
+                            }
+                              $('#resultado_busca').html(conteudo);
+
+
+                        }
+
+                    
+
+
+
+                });          
+            }
+           
+
+            
+            
         });
-    });
+ 
+
+
 
     $(document).ready(function(){   
 

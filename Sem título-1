@@ -1,0 +1,39 @@
+ var buscaTexto = $(this).val();
+
+        if(buscaTexto.length >= 3){
+
+            retornaProduto(buscaTexto);            
+        }
+
+        function retornaProduto(buscaTexto){
+            $.ajax({
+                type:'post',               
+                dataType: 'json',	//Definimos o tipo de retorno
+                url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
+                success: function(data){
+
+
+
+                }  
+
+            });
+            function teste(dados){
+
+                if(dados==false){
+
+                    $('#resultado_busca').html('<p>Produto Não Encontrado</p>');
+
+                }else{
+                    dados.forEach(function(a,i){
+
+                        $('#resultado_busca').append('<p>'+a.IDProduto+'</p>');
+
+
+                    })
+
+                }
+
+            }
+        }
+
+    });

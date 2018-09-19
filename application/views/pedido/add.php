@@ -80,15 +80,28 @@
 
                 </div>
             </div>
-            <div class="form-group">
-                <form action="" method="post" enctype="multipart/form-data" id="form_busca">
-                    <label>
-                        <span>Buscar Produto</span>
-                        <input type="text" name="buscar" id="busca" />
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="control-label">
+                        <span>Buscar Produto</span>                   
                     </label>
-                </form>
+                    <div>
+                        <input class="form-control" type="text" name="buscar" id="busca" />
+                    </div>
+                </div>              
+
+
+
+                <div class="form-group col-md-6">
+                     <label class="control-label">
+                        <span>Selecione o Produto</span>                   
+                    </label>
+                    <select action="" class="form-control " method="post" enctype="multipart/form-data" id="resultado_busca">
+
+                    </select>
+                </div>
             </div>
-            <div id="resultado_busca"></div>
 
             <div>
                 <div id="list" class="row">
@@ -235,7 +248,7 @@
         $.get('<?php echo base_url('Produto/get_produto/1')?>', function (data) {
 
             dados = JSON.parse(data);
-            // console.log(dados);
+
             $('#itens').append('<tr><td>'+dados.IDProduto+'</td>'+
                                '<td>'+dados.nome+'</td>'+
                                '<td>'+dados.IDUnidade+'</td>'+
@@ -263,61 +276,58 @@
 
 <script>
 
-        $('#busca').keyup(function(e){
-        
-            var buscaTexto = $(this).val();
-            
-            if(buscaTexto.length >= 3){
+    $('#busca').keyup(function(e){
 
-                $.ajax({
-                    type:'post',               
-                    dataType: 'json',	//Definimos o tipo de retorno
-                    url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
-                    success: function(data){
+        $('#resultado_busca').html('');
 
-                        dados = JSON.parse(data)
+        var buscaTexto = $(this).val();
 
-                        if(dados==false){
+        if(buscaTexto.length >= 1){
 
-                            $('#resultado_busca').html('<p>Produto Não Encontrado</p>');
+            $.ajax({
+                type:'post',               
 
-                        }else{
-                            
-                                   while(dados.qtd < i){
-                                   var i=0;
-                                    var conteudo =  '<p>'+dados.produto[i].nome+'</p>';
-                                    
-                                    i++;
-                                };
-                                                
-                             
+                url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
+                success: function(data){
 
-                          
-                            
-                            }
-                              $('#resultado_busca').html(conteudo);
+                    dados = JSON.parse(data);
+
+
+                    quant = dados.qtd;
+
+                    if(!dados){
+
+                        $('#resultado_busca').html('<option value ='+null+' >Produto Não Encontrado</option>');
+
+                    }else{
+
+                        for(i=0;i< quant; i++){
+                            $('#resultado_busca').append('<option id="optselec" value ='+dados[i].IDProduto+' ><a href="#" class="badge"> Codigo '+dados[i].IDProduto+' Nome '+dados[i].nome+'</a></br></option>');
+
 
 
                         }
 
-                    
 
-
-
-                });          
-            }
-           
-
-            
-            
-        });
- 
-
-
+                    }
+                }
+            }); 
+          
+        }
+    });
 
     $(document).ready(function(){   
 
-        $('#selPessoa').selectpicker()
+        $('#selPessoa').selectpicker();
+        
+//        $('#optselec').click(function(){
+//            
+//             console.log("teste");
+//            
+//        });
+       
+
+
 
 
 

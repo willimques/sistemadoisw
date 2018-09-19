@@ -27,15 +27,16 @@ class Produto_model extends CI_Model
         $this->db->from('produto');
         $this->db->like("nome","$busca");
         $query=$this->db->get()->result_array(); 
-        $row = $this->db->affected_rows();
-        if ( $row > 0){            
-            $retorno['produto'] = $query;
-            $retorno['qtd']=$row;
-           return json_encode($retorno);
+        $row = $this->db->affected_rows();        
+        if ( $row > 0){  
+            
+            $retorno = $query;
+           
+           return ($retorno);
         }else
         {
-            $msg = false;
-            return json_encode($msg);
+            $retorno = false;
+            return ($retorno);
         }
 
     }

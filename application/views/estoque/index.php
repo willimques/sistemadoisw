@@ -5,7 +5,6 @@
     </li>
     <li class="breadcrumb-item active">Estoque</li>
 </ol>
-
 <div class="card">
     <div class="card-header">
         <div class="card-title">
@@ -13,14 +12,12 @@
                 <div class="col-md-8">
                     <h3>Adicionar</h3>
                 </div>
-
                 <div class="col-md-4">
                     <div class="pull-right">
                         <a href="<?php echo site_url('estoque/add'); ?>" class="btn btn-success float-right mr-3">Adicionar</a> 
                     </div>
                 </div>
             </div> 
-
         </div>
     </div>       
     <div class="container-fluid">

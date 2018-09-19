@@ -4,7 +4,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="card-title col-4">
-                    <h3>Willian Marques</h3>
+                    <h3>Willian</h3>
                 </div>                          
                 <div class=" form-group col-8">
                     <div class="input-group">
@@ -26,7 +26,6 @@
                                 <img class="img-responsive avatar-view" src="<?php echo base_url('assets/_img/avatar.jpg')?>" alt="Avatar" title="Change the avatar">
                             </div>
                         </div>
-
                         <div class="card-body">
                             <hr>
                             <h6><strong>Bio</strong></h6>

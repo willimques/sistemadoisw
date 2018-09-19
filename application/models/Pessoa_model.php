@@ -40,7 +40,7 @@ class Pessoa_model extends CI_Model
     {        
         $this->db->select ( '*' ); 
         $this->db->from ( 'Pessoa' ); 
-        $this->db->where('IDTipoCadastro',0);
+        //$this->db->where('IDTipoCadastro',0);
         $this->db->join ( 'PessoaTipo' ,  'Pessoa.IDPessoaTipo = PessoaTipo.IDPessoaTipo' ); 
         $this->db->order_by('IDPessoa', 'desc');
         return $query=$this->db->get ()->result_array();;

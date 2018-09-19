@@ -382,10 +382,11 @@
     
     function AddTableRow(data){
         
+        
       
         $('#itens').append(
 
-            ' <tr>'+           
+            '<tr>'+           
             '<td>'+data[1]+'</td>'+
             '<td>'+data[2]+'</td>'+
             '<td>'+data[3]+'</td>'+
@@ -404,6 +405,7 @@
 
         //        limpa os campos do input
 
+        $("#IDProduto").val('');
         $("#codigo").val('');
         $("#descricao").val('');
         $("#un").val('');
@@ -413,7 +415,7 @@
         $("#precun").val('');
         $("#precototal").val('');
         $("#busca").val('');
-        $("#resultado_busca").val('');
+        $("#resultado_busca").html('');
 
       
 

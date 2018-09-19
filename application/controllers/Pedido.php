@@ -142,6 +142,15 @@ class Pedido extends CI_Controller{
         }
 
     }
+    
+    function get_produto($IDProduto){
+        
+        $this->load->model('Produto_model');
+        $produto = $this->Produto_model->get_produto($IDProduto); 
+        
+        echo json_encode($produto);
+      
+    }
 
     
 }

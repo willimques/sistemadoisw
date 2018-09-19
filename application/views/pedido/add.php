@@ -103,7 +103,7 @@
 
             <div>
                 <form id="listprod" class="row">
-                    <input type="text" name="codigo" value="" class="form-control" id="IDProduto" readonly />
+                    <input  hidden type="text" name="codigo" value="" class="form-control" id="IDProduto" readonly />
                     <div class="row ml-3">
                         <div class="form-group col-md-1 p-1">
                             <label for="codigo" class=" control-label">Código</label>
@@ -415,7 +415,7 @@
         $("#busca").val('');
         $("#resultado_busca").val('');
 
-        console.log(listItens)
+      
 
     }
 </script>

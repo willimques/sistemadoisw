@@ -20,20 +20,20 @@
                 <div class="">
 
                 </div>
-            </div> 
+            </div>
 
         </div>
-    </div>       
+    </div>
     <div class="container-fluid">
 
 
-        <div class="card-body"> 
+        <div class="card-body">
 
 
             <?php echo form_open('pedido/add',array("class"=>"form-horizontal")); ?>
 
             <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="row"> 
+                <div class="row">
                     <div class="form-group col-md-3">
                         <label> Tipo de pedido</label>
                         <div class="">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="form-group col-md-5">
-                        <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>                        
+                        <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>
                         <select id="selPessoa" data-live-search="true" name="IDPessoa" class="form-control">
                             <option value="">Selecione um cliente </option>
                             <?php 
@@ -67,13 +67,13 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="data" class=" control-label">Numero Pedido</label>
-                        <div class="">                    
+                        <div class="">
                             <input type="number" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                         </div>
                     </div>
                     <div class="form-group col-md-2">
                         <label for="data" class=" control-label">Data</label>
-                        <div class="">                    
+                        <div class="">
                             <input type="date" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                         </div>
                     </div>
@@ -84,18 +84,18 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label class="control-label">
-                        <span>Buscar Produto</span>                   
+                        <span>Buscar Produto</span>
                     </label>
                     <div>
                         <input class="form-control" type="text" name="buscar" id="busca" />
                     </div>
-                </div>              
+                </div>
 
 
 
                 <div class="form-group col-md-6">
-                     <label class="control-label">
-                        <span>Selecione o Produto</span>                   
+                    <label class="control-label">
+                        <span>Selecione o Produto</span>
                     </label>
                     <select action="" class="form-control " method="post" enctype="multipart/form-data" id="resultado_busca">
 
@@ -109,62 +109,62 @@
                     <div class="row ml-3">
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Código</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="produto" />
                             </div>
                         </div>
                         <div class="form-group col-md-3 p-1">
                             <label for="data" class=" control-label">Descrição</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Unidade</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Quantidade</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Preço Tab</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Desc %</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
                             <label for="data" class=" control-label">Preço Un</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                             </div>
                         </div>
                         <div class="form-group col-md-2 p-1">
                             <label for="data" class=" control-label">Preço total</label>
-                            <div class="">                    
+                            <div class="">
                                 <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
                             </div>
-                        </div> 
+                        </div>
                         <div class="form-group col-md-1 p-2 mt-1">
                             <label for="data" class=" control-label"></label>
-                            <div class="">                    
-                                <a  name="data" class="btn btn-success active" onclick="AddTableRow()" id="data">Incluir</a>
+                            <div class="">
+                                <a name="data" class="btn btn-success active" onclick="AddTableRow()" id="data">Incluir</a>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
 
                     <div class="table-responsive col-md-12">
-                        <table id="itensPedido"class="table table-striped" cellspacing="0" cellpadding="0">
+                        <table id="itensPedido" class="table table-striped" cellspacing="0" cellpadding="0">
                             <thead>
                                 <tr>
                                     <th>Código</th>
@@ -174,7 +174,7 @@
                                     <th>Preço</th>
                                     <th>Desc %</th>
                                     <th>Preço Un</th>
-                                    <th>Preço Total</th>                                            
+                                    <th>Preço Total</th>
                                     <th class="actions">Ações</th>
                                 </tr>
                             </thead>
@@ -188,7 +188,7 @@
             </div>
 
             <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="row"> 
+                <div class="row">
                     <div class="form-group">
                         <label for="tipoPagamento" class=" control-label">Tipo De Pagamento</label>
                         <div class="col-md-8">
@@ -226,7 +226,7 @@
                         <div class="">
                             <input type="text" name="comissao" value="<?php echo $this->input->post('comissao'); ?>" class="form-control" id="comissao" />
                         </div>
-                    </div>  
+                    </div>
 
                 </div>
             </div>
@@ -242,32 +242,32 @@
 </div>
 
 <script>
+    function AddTableRow() {
 
-    function AddTableRow(){
+        $.get('<?php echo base_url('Produto / get_produto / 1 ')?>',
+            function(data) {
 
-        $.get('<?php echo base_url('Produto/get_produto/1')?>', function (data) {
+                dados = JSON.parse(data);
 
-            dados = JSON.parse(data);
+                $('#itens').append('<tr><td>' + dados.IDProduto + '</td>' +
+                    '<td>' + dados.nome + '</td>' +
+                    '<td>' + dados.IDUnidade + '</td>' +
+                    '<td>' + '</td>' +
+                    '<td>' + dados.precoVenda + '</td>' +
+                    '<td>' + '</td>' +
+                    '<td>' + '</td>' +
+                    '<td>' + '</td>' +
+                    '<td class="actions">' +
+                    '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>' +
+                    '</td></tr>');
 
-            $('#itens').append('<tr><td>'+dados.IDProduto+'</td>'+
-                               '<td>'+dados.nome+'</td>'+
-                               '<td>'+dados.IDUnidade+'</td>'+
-                               '<td>'+'</td>'+
-                               '<td>'+dados.precoVenda+'</td>'+
-                               '<td>'+'</td>'+
-                               '<td>'+'</td>'+
-                               '<td>'+'</td>'+                                     
-                               '<td class="actions">'+
-                               '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
-                               '</td></tr>');
-
-        });
+            });
 
     }
 
-    function RemoveTableRow ($hander){
+    function RemoveTableRow($hander) {
 
-        var tr =$hander.closest('tr');
+        var tr = $hander.closest('tr');
 
         tr.remove();
     }
@@ -275,34 +275,34 @@
 </script>
 
 <script>
-
-    $('#busca').keyup(function(e){
+    $('#busca').keyup(function(e) {
 
         $('#resultado_busca').html('');
 
         var buscaTexto = $(this).val();
 
-        if(buscaTexto.length >= 1){
+        if (buscaTexto.length >= 1) {
 
             $.ajax({
-                type:'post',               
+                type: 'post',
 
-                url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
-                success: function(data){
+                url: '<?php echo base_url('
+                Produto / get_produto ')?>/' + buscaTexto, //Definindo o arquivo onde serão buscados os dados
+                success: function(data) {
 
                     dados = JSON.parse(data);
 
 
                     quant = dados.qtd;
 
-                    if(!dados){
+                    if (!dados) {
 
-                        $('#resultado_busca').html('<option value ='+null+' >Produto Não Encontrado</option>');
+                        $('#resultado_busca').html('<option value =' + null + ' >Produto Não Encontrado</option>');
 
-                    }else{
+                    } else {
 
-                        for(i=0;i< quant; i++){
-                            $('#resultado_busca').append('<option id="optselec" value ='+dados[i].IDProduto+' ><a href="#" class="badge"> Codigo '+dados[i].IDProduto+' Nome '+dados[i].nome+'</a></br></option>');
+                        for (i = 0; i < quant; i++) {
+                            $('#resultado_busca').append('<option id="optselec" value =' + dados[i].IDProduto + ' ><a href="#" class="badge"> Codigo ' + dados[i].IDProduto + ' Nome ' + dados[i].nome + '</a></br></option>');
 
 
 
@@ -311,25 +311,26 @@
 
                     }
                 }
-            }); 
-          
+            });
+
         }
     });
 
-    $(document).ready(function(){   
+    $(document).ready(function() {
 
         $('#selPessoa').selectpicker();
-        
-//        $('#optselec').click(function(){
-//            
-//             console.log("teste");
-//            
-//        });
-       
+
+        //        $('#optselec').click(function(){
+        //            
+        //             console.log("teste");
+        //            
+        //        });
+
 
 
 
 
 
     });
+
 </script>

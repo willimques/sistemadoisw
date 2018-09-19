@@ -147,9 +147,9 @@ class Produto extends CI_Controller{
             show_error('The produto you are trying to delete does not exist.');
     }
 
-    function get_produto($teste)
+    function get_like_produto($texto)
     {
-        $produto = $this->Produto_model->get_like_produto($teste);
+        $produto = $this->Produto_model->get_like_produto($texto);
       
 
         if(!$produto)

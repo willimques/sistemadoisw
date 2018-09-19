@@ -91,10 +91,8 @@
                     </div>
                 </div>              
 
-
-
                 <div class="form-group col-md-6">
-                     <label class="control-label">
+                    <label class="control-label">
                         <span>Selecione o Produto</span>                   
                     </label>
                     <select action="" class="form-control " method="post" enctype="multipart/form-data" id="resultado_busca">
@@ -104,65 +102,66 @@
             </div>
 
             <div>
-                <div id="list" class="row">
-
+                <form id="listprod" class="row">
+                    <input type="text" name="codigo" value="" class="form-control" id="IDProduto" readonly />
                     <div class="row ml-3">
                         <div class="form-group col-md-1 p-1">
-                            <label for="data" class=" control-label">Código</label>
+                            <label for="codigo" class=" control-label">Código</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="produto" />
+                                <input type="text" name="codigo" value="" class="form-control" id="codigo" readonly />
                             </div>
                         </div>
                         <div class="form-group col-md-3 p-1">
-                            <label for="data" class=" control-label">Descrição</label>
+                            <label for="descricao" class=" control-label">Descrição</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="text" name="descricao" value="" class="form-control" id="descricao" readonly />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
-                            <label for="data" class=" control-label">Unidade</label>
+                            <label for="un" class=" control-label">Unidade</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="text" name="un" value="" class="form-control" id="un" readonly />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
-                            <label for="data" class=" control-label">Quantidade</label>
+                            <label for="qtd" class=" control-label">Quantidade</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="number" name="qtd" value="" class="form-control" id="qtd" />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
-                            <label for="data" class=" control-label">Preço Tab</label>
+                            <label for="precotab" class=" control-label">Preço Tab</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="number" name="precotab" value="" class="form-control" id="precotab" readonly />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
-                            <label for="data" class=" control-label">Desc %</label>
+                            <label for="desc" class=" control-label">Desc %</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="number" name="desc" value="" class="form-control" id="desc" />
                             </div>
                         </div>
                         <div class="form-group col-md-1 p-1">
-                            <label for="data" class=" control-label">Preço Un</label>
+                            <label for="precun" class=" control-label">Preço Un</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="number" name="precun" value="" class="form-control" id="precun" />
                             </div>
                         </div>
                         <div class="form-group col-md-2 p-1">
-                            <label for="data" class=" control-label">Preço total</label>
+                            <label for="precototal" class=" control-label">Preço total</label>
                             <div class="">                    
-                                <input type="text" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                                <input type="number" name="precototal" value="" class="form-control" id="precototal" readonly />
                             </div>
                         </div> 
                         <div class="form-group col-md-1 p-2 mt-1">
-                            <label for="data" class=" control-label"></label>
+                            <label for="incl" class=" control-label"></label>
                             <div class="">                    
-                                <a  name="data" class="btn btn-success active" onclick="AddTableRow()" id="data">Incluir</a>
+                                <a  name="incl" class="btn btn-success active" id="incl">Incluir</a>
                             </div>
                         </div>                    
                     </div>
-
+                </form>
+                <div>
                     <div class="table-responsive col-md-12">
                         <table id="itensPedido"class="table table-striped" cellspacing="0" cellpadding="0">
                             <thead>
@@ -243,27 +242,7 @@
 
 <script>
 
-    function AddTableRow(){
 
-        $.get('<?php echo base_url('Produto/get_produto/1')?>', function (data) {
-
-            dados = JSON.parse(data);
-
-            $('#itens').append('<tr><td>'+dados.IDProduto+'</td>'+
-                               '<td>'+dados.nome+'</td>'+
-                               '<td>'+dados.IDUnidade+'</td>'+
-                               '<td>'+'</td>'+
-                               '<td>'+dados.precoVenda+'</td>'+
-                               '<td>'+'</td>'+
-                               '<td>'+'</td>'+
-                               '<td>'+'</td>'+                                     
-                               '<td class="actions">'+
-                               '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
-                               '</td></tr>');
-
-        });
-
-    }
 
     function RemoveTableRow ($hander){
 
@@ -282,12 +261,12 @@
 
         var buscaTexto = $(this).val();
 
-        if(buscaTexto.length >= 1){
+        if(buscaTexto.length >= 3){
 
             $.ajax({
                 type:'post',               
 
-                url: '<?php echo base_url('Produto/get_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
+                url: '<?php echo base_url('Produto/get_like_produto')?>/'+buscaTexto,//Definindo o arquivo onde serão buscados os dados
                 success: function(data){
 
                     dados = JSON.parse(data);
@@ -302,9 +281,7 @@
                     }else{
 
                         for(i=0;i< quant; i++){
-                            $('#resultado_busca').append('<option id="optselec" value ='+dados[i].IDProduto+' ><a href="#" class="badge"> Codigo '+dados[i].IDProduto+' Nome '+dados[i].nome+'</a></br></option>');
-
-
+                            $('#resultado_busca').append('<option value ='+dados[i].IDProduto+' ><a href="#" class="badge"> Codigo '+dados[i].IDProduto+' Nome '+dados[i].nome+'</a></br></option>');
 
                         }
 
@@ -312,24 +289,133 @@
                     }
                 }
             }); 
-          
+
         }
     });
 
     $(document).ready(function(){   
 
         $('#selPessoa').selectpicker();
-        
-//        $('#optselec').click(function(){
-//            
-//             console.log("teste");
-//            
-//        });
-       
 
+        $('body #busca').blur(function(){
 
+            IDProd =  $('body #resultado_busca').val();
 
+            busca(IDProd);
 
+        });
+
+        $('body #resultado_busca').change(function(){
+
+            IDProd =  $('body #resultado_busca').val();     
+
+            busca(IDProd);
+
+        });
+
+        function busca(produto){
+
+            $.ajax({
+                type:'post',
+                url: '<?php echo base_url('Pedido/get_produto')?>/'+produto,//Definindo o arquivo onde serão buscados os dados            
+                success: function(data){
+
+                    dados = JSON.parse(data);
+                    
+                    $('#IDProduto').val(dados.IDProduto);
+                    $('#codigo').val(dados.codigo);
+                    $('#descricao').val(dados.nome);
+                    $('#un').val(dados.IDUnidade);
+                    $('#precotab').val(dados.precoVenda);                  
+
+                }
+            }); 
+
+        }
+
+        $('#qtd').blur(function(){            
+            quant = $('#qtd').val();
+            preco = $('#precotab').val();
+            precototal = quant*preco;
+            $('#precototal').val(precototal);
+        });
+
+        $('#desc').blur(function(){            
+            desc = $('#desc').val(); 
+            precotab = $('#precotab').val();
+            precoun =  precotab-(precotab * (desc/100));         
+            $('#precun').val(precoun);
+
+        });
+
+        $('#precun').blur(function(){            
+            quant = $('#qtd').val();
+            precotab = $('#precotab').val();
+            preco =  $('#precun').val();          
+            precototal = quant*preco; 
+            desc =  Math.ceil((1-(preco/precotab))*100);
+            $('#precototal').val(precototal);
+            $('#desc').val(desc);
+        });
+
+        $("#incl").click(function(e){              
+
+            idpro =  $("#IDProduto").val();
+            codigo =  $("#codigo").val();
+            descricao =  $("#descricao").val();
+            un =  $("#un").val();
+            qtd =  $("#qtd").val();
+            precotab =  $("#precotab").val();
+            desc =  $("#desc").val();
+            precoun =  $("#precun").val();
+            precototal =  $("#precototal").val();
+
+            prod = new Array(idpro,codigo,descricao,un,qtd,precotab,desc,precoun,precototal);
+
+            AddTableRow(prod);             
+
+        });
 
     });
+    
+    //adiciona produto na tabela
+    
+    function AddTableRow(data){
+        
+      
+        $('#itens').append(
+
+            ' <tr>'+           
+            '<td>'+data[1]+'</td>'+
+            '<td>'+data[2]+'</td>'+
+            '<td>'+data[3]+'</td>'+
+            '<td>'+data[4]+'</td>'+
+            '<td>'+data[5]+'</td>'+
+            '<td>'+data[6]+'</td>'+
+            '<td>'+data[7]+'</td>'+
+            '<td>'+data[7]+'</td>'+
+            '<td>'+data[8]+'</td>'+
+            '<td class="actions">'+
+            '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
+            '</td>'+                 
+            ' </tr>' 
+
+        );
+
+        //        limpa os campos do input
+
+        $("#codigo").val('');
+        $("#descricao").val('');
+        $("#un").val('');
+        $("#qtd").val('');
+        $("#precotab").val('');
+        $("#desc").val('');
+        $("#precun").val('');
+        $("#precototal").val('');
+        $("#busca").val('');
+        $("#resultado_busca").val('');
+
+        console.log(listItens)
+
+    }
 </script>

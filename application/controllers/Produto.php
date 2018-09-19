@@ -11,7 +11,7 @@ class Produto extends CI_Controller{
         $this->load->model('Produto_model');
         
     } 
-
+	
     /*
      * Listing of produtos
      */

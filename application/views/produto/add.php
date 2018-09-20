@@ -171,7 +171,7 @@
 <div class="col-12">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link" id="dados-tab" data-toggle="tab" href="#dados" role="tab" aria-controls="dados" aria-selected="false">Dados Gerais</a>
+            <a class="nav-link active" id="dados-tab" data-toggle="tab" href="#dados" role="tab" aria-controls="dados" aria-selected="false">Dados Gerais</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="estoque-tab" data-toggle="tab" href="#estoque" role="tab" aria-controls="estoque" aria-selected="false">Estoque</a>
@@ -190,12 +190,12 @@
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show" id="dados" role="tabpanel" aria-labelledby="dados-tab">
+        <div class="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
             <form class="form" action="##" method="post" id="registrationForm">
                 <div class="row mt-3">
                     <div class="form-group col-3">
                         <div class="form-label-group">
-                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <input type="number" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
                             <label for="first_name">Código (SKU)</label>
                         </div>
                     </div>
@@ -263,11 +263,12 @@
                         <br>
                         <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
                         <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
+                        <button class="btn btn-lg" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="tab-pane fade show" id="estoque" role="tabpanel" aria-labelledby="dados-tab">
+        <div class="tab-pane fade show" id="estoque" role="tabpanel" aria-labelledby="estoque-tab">
             <form class="form" action="##" method="post" id="registrationForm">
                 <div class="row mt-3">
                     <?php echo form_open('estoque/add',array("class"=>"form-horizontal")); ?>
@@ -288,47 +289,47 @@
                                 <?php echo form_error('IDFilial');?></span>
                         </div>
                     </div>
-                    
+
                     <div class="form-group col-7">
                         <div class="form-label-group">
-                            <input type="text" value="<?php echo $this->input->post('quantidade'); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                            <label for="Quantidade">Produto </label>
+                            <input type="text" value="<?php echo $this->input->post(''); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="">Produto </label>
                             <span class="text-danger">
-                                <?php echo form_error('quantidade');?></span>
+                                <?php echo form_error('');?></span>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
                 <div class="row mt-3">
                     <div class="form-group col-3">
                         <div class="form-label-group">
-                            <input type="text" value="<?php echo $this->input->post('quantidade'); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                            <label for="Quantidade">Quantidade </label>
+                            <input type="text" value="<?php echo $this->input->post(''); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="">Quantidade </label>
                             <span class="text-danger">
-                                <?php echo form_error('quantidade');?></span>
+                                <?php echo form_error('');?></span>
                         </div>
                     </div>
                     <div class="form-group col-3">
                         <div class="form-label-group">
-                            <input type="text" value="<?php echo $this->input->post('movimento'); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                            <label for="Movimento">Movimento</label>
+                            <input type="text" value="<?php echo $this->input->post(''); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="">Movimento</label>
                         </div>
                     </div>
                     <div class="form-group col-3">
                         <div class="form-label-group">
-                            <input type="text" value="<?php echo $this->input->post('estMinimo'); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                            <label for="Estoqe Minimo">Estoque Minimo</label>
+                            <input type="text" value="<?php echo $this->input->post(''); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="">Estoque Minimo</label>
                             <span class="text-danger">
-                                <?php echo form_error('estMinimo');?></span>
+                                <?php echo form_error('');?></span>
                         </div>
                     </div>
                     <div class="form-group col-3">
                         <div class="form-label-group">
-                            <input type="text" value="<?php echo $this->input->post('estMinimo'); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                            <label for="Estoqe Maximo">Estoque Maximo</label>
+                            <input type="text" value="<?php echo $this->input->post(''); ?>" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="">Estoque Maximo</label>
                             <span class="text-danger">
-                                <?php echo form_error('estMaximo');?></span>
+                                <?php echo form_error('');?></span>
                         </div>
                     </div>
                     <?php echo form_close(); ?>
@@ -337,30 +338,32 @@
                     <div class="col-xs-12">
                         <br>
                         <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
+                        <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
+                        <button class="btn btn-lg" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
                     </div>
                 </div>
             </form>
         </div>
-        
-        
-        
+
+
+
         <div class="tab-pane fade show" id="fornecedor" role="tabpanel" aria-labelledby="fornecedor-tab">
             <form class="form" action="##" method="post" id="registrationForm">
                 <div class="row mt-3">
                     <?php echo form_open('fornecedor/add',array("class"=>"form-horizontal")); ?>
                     <div class="form-group col-6">
-                        
-                            <select name="IDFornecedor" class="form-control">
-                                <option value="">Selecione o Cadastro</option>
-                                <?php 
+
+                        <select name="IDFornecedor" class="form-control">
+                            <option value="">Selecione o Cadastro</option>
+                            <?php 
                                                 foreach($all_pessoas as $pessoa)
                                                 {
                                                     $selected = ($pessoa['IDPessoa'] == $this->input->post('IDFornecedor')) ? ' selected="selected"' : "";
                                                     echo '<option value="'.$pessoa['IDPessoa'].'" '.$selected.'>'.$pessoa['nome'].'</option>';
                                                 } 
                                                 ?>
-                            </select>
-                     
+                        </select>
+
                         <span class="text-danger">
                             <?php echo form_error('IDFornecedor');?></span>
                     </div>
@@ -370,123 +373,98 @@
                             <label for="first_name">Fabricante</label>
                         </div>
                     </div>
-                    
-                </div>    
+
+                </div>
                 <div class="row mt-3">
-                        
-                        <div class="form-group col-3">
-                            <div class="form-label-group">
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                <label for="first_name">Cod. no fabricante</label>
-                            </div>
+
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">Cod. no fabricante</label>
                         </div>
-                        <div class="form-group col-3">
-                            <div class="form-label-group">
-                                <input type="email" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                <label for="first_name">Custo</label>
-                            </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="number" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">Custo</label>
                         </div>
-                        <div class="form-group col-3">
-                            <div class="form-label-group">
-                                <input type="email" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                <label for="first_name">Marca</label>
-                            </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">Marca</label>
                         </div>
-                        <div class="form-group col-3">
-                            <div class="form-label-group">
-                                <input type="email" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                <label for="first_name">Garantia</label>
-                            </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">Garantia</label>
                         </div>
+                    </div>
                     <?php echo form_close(); ?>
                 </div>
-                    
-                
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <br>
-                            <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
-                        </div>
-                    </div>
-            </form>
-        </div>
-        
-        
-        
-        
-        <div class="tab-pane fade" id="resumo" role="tabpanel" aria-labelledby="resumo-tab">
-            <div class="container">
-                <div class="row">
-                    <div class="card-body  col-md-6" align="center">
-                        <h6>Boletos</h6>
-                        <table class="data table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Numero</th>
-                                    <th>Data Vencimento</th>
-                                    <th>Valor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>22/05/2018 </td>
-                                    <td>R$ 500,00</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>22/05/2018 </td>
-                                    <td>R$ 500,00</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>22/05/2018 </td>
-                                    <td>R$ 500,00</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>22/05/2018 </td>
-                                    <td>R$ 500,00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card-body col-md-6" align="center">
-                        <h6>Cheque</h6>
-                        <table class="data table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Numero</th>
-                                    <th>Data Vencimento</th>
-                                    <th>Valor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>22/05/2018</td>
-                                    <td>R$ 800,00</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>22/05/2018</td>
-                                    <td>R$ 800,00</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>22/05/2018</td>
-                                    <td>R$ 800,00</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>22/05/2018</td>
-                                    <td>R$ 800,00</td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <br>
+                        <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
+                        <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
+                        <button class="btn btn-lg" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
+
+        <div class="tab-pane fade show" id="tributacao" role="tabpanel" aria-labelledby="tributacao-tab">
+            <form class="form" action="##" method="post" id="registrationForm">
+
+                <div class="row mt-3">
+
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">Origem </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">Tipo de item</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">% Tributo</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <div class="form-label-group">
+                            <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            <label for="first_name">Grupo de Produtos</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <br>
+                        <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
+                        <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
+                        <button class="btn btn-lg" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+
     </div>
 </div>

@@ -195,27 +195,27 @@
                             </div>
                         </div> 
                      <div class="form-group col-md-2 mt-2">
-                            <label for="x" class=" control-label">Soma qtdes</label>
+                            <label for="sqtd" class=" control-label">Soma qtdes</label>
                             <div class="">                    
-                                <input type="number" name="x" value="" class="form-control" id="x" readonly />
+                                <input type="number" name="sqtd" value="" class="form-control" id="sqtd" readonly />
                             </div>
                         </div>
                     <div class="form-group col-md-2 mt-2">
-                            <label for="x" class=" control-label">Sub Total</label>
+                            <label for="subt" class=" control-label">Sub Total</label>
                             <div class="">                    
-                                <input type="number" name="x" value="" class="form-control" id="x" readonly />
+                                <input type="number" name="subt" value="" class="form-control" id="subt" readonly />
                             </div>
                         </div>
                      <div class="form-group col-md-3 mt-2">
-                            <label for="x" class=" control-label">Total Desconto </label>
+                            <label for="tdesc" class=" control-label">Total Desconto </label>
                             <div class="">                    
-                                <input type="number" name="x" value="" class="form-control" id="x" readonly />
+                                <input type="number" name="tdesc" value="" class="form-control" id="tdesc" readonly />
                             </div>
                         </div> 
                     <div class="form-group col-md-3 mt-2">
-                            <label for="x" class=" control-label">Total</label>
+                            <label for="total" class=" control-label">Total</label>
                             <div class="">                    
-                                <input type="number" name="x" value="" class="form-control" id="x" readonly />
+                                <input type="number" name="total" value="" class="form-control" id="total" readonly />
                             </div>
                         </div> 
                     
@@ -248,9 +248,9 @@
                                 <?php 
                                 foreach($all_prazopagamentos as $prazopagamento)
                                 {
-                                    $selected = ($prazopagamento['IDTipoPagamento'] == $this->input->post('prazopagamento')) ? ' selected="selected"' : "";
+                                    $selected = ($prazopagamento['IDPrazoPag'] == $this->input->post('prazopagamento')) ? ' selected="selected"' : "";
 
-                                    echo '<option value="'.$prazopagamento['IDPrazoPagamento'].'" '.$selected.'>'.$prazopagamento['descricao'].'</option>';
+                                    echo '<option value="'.$prazopagamento['IDPrazoPag'].'" '.$selected.'>'.$prazopagamento['descricao'].'</option>';
                                 } 
                                 ?>
                             </select>
@@ -311,8 +311,16 @@
     function RemoveTableRow ($hander){
 
         var tr =$hander.closest('tr');
-
+        
         tr.remove();
+        
+        prod[item]= ['null'];
+        
+          item--;
+        
+            $("#nitens").val(item);
+            $("#sqtd").val();
+            $("#total").val(); 
     }
     
     $("#btngeraparc").click(function(){ 
@@ -337,6 +345,14 @@
 </script>
 
 <script>
+    
+     let item = 0;
+     let tqtd = 0;
+     let tsubt = 0;
+     let tdesc = 0;
+     let total = 0;
+     
+     prod = new Array();
 
     $('#busca').keyup(function(e){
 
@@ -387,6 +403,7 @@
             busca(IDProd);
 
         });
+       
 
         $('body #resultado_busca').change(function(){
 
@@ -440,6 +457,17 @@
             $('#precototal').val(precototal);
             $('#desc').val(desc);
         });
+        
+        
+           $('#precototal').blur(function(){
+               
+         
+         
+           // somasubt =  $("#subt").val();
+          
+             
+            });
+        
 
         $("#incl").click(function(e){              
 
@@ -451,14 +479,25 @@
             precotab =  $("#precotab").val();
             desc =  $("#desc").val();
             precoun =  $("#precun").val();
-            precototal =  $("#precototal").val();
-
-            prod = new Array(idpro,codigo,descricao,un,qtd,precotab,desc,precoun,precototal);
-
-            AddTableRow(prod);             
-
+            precototal =  $("#precototal").val();            
+          
+            
+            prod[item]= [idpro,codigo,descricao,un,qtd,precotab,desc,precoun,precototal];
+            
+            
+           // console.log(prod);
+            
+            AddTableRow(prod);   
+            
+            $("#nitens").val(item);
+            
+          
         });
-
+        
+     
+            
+        
+        
     });
 
     //adiciona produto na tabela
@@ -469,20 +508,31 @@
         $('#itens').append(
 
             ' <tr>'+           
-            '<td>'+data[1]+'</td>'+
-            '<td>'+data[2]+'</td>'+
-            '<td>'+data[3]+'</td>'+
-            '<td>'+data[4]+'</td>'+
-            '<td>'+data[5]+'</td>'+
-            '<td>'+data[6]+'</td>'+
-            '<td>'+data[7]+'</td>'+           
-            '<td>'+data[8]+'</td>'+
+            '<td class="codigo">'+data[item][1]+'</td>'+
+            '<td class="descricao">'+data[item][2]+'</td>'+
+            '<td class="un">'+data[item][3]+'</td>'+
+            '<td class="qtd">'+data[item][4]+'</td>'+
+            '<td class="precotab">'+data[item][5]+'</td>'+
+            '<td class="desc">'+data[item][6]+'</td>'+
+            '<td class="precun">'+data[item][7]+'</td>'+           
+            '<td class="precototal">'+data[item][8]+'</td>'+
             '<td class="actions">'+
             '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
             '</td>'+                 
             ' </tr>' 
 
         );
+            //controla  quantos itens tem na tabela 
+          
+             item++;
+        
+            
+        
+        //tes = $(".codigo").text();
+            
+            
+            console.log(item);
+
 
         //        limpa os campos do input
 
@@ -501,4 +551,12 @@
         
 
     }
+    
+     console.log(prod[0]);
+     console.log(prod[1]);
+     console.log(prod[2]);
+     console.log(prod[3]);
+     console.log(prod[4]);
+    
+    
 </script>

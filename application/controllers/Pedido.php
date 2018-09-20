@@ -51,6 +51,9 @@ class Pedido extends CI_Controller{
 
 			$this->load->model('Tipopagamento_model');
 			$data['all_tipopagamentos'] = $this->Tipopagamento_model->get_all_tipopagamentos();
+            
+            $this->load->model('Prazopagamento_model');
+			$data['all_prazopagamentos'] = $this->Prazopagamento_model->get_all_prazopagamentos();
 
 			$this->load->model('Situacaopedido_model');
 			$data['all_situacaopedidos'] = $this->Situacaopedido_model->get_all_situacaopedidos();

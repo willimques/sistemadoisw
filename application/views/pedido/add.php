@@ -16,7 +16,6 @@
                 <div class="">
                     <h3>Pedido</h3>
                 </div>
-
                 <div class="">
 
                 </div>
@@ -166,6 +165,7 @@
                         <table id="itensPedido"class="table table-striped" cellspacing="0" cellpadding="0">
                             <thead>
                                 <tr>
+                                    <th>#ID</th>
                                     <th>Código</th>
                                     <th>Descrição</th>
                                     <th>Unidade</th>
@@ -272,8 +272,6 @@
                     
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="table-responsive col-md-12">
                     <table id="parcela"class="table table-striped" cellspacing="0" cellpadding="0">
@@ -311,11 +309,13 @@
     function RemoveTableRow ($hander){
 
         var tr =$hander.closest('tr');
-        
-        tr.remove();
-        
-        prod[item]= ['null'];
-        
+       
+        var id = tr.firstChild.innerHTML;
+              
+        prodd = produto.id;
+        console.log(prodd)
+        //.remove();
+     
           item--;
         
             $("#nitens").val(item);
@@ -481,11 +481,10 @@
             precoun =  $("#precun").val();
             precototal =  $("#precototal").val();            
           
+            produto = {item:item,IDProduto:idpro,codigo:codigo,descricao:descricao,un:un,qtd:qtd,precotab:precotab,desc:desc,precoun:precoun,precototal:precototal};
             
-            prod[item]= [idpro,codigo,descricao,un,qtd,precotab,desc,precoun,precototal];
-            
-            
-           // console.log(prod);
+       
+            console.log(produto);
             
             AddTableRow(prod);   
             
@@ -508,14 +507,15 @@
         $('#itens').append(
 
             ' <tr>'+           
-            '<td class="codigo">'+data[item][1]+'</td>'+
-            '<td class="descricao">'+data[item][2]+'</td>'+
-            '<td class="un">'+data[item][3]+'</td>'+
-            '<td class="qtd">'+data[item][4]+'</td>'+
-            '<td class="precotab">'+data[item][5]+'</td>'+
-            '<td class="desc">'+data[item][6]+'</td>'+
-            '<td class="precun">'+data[item][7]+'</td>'+           
-            '<td class="precototal">'+data[item][8]+'</td>'+
+            '<td class="id">'+produto.IDProduto+'</td>'+
+            '<td class="codigo">'+produto.codigo+'</td>'+
+            '<td class="descricao">'+produto.descricao+'</td>'+
+            '<td class="un">'+produto.un+'</td>'+
+            '<td class="qtd">'+produto.qtd+'</td>'+
+            '<td class="precotab">'+produto.precotab+'</td>'+
+            '<td class="desc">'+produto.desc+'</td>'+
+            '<td class="precun">'+produto.precoun+'</td>'+           
+            '<td class="precototal">'+produto.precototal+'</td>'+
             '<td class="actions">'+
             '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt"></i></a>'+ 
             '</td>'+                 
@@ -531,10 +531,7 @@
         //tes = $(".codigo").text();
             
             
-            console.log(item);
-
-
-        //        limpa os campos do input
+         //        limpa os campos do input
 
         $("#codigo").val('');
         $("#descricao").val('');
@@ -551,12 +548,5 @@
         
 
     }
-    
-     console.log(prod[0]);
-     console.log(prod[1]);
-     console.log(prod[2]);
-     console.log(prod[3]);
-     console.log(prod[4]);
-    
     
 </script>

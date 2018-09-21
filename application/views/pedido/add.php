@@ -187,38 +187,38 @@
             </div>
             <div class="shadow p-3 mb-5 bg-white rounded ">Totais
                 <div class="row border-top">
-                    
+
                     <div class="form-group col-md-2 mt-2">
-                            <label for="nitens" class=" control-label">Nº Itens</label>
-                            <div class="">                    
-                                <input type="number" name="nitens" value="" class="form-control" id="nitens" readonly />
-                            </div>
-                        </div> 
-                     <div class="form-group col-md-2 mt-2">
-                            <label for="sqtd" class=" control-label">Soma qtdes</label>
-                            <div class="">                    
-                                <input type="number" name="sqtd" value="" class="form-control" id="sqtd" readonly />
-                            </div>
+                        <label for="nitens" class=" control-label">Nº Itens</label>
+                        <div class="">                    
+                            <input type="number" name="nitens" value="" class="form-control" id="nitens" readonly />
                         </div>
+                    </div> 
                     <div class="form-group col-md-2 mt-2">
-                            <label for="subt" class=" control-label">Sub Total</label>
-                            <div class="">                    
-                                <input type="number" name="subt" value="" class="form-control" id="subt" readonly />
-                            </div>
+                        <label for="sqtd" class=" control-label">Soma qtdes</label>
+                        <div class="">                    
+                            <input type="number" name="sqtd" value="" class="form-control" id="sqtd" readonly />
                         </div>
-                     <div class="form-group col-md-3 mt-2">
-                            <label for="tdesc" class=" control-label">Total Desconto </label>
-                            <div class="">                    
-                                <input type="number" name="tdesc" value="" class="form-control" id="tdesc" readonly />
-                            </div>
-                        </div> 
+                    </div>
+                    <div class="form-group col-md-2 mt-2">
+                        <label for="subt" class=" control-label">Sub Total</label>
+                        <div class="">                    
+                            <input type="number" name="subt" value="" class="form-control" id="subt" readonly />
+                        </div>
+                    </div>
                     <div class="form-group col-md-3 mt-2">
-                            <label for="total" class=" control-label">Total</label>
-                            <div class="">                    
-                                <input type="number" name="total" value="" class="form-control" id="total" readonly />
-                            </div>
-                        </div> 
-                    
+                        <label for="tdesc" class=" control-label">Total Desconto </label>
+                        <div class="">                    
+                            <input type="number" name="tdesc" value="" class="form-control" id="tdesc" readonly />
+                        </div>
+                    </div> 
+                    <div class="form-group col-md-3 mt-2">
+                        <label for="total" class=" control-label">Total</label>
+                        <div class="">                    
+                            <input type="number" name="total" value="" class="form-control" id="total" readonly />
+                        </div>
+                    </div> 
+
                 </div>
             </div>
 
@@ -256,20 +256,20 @@
                             </select>
                         </div>
                     </div>
-                   
+
                     <div class="form-group  mt-2">
                         <label for="gerarparcela" class=" control-label"></label>
                         <div class="">
                             <button role="button" id="btngeraparc" class="btn btn-success">Gerar Parcela</button>
                         </div>
                     </div>
-                     <div class="form-group col-md-3">
+                    <div class="form-group col-md-3">
                         <label for="data" class=" control-label">Data do Fechamento</label>
                         <div class="">                    
                             <input type="date" name="datafecha" value="<?php echo $this->input->post('datafecha'); ?>" class="form-control" id="datafecha" />
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="row">
@@ -306,28 +306,11 @@
 
 <script>
 
-    function RemoveTableRow ($hander){
-
-        var tr =$hander.closest('tr');
-       
-        var id = tr.firstChild.innerHTML;
-              
-        prodd = produto.id;
-        console.log(prodd)
-        //.remove();
-     
-          item--;
-        
-            $("#nitens").val(item);
-            $("#sqtd").val();
-            $("#total").val(); 
-    }
-    
     $("#btngeraparc").click(function(){ 
-        
-       
+
+
         $('#parcela').append(
-                        
+
             ' <tr>'+           
             '<td>30</td>'+
             '<td>01/04</td>'+
@@ -338,21 +321,22 @@
             '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt fa-1x"></i></a>'+            
             '</td>'+                 
             ' </tr>' 
-        
+
         );
-        
-        });
+
+    });
 </script>
 
 <script>
-    
-     let item = 0;
-     let tqtd = 0;
-     let tsubt = 0;
-     let tdesc = 0;
-     let total = 0;
-     
-     prod = new Array();
+
+    let item = 0;
+    let tqtd = 0;
+    let tsubt = 0;
+    let tdesc = 0;
+    let total = 0;
+    listprod = [];
+
+    prod = new Array();
 
     $('#busca').keyup(function(e){
 
@@ -403,7 +387,7 @@
             busca(IDProd);
 
         });
-       
+
 
         $('body #resultado_busca').change(function(){
 
@@ -457,19 +441,21 @@
             $('#precototal').val(precototal);
             $('#desc').val(desc);
         });
-        
-        
-           $('#precototal').blur(function(){
-               
-         
-         
-           // somasubt =  $("#subt").val();
-          
-             
-            });
-        
 
-        $("#incl").click(function(e){              
+
+        $('#precototal').blur(function(){
+
+
+
+            // somasubt =  $("#subt").val();
+
+
+        });
+
+
+        $("#incl").click(function(e){        
+
+
 
             idpro =  $("#IDProduto").val();
             codigo =  $("#codigo").val();
@@ -479,24 +465,57 @@
             precotab =  $("#precotab").val();
             desc =  $("#desc").val();
             precoun =  $("#precun").val();
-            precototal =  $("#precototal").val();            
-          
-            produto = {item:item,IDProduto:idpro,codigo:codigo,descricao:descricao,un:un,qtd:qtd,precotab:precotab,desc:desc,precoun:precoun,precototal:precototal};
-            
-       
-            console.log(produto);
-            
-            AddTableRow(prod);   
-            
+            precototal =  $("#precototal").val();  
+
+
+            produto ={item:item,IDProduto:idpro,codigo:codigo,descricao:descricao,un:un,qtd:qtd,precotab:precotab,desc:desc,precoun:precoun,precototal:precototal};
+
+            addProduto(produto);            
+
             $("#nitens").val(item);
-            
-          
+
+
         });
-        
-     
-            
-        
-        
+
+        function addProduto(produto){
+
+            var tprod=false;
+
+            for (i=0;i<listprod.length;i++){
+
+
+                if(produto.IDProduto==listprod[i].IDProduto){
+
+                    tprod=true; 
+
+                }
+            }
+
+            if(tprod){
+
+                alert("Produto ja inserido Exclua e insira novamente");
+
+                $("#codigo").val('');
+                $("#descricao").val('');
+                $("#un").val('');
+                $("#qtd").val('');
+                $("#precotab").val('');
+                $("#desc").val('');
+                $("#precun").val('');
+                $("#precototal").val('');
+                $("#busca").val('');
+                $("#resultado_busca").val('');
+
+            }else{
+
+                listprod.push(produto);
+
+                AddTableRow(produto); 
+
+            }    
+
+        } 
+
     });
 
     //adiciona produto na tabela
@@ -522,16 +541,16 @@
             ' </tr>' 
 
         );
-            //controla  quantos itens tem na tabela 
-          
-             item++;
-        
-            
-        
+        //controla  quantos itens tem na tabela 
+
+        item++;
+
+
+
         //tes = $(".codigo").text();
-            
-            
-         //        limpa os campos do input
+
+
+        //        limpa os campos do input
 
         $("#codigo").val('');
         $("#descricao").val('');
@@ -543,10 +562,54 @@
         $("#precototal").val('');
         $("#busca").val('');
         $("#resultado_busca").val('');
-        
-        
-        
+
+
+
 
     }
-    
+
+
+
+    function RemoveTableRow ($hander){
+
+        var tr =$hander.closest('tr');
+
+        var id = tr.firstChild.innerHTML;
+
+     //   console.log(id)
+
+        remprod(id,tr);
+
+        item--;
+
+        $("#nitens").val(item);
+        $("#sqtd").val();
+        $("#total").val(); 
+    }
+
+    function remprod(id,tr){
+        
+        
+        for (i=0;i<listprod.length;i++){
+
+            if(id==listprod[i].IDProduto){
+
+                console.log(id)
+                console.log(listprod[i])
+                console.log(tr)                
+                ind = listprod.indexOf(listprod[i])
+                listprod.splice(ind,1);
+                tr.remove();
+               
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 </script>

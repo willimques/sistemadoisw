@@ -27,6 +27,7 @@ class Marca extends CI_Controller{
      */
     function add()
     {   
+        
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(

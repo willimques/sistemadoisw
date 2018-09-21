@@ -9,6 +9,7 @@ class Pedido extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Pedido_model');
+        
     } 
 
     /*
@@ -27,7 +28,9 @@ class Pedido extends CI_Controller{
      */
     function add()
     {   
-        if(isset($_POST) && count($_POST) > 0)     
+                
+        if(isset($_POST) && count($_POST) > 0)
+            
         {   
             $params = array(
 				'IDPessoa' => $this->input->post('IDPessoa'),
@@ -39,6 +42,22 @@ class Pedido extends CI_Controller{
             );
             
             $pedido_id = $this->Pedido_model->add_pedido($params);
+            
+             $params = array(
+				'IDPedidoItens' =>  $pedido_id,
+				'IDProduto' =>  1,
+				'dataVenda' => $this->input->post('data'),
+				'quantidade' => $this->input->post('quantidade'),
+				'precoUnitario' => $this->input->post('precoUnitario'),
+				'precoTotal' => $this->input->post('precoTotal'),
+				'descontoUnitario' => $this->input->post('descontoUnitario'),
+				'descontoTotal' => $this->input->post('descontoTotal'),
+            );
+            
+            $this->load->model('Pedidoitem_model');
+            $pedidoitem_id = $this->Pedidoitem_model->add_pedidoitem($params);
+            
+            
             redirect('pedido/index');
         }
         else

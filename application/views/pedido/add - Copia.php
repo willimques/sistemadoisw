@@ -98,7 +98,7 @@
             </div>
 
             <div>
-                <div id="listprod" class="row">
+                <form id="listprod" class="row">
                     <input hidden type="text" name="codigo" value="" class="form-control" id="IDProduto" readonly />
                     <div class="row m-0">
                         <div class="form-group col-md-1 p-1">
@@ -156,7 +156,7 @@
                             </div>
                         </div>                    
                     </div>
-                </div>
+                </form>
                 <div>
                     <div class="table-responsive col-md-12">
                         <table id="itensPedido"class="table table-striped" cellspacing="0" cellpadding="0">
@@ -188,33 +188,34 @@
                     <div class="form-group col-md-2 mt-2">
                         <label for="nitens" class=" control-label">Nº Itens</label>
                         <div class="">                    
-                            <input type="number" name="nitens" value="<?php echo $this->input->post('nitens'); ?>" class="form-control" id="nitens" readonly />
+                            <input type="number" name="nitens" value="" class="form-control" id="nitens" readonly />
                         </div>
                     </div> 
                     <div class="form-group col-md-2 mt-2">
                         <label for="sqtd" class=" control-label">Soma qtdes</label>
                         <div class="">                    
-                            <input type="number" name="sqtd" value="<?php echo $this->input->post('sqtd'); ?>" class="form-control" id="sqtd" readonly />
+                            <input type="number" name="sqtd" value="" class="form-control" id="sqtd" readonly />
                         </div>
                     </div>
                     <div class="form-group col-md-2 mt-2">
                         <label for="subt" class=" control-label">Sub Total</label>
                         <div class="">                    
-                            <input type="number" name="subt" value="<?php echo $this->input->post('subt'); ?>" class="form-control" id="subt" readonly />
+                            <input type="number" name="subt" value="" class="form-control" id="subt" readonly />
                         </div>
                     </div>
                     <div class="form-group col-md-3 mt-2">
                         <label for="tdesc" class=" control-label">Total Desconto </label>
                         <div class="">                    
-                            <input type="number" name="tdesc" value="<?php echo $this->input->post('tdesc'); ?>" class="form-control" id="tdesc" readonly />
+                            <input type="number" name="tdesc" value="" class="form-control" id="tdesc" readonly />
                         </div>
                     </div> 
                     <div class="form-group col-md-3 mt-2">
                         <label for="total" class=" control-label">Total</label>
                         <div class="">                    
-                            <input type="number" name="total" value="<?php echo $this->input->post('total'); ?>" class="form-control" id="total" readonly />
+                            <input type="number" name="total" value="" class="form-control" id="total" readonly />
                         </div>
                     </div> 
+
                 </div>
             </div>
 
@@ -239,7 +240,7 @@
                     <div class="form-group col-md-3">
                         <label for="prazopag" class=" control-label">Condição Pagamento</label>
                         <div class="">
-                            <select name="prazopagamento" class="form-control">
+                            <select name="tipoPagamento" class="form-control">
                                 <option value="">Selecione o Prazo</option>
                                 <?php 
                                 foreach($all_prazopagamentos as $prazopagamento)

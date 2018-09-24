@@ -9,7 +9,6 @@ class Pedido extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Pedido_model');
-        
     } 
 
     /*
@@ -28,10 +27,9 @@ class Pedido extends CI_Controller{
      */
     function add()
     {   
-                
-        if(isset($_POST) && count($_POST) > 0)
-            
+        if(isset($_POST) && count($_POST) > 0)     
         {   
+            
             $params = array(
 				'IDPessoa' => $this->input->post('IDPessoa'),
 				'tipoPedido' => $this->input->post('tipoPedido'),
@@ -40,28 +38,50 @@ class Pedido extends CI_Controller{
 				'data' => $this->input->post('data'),
 				'comissao' => $this->input->post('comissao'),
             );
-            
+         
             $pedido_id = $this->Pedido_model->add_pedido($params);
             
-             $params = array(
-				'IDPedidoItens' =>  $pedido_id,
-				'IDProduto' =>  1,
+            $prod = $this->input->post('produto');
+            
+            $produto = (json_decode($prod));
+            $tam = count($produto);
+            
+            for($i=0;$i<$tam;$i++){
+                
+                 $params = array(
+				'IDPedidoItens' => $pedido_id,
+				'IDProduto' => $produto[$i]->IDProduto,
 				'dataVenda' => $this->input->post('data'),
-				'quantidade' => $this->input->post('quantidade'),
-				'precoUnitario' => $this->input->post('precoUnitario'),
-				'precoTotal' => $this->input->post('precoTotal'),
-				'descontoUnitario' => $this->input->post('descontoUnitario'),
-				'descontoTotal' => $this->input->post('descontoTotal'),
+				'quantidade' => $produto[$i]->qtd,
+				'precoUnitario' => $produto[$i]->precotab,
+				'precoTotal' =>$produto[$i]->precototal,
+				'descontoUnitario' => $produto[$i]->desc,
+				
             );
             
             $this->load->model('Pedidoitem_model');
-            $pedidoitem_id = $this->Pedidoitem_model->add_pedidoitem($params);
+
+            $pedidoitem_id = $this->Pedidoitem_model->add_pedidoitem($params);               
+                
             
+             $params = array(
+                'IDProduto' => $produto[$i]->IDProduto,
+				'IDFilial' => $this->input->post('IDFilial'),
+				'quantidade' => $produto[$i]->qtd,
+				'movimento' => 1, // 1 - saida
+				'estMinimo' => $this->input->post('estMinimo'),
+				'estMaximo' => $this->input->post('estMaximo'),
+            );
+            
+            $this->load->model('Estoque_model');
+            $estoque_id = $this->Estoque_model->add_estoque($params);
+            }
             
             redirect('pedido/index');
         }
         else
         {
+         
 			$this->load->model('Pessoa_model');
 			$data['all_pessoas'] = $this->Pessoa_model->get_all_pessoas();
 
@@ -125,7 +145,7 @@ class Pedido extends CI_Controller{
             }
         }
         else
-            show_error('The pedido you are trying to edit does not exist.');
+            show_error('Esse pedido não existe');
     } 
 
     /*

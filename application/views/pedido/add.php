@@ -32,7 +32,7 @@
                     <div class="form-group col-md-3">
                         <label> Tipo de pedido</label>
                         <div class="">
-                            <select name="tipoPedido" class="form-control">
+                            <select name="tipoPedido" id="tipoPagamento" class="form-control">
                                 <option value="">Selecione o Tipo Pedido</option>
                                 <?php 
                                 foreach($all_tipopedidos as $tipopedido)
@@ -44,7 +44,7 @@
                                 ?>
                             </select>
                         </div>
-                           <span class="text-danger"><?php echo form_error('tipoPedido');?></span>
+                        <span class="text-danger"><?php echo form_error('tipoPedido');?></span>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>                        
@@ -59,19 +59,24 @@
                             } 
                             ?>
                         </select>
+                        <span class="text-danger"><?php echo form_error('IDPessoa');?></span>
 
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="data" class=" control-label">Numero Pedido</label>
+                        <label for="nped" class=" control-label">Numero Pedido</label>
                         <div class="">                    
-                            <input type="number" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                            <input type="number" name="nped" value="<?php echo $this->input->post('nped'); ?>" class="form-control" id="nped" />
                         </div>
+
+                        <span class="text-danger"><?php echo form_error('nped');?></span>
+
                     </div>
                     <div class="form-group col-md-3">
                         <label for="data" class=" control-label">Data</label>
                         <div class="">                    
                             <input type="date" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
-                        </div>
+                        </div>                    
+                        <span class="text-danger"><?php echo form_error('data');?></span>
                     </div>
 
                 </div>
@@ -92,7 +97,6 @@
                         <span>Selecione o Produto</span>                   
                     </label>
                     <select action="" class="form-control " method="post" enctype="multipart/form-data" id="resultado_busca">
-
                     </select>
                 </div>
             </div>
@@ -200,19 +204,19 @@
                     <div class="form-group col-md-2 mt-2">
                         <label for="subt" class=" control-label">Sub Total</label>
                         <div class="">                    
-                            <input type="number" name="subt" value="<?php echo $this->input->post('subt'); ?>" class="form-control" id="subt" readonly />
+                            <input type="text" name="subt" value="<?php echo $this->input->post('subt'); ?>" class="form-control" id="subt" readonly />
                         </div>
                     </div>
                     <div class="form-group col-md-3 mt-2">
                         <label for="tdesc" class=" control-label">Total Desconto </label>
                         <div class="">                    
-                            <input type="number" name="tdesc" value="<?php echo $this->input->post('tdesc'); ?>" class="form-control" id="tdesc" readonly />
+                            <input type="text" name="tdesc" value="<?php echo $this->input->post('tdesc'); ?>" class="form-control" id="tdesc" readonly />
                         </div>
                     </div> 
                     <div class="form-group col-md-3 mt-2">
                         <label for="total" class=" control-label">Total</label>
                         <div class="">                    
-                            <input type="number" name="total" value="<?php echo $this->input->post('total'); ?>" class="form-control" id="total" readonly />
+                            <input type="text" name="total" value="<?php echo $this->input->post('total'); ?>" class="form-control" id="total" readonly />
                         </div>
                     </div> 
                 </div>
@@ -223,7 +227,7 @@
                     <div class="form-group col-md-4">
                         <label for="tipoPagamento" class=" control-label">Tipo De Pagamento</label>
                         <div class="">
-                            <select name="tipoPagamento" class="form-control">
+                            <select name="tipoPagamento" id="tipopagamento" class="form-control">
                                 <option value="">Selecione Tipo Pagamento</option>
                                 <?php 
                                 foreach($all_tipopagamentos as $tipopagamento)
@@ -239,7 +243,7 @@
                     <div class="form-group col-md-3">
                         <label for="prazopag" class=" control-label">Condição Pagamento</label>
                         <div class="">
-                            <select name="prazopagamento" class="form-control">
+                            <select name="prazopagamento" id="prazopagamento" class="form-control">
                                 <option value="">Selecione o Prazo</option>
                                 <?php 
                                 foreach($all_prazopagamentos as $prazopagamento)
@@ -264,7 +268,9 @@
                         <div class="">                    
                             <input type="date" name="datafecha" value="<?php echo $this->input->post('datafecha'); ?>" class="form-control" id="datafecha" />
                         </div>
-                    </div>
+                    </div>               
+                    
+                    <input hidden type="text" name="produto" value="" class="form-control" id="produto" />
 
                 </div>
             </div>
@@ -276,8 +282,7 @@
                                 <th>Dias</th>
                                 <th>Parcela</th>
                                 <th>Data</th>
-                                <th>Valor</th>
-                                <th>Observação</th> 
+                                <th>Valor</th>                               
                                 <th class="actions">Ações</th>
                             </tr>
                         </thead>
@@ -295,34 +300,12 @@
                     <button type="submit" id="fechapedido" class="btn btn-success">Fechar Pedido</button>
                 </div>
             </div>
-            
+
             <?php echo form_close(); ?>
         </div>
     </div>
 </div>
 
-<script>
-
-    $("#btngeraparc").click(function(){ 
-
-
-        $('#parcela').append(
-
-            ' <tr>'+           
-            '<td>30</td>'+
-            '<td>01/04</td>'+
-            '<td>19/08/2018</td>'+
-            '<td>40,00</td>'+
-            '<td>nota fiscal 32</td>'+            
-            '<td class="actions">'+
-            '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="RemoveTableRow(this)" ><i class="fas fa-trash-alt fa-1x"></i></a>'+            
-            '</td>'+                 
-            ' </tr>' 
-
-        );
-
-    });
-</script>
 
 <script>
 
@@ -332,8 +315,6 @@
     let tdesc = 0;
     let total = 0;
     listprod = [];
-
-    prod = new Array();
 
     $('#busca').keyup(function(e){
 
@@ -350,7 +331,6 @@
                 success: function(data){
 
                     dados = JSON.parse(data);
-
 
                     quant = dados.qtd;
 
@@ -452,8 +432,6 @@
 
         $("#incl").click(function(e){        
 
-
-
             idpro =  $("#IDProduto").val();
             codigo =  $("#codigo").val();
             descricao =  $("#descricao").val();
@@ -509,9 +487,106 @@
 
                 AddTableRow(produto); 
 
+                tsubt = parseFloat(produto.precotab)*parseFloat(produto.qtd) + parseFloat(tsubt);              
+                total = parseFloat(produto.precototal) + parseFloat(total);
+
+                tqtd = parseFloat(produto.qtd)+tqtd;                
+
+                tdesc = (tsubt-total) + parseFloat(tdesc);
+
+                $("#subt").val(accounting.formatMoney(tsubt,"R$ ", 2, ".", ","));
+                $("#tdesc").val(accounting.formatMoney(tdesc,"R$ ", 2, ".", ","));
+                $("#total").val(accounting.formatMoney(total,"R$ ", 2, ".", ","));
+                $("#sqtd").val(tqtd);
+
             }    
 
         } 
+
+        $("#btngeraparc").click(function(e){ 
+            e.preventDefault();
+
+            $('#parcelaitens').html('');
+
+            tpag =  $('#tipopagamento').val();
+            tpraz =  $('#prazopagamento').val();
+
+
+            $.ajax({
+                type:'post',
+                url: '<?php echo base_url('Prazopagamento/get_prazopagamento')?>/'+tpraz,//Definindo o arquivo onde serão buscados os dados            
+                success: function(data){
+
+                    dados = JSON.parse(data);
+
+                    if(dados==false){
+
+                        alert("Selecione a Condição de pagamento");
+                    }else if(total ==0){
+
+                        alert("Favor inserir itens no pedido");                        
+
+                    }else{
+
+                        var par = (total/dados.parcela);
+
+
+                        function adicionarDiasData(dias){
+                            var hoje     = new Date();
+                            var dataVenc = new Date(hoje.getTime() + (dias * 24 * 60 * 60 * 1000));
+
+                            return dataVenc.getDate() + "/" + (dataVenc.getMonth() + 1) + "/" + dataVenc.getFullYear();
+                        }
+
+                        datavenc = [];
+
+                        var dia = 0;
+
+                        for(i=1;i<=dados.parcela;i++) {  
+
+                            dia = parseInt(dados.periodicidade) + dia;   
+
+                            var novaData = adicionarDiasData(dia);   
+
+                            datavenc.push(novaData);
+
+                        }
+
+                        for(i=1;i<=dados.parcela;i++) {                        
+
+                            $('#parcela').append(
+
+                                '<tr>'+           
+                                '<td >'+dados.periodicidade+'</td>'+
+                                '<td>'+i+'/'+dados.parcela+'</td>'+
+                                '<td>'+datavenc[i-1]+'</td>'+
+                                '<td>'+Math.ceil(par)+'</td>'+                                     
+                                '<td class="actions">'+
+                                '<a href="#" data-toggle="modal" data-target="#delete-modal" onclick="excluirtd(this)" ><i class="fas fa-trash-alt fa-1x"></i></a>'+            
+                                '</td>'+                 
+                                '</tr>' 
+
+                            );
+
+
+                        }            
+                    }
+
+                }
+            }); 
+        });
+          
+               
+    $('#fechapedido').click(function(e){
+        
+        prod =  JSON.stringify(listprod);
+        
+        $("#produto").val(prod);
+      
+      
+    });
+        
+    
 
     });
 
@@ -519,7 +594,7 @@
 
     function AddTableRow(data){
 
-
+        
         $('#itens').append(
 
             ' <tr>'+           
@@ -556,8 +631,6 @@
         $("#resultado_busca").val('');
 
 
-
-
     }
 
 
@@ -577,6 +650,14 @@
 
     }
 
+    function excluirtd ($hander){
+
+        var tr =$hander.closest('tr');
+
+        tr.remove();
+
+    }
+
     function remprod(id,tr){
 
 
@@ -584,13 +665,27 @@
 
             if(id==listprod[i].IDProduto){
 
+                tsubt = tsubt - parseFloat(listprod[i].precotab)*parseFloat(listprod[i].qtd); 
+
+                total =  total - parseFloat(listprod[i].precototal);
+
+                tqtd = tqtd - parseFloat(listprod[i].qtd);                
+
+                tdesc =  (total-tsubt) ;
+
                 //pega o indice do array
                 ind = listprod.indexOf(listprod[i])
                 listprod.splice(ind,1);
                 tr.remove();
 
+                $("#subt").val(accounting.formatMoney(tsubt,"R$ ", 2, ".", ","));
+                $("#tdesc").val(accounting.formatMoney(tdesc,"R$ ", 2, ".", ","));
+                $("#total").val(accounting.formatMoney(total,"R$ ", 2, ".", ","));
+                $("#sqtd").val(tqtd);
+
             }
         }
+
     }
 
 

@@ -66,7 +66,7 @@
 
                                 <div class="row mt-5">
 
-                                    <div class="col-4" align="center">                             
+                                    <div class="col-md-4" align="center">                             
                                         <span>
                                             <img src="<?php echo base_url('assets/_img/dollars.png')?>">
                                         </span>

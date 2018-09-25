@@ -33,7 +33,7 @@ class Estoque_model extends CI_Model
      */
     function add_estoque($params)
     {
-        $this->db->insert('Estoque',$params);
+        $this->db->insert('est_saida_produto',$params);
         return $this->db->insert_id();
     }
     
@@ -42,7 +42,7 @@ class Estoque_model extends CI_Model
      */
     function update_estoque($IDEstoque,$params)
     {
-        $this->db->where('IDEstoque',$IDEstoque);
+        $this->db->where('est_saida_produto',$IDEstoque);
         return $this->db->update('Estoque',$params);
     }
     
@@ -51,6 +51,6 @@ class Estoque_model extends CI_Model
      */
     function delete_estoque($IDEstoque)
     {
-        return $this->db->delete('Estoque',array('IDEstoque'=>$IDEstoque));
+        return $this->db->delete('est_saida_produto',array('IDPedido'=>$IDEstoque));
     }
 }

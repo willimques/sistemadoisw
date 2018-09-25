@@ -32,7 +32,7 @@
                     <div class="form-group col-md-3">
                         <label> Tipo de pedido</label>
                         <div class="">
-                            <select name="tipoPedido" id="tipoPagamento" class="form-control">
+                            <select name="tipoPedido" id="tipoPedido" class="form-control">
                                 <option value="">Selecione o Tipo Pedido</option>
                                 <?php 
                                 foreach($all_tipopedidos as $tipopedido)
@@ -46,7 +46,7 @@
                         </div>
                         <span class="text-danger"><?php echo form_error('tipoPedido');?></span>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="IDPessoa" class="col-md-12 control-label">Selecione o Cliente</label>                        
                         <select id="selPessoa" data-live-search="true" name="IDPessoa" class="form-control">
                             <option value="">Selecione um cliente </option>
@@ -62,19 +62,12 @@
                         <span class="text-danger"><?php echo form_error('IDPessoa');?></span>
 
                     </div>
-                    <div class="form-group col-md-2">
-                        <label for="nped" class=" control-label">Numero Pedido</label>
-                        <div class="">                    
-                            <input type="number" name="nped" value="<?php echo $this->input->post('nped'); ?>" class="form-control" id="nped" />
-                        </div>
-
-                        <span class="text-danger"><?php echo form_error('nped');?></span>
-
-                    </div>
+                   
                     <div class="form-group col-md-3">
                         <label for="data" class=" control-label">Data</label>
-                        <div class="">                    
-                            <input type="date" name="data" value="<?php echo $this->input->post('data'); ?>" class="form-control" id="data" />
+                        <div class="">
+                            <input type="date" name="data" value="<?php echo ($this->input->post('data') ? $this->input->post('data') : $date ); ?>" class="form-control" id="data" />
+
                         </div>                    
                         <span class="text-danger"><?php echo form_error('data');?></span>
                     </div>
@@ -227,7 +220,7 @@
                     <div class="form-group col-md-4">
                         <label for="tipoPagamento" class=" control-label">Tipo De Pagamento</label>
                         <div class="">
-                            <select name="tipoPagamento" id="tipopagamento" class="form-control">
+                            <select name="tipoPagamento" id="tipoPagamento" class="form-control">
                                 <option value="">Selecione Tipo Pagamento</option>
                                 <?php 
                                 foreach($all_tipopagamentos as $tipopagamento)
@@ -239,6 +232,7 @@
                                 ?>
                             </select>
                         </div>
+                        <span class="text-danger"><?php echo form_error('tipoPagamento');?></span>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="prazopag" class=" control-label">Condição Pagamento</label>
@@ -253,8 +247,10 @@
                                     echo '<option value="'.$prazopagamento['IDPrazoPag'].'" '.$selected.'>'.$prazopagamento['descricao'].'</option>';
                                 } 
                                 ?>
-                            </select>
+                            </select>                            
                         </div>
+                        <span class="text-danger"><?php echo form_error('IDPrazoPag');?></span>
+
                     </div>
 
                     <div class="form-group  mt-2">
@@ -265,12 +261,15 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="data" class=" control-label">Data do Fechamento</label>
-                        <div class="">                    
-                            <input type="date" name="datafecha" value="<?php echo $this->input->post('datafecha'); ?>" class="form-control" id="datafecha" />
+                        <div class="">                           
+                            <input type="date" name="datafecha" value="<?php echo ($this->input->post('datafecha') ? $this->input->post('datafecha') : $date ); ?>" class="form-control" id="datafecha" />
                         </div>
                     </div>               
-                    
+
                     <input hidden type="text" name="produto" value="" class="form-control" id="produto" />
+                    <span class="text-danger"><?php echo form_error('datafecha');?></span>
+
+
 
                 </div>
             </div>
@@ -575,18 +574,22 @@
                 }
             }); 
         });
-          
-               
-    $('#fechapedido').click(function(e){
-        
-        prod =  JSON.stringify(listprod);
-        
-        $("#produto").val(prod);
-      
-      
-    });
-        
-    
+
+
+        $('#fechapedido').click(function(e){
+
+            if(listprod.length == 0){
+
+                alert("Insira os produtos para continuar!!");
+            }else{
+                prod =  JSON.stringify(listprod);
+
+                $("#produto").val(prod);
+
+            }
+        });
+
+
 
     });
 
@@ -594,7 +597,7 @@
 
     function AddTableRow(data){
 
-        
+
         $('#itens').append(
 
             ' <tr>'+           

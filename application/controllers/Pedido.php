@@ -27,16 +27,24 @@ class Pedido extends CI_Controller{
      */
     function add()
     {   
-        if(isset($_POST) && count($_POST) > 0)     
-        {   
+        
+         
             
+        
+         $this->load->library('form_validation');
+         $this->form_validation->set_rules('tipoPedido','Tipo Pedido','required');        
+         $this->form_validation->set_rules('IDPessoa','Cliente','required');        
+         $this->form_validation->set_rules('tipoPagamento','Tipo Pagamento','required');        
+             
+        
+       if($this->form_validation->run())
+        {   
+          
             $params = array(
-				'IDPessoa' => $this->input->post('IDPessoa'),
 				'tipoPedido' => $this->input->post('tipoPedido'),
-				'tipoPagamento' => $this->input->post('tipoPagamento'),
-				'situacaoPedido' => $this->input->post('situacaoPedido'),
-				'data' => $this->input->post('data'),
-				'comissao' => $this->input->post('comissao'),
+				'IDPessoa' => $this->input->post('IDPessoa'),
+				'tipoPagamento' => $this->input->post('tipoPagamento'),				
+				'data' => $this->input->post('data'),				
             );
          
             $pedido_id = $this->Pedido_model->add_pedido($params);
@@ -53,7 +61,7 @@ class Pedido extends CI_Controller{
 				'IDProduto' => $produto[$i]->IDProduto,
 				'dataVenda' => $this->input->post('data'),
 				'quantidade' => $produto[$i]->qtd,
-				'precoUnitario' => $produto[$i]->precotab,
+				'precoUnitario' => $produto[$i]->precoun,
 				'precoTotal' =>$produto[$i]->precototal,
 				'descontoUnitario' => $produto[$i]->desc,
 				
@@ -64,19 +72,21 @@ class Pedido extends CI_Controller{
             $pedidoitem_id = $this->Pedidoitem_model->add_pedidoitem($params);               
                 
             
-             $params = array(
-                'IDProduto' => $produto[$i]->IDProduto,
-				'IDFilial' => $this->input->post('IDFilial'),
-				'quantidade' => $produto[$i]->qtd,
-				'movimento' => 1, // 1 - saida
-				'estMinimo' => $this->input->post('estMinimo'),
-				'estMaximo' => $this->input->post('estMaximo'),
+            $params = array(
+                'IDPedido' => $pedido_id,
+                'id_produto' => $produto[$i]->IDProduto,				
+				'qtde' => $produto[$i]->qtd,
+                'data_saida' =>$this->input->post('data'),
+                'valor_unitario' => $produto[$i]->precoun,
+				'tipomovimento' => $this->input->post('tipoPedido'),
+			
             );
             
             $this->load->model('Estoque_model');
             $estoque_id = $this->Estoque_model->add_estoque($params);
             }
             
+            return($pedido_id);
             redirect('pedido/index');
         }
         else
@@ -95,7 +105,9 @@ class Pedido extends CI_Controller{
 			$data['all_prazopagamentos'] = $this->Prazopagamento_model->get_all_prazopagamentos();
 
 			$this->load->model('Situacaopedido_model');
-			$data['all_situacaopedidos'] = $this->Situacaopedido_model->get_all_situacaopedidos();
+			$data['all_situacaopedidos'] = $this->Situacaopedido_model->get_all_situacaopedidos();            
+ 
+            $data['date'] = date('Y-m-d'); 
             
             $data['_view'] = 'pedido/add';
             $this->load->view('layouts/main',$data);
@@ -158,32 +170,22 @@ class Pedido extends CI_Controller{
         // check if the pedido exists before trying to delete it
         if(isset($pedido['IDPedido']))
         {
+                     
+            $this->load->model('Pedidoitem_model');
+            $this->Pedidoitem_model->delete_pedidoitem($IDPedido);
+            
+            $this->load->model('Estoque_model');
+            $this->Estoque_model->delete_estoque($IDPedido);
+            
             $this->Pedido_model->delete_pedido($IDPedido);
+            
             redirect('pedido/index');
         }
         else
             show_error('The pedido you are trying to delete does not exist.');
     }
     
-    public function autoCompleteProduto()
-    {
-        
-        if (isset($_GET['term'])) {
-            $q = strtolower($_GET['term']);
-            $this->Pedido_model->autoCompleteProduto($q);
-        }
-
-    }
-
-    public function autoCompleteCliente()
-    {
-
-        if (isset($_GET['term'])) {
-            $q = strtolower($_GET['term']);
-            $this->vendas_model->autoCompleteCliente($q);
-        }
-
-    }
+    
     
     function get_produto($IDProduto){
         

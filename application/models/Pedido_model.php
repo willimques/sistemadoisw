@@ -20,14 +20,20 @@ class Pedido_model extends CI_Model
     {
         return $this->db->get_where('Pedido',array('IDPedido'=>$IDPedido))->row_array();
     }
-        
+  
     /*
      * Get all pedidos
      */
     function get_all_pedidos()
     {
+        
+        $this->db->select ( '*' ); 
+        $this->db->from ( 'pedido' ); 
+        $this->db->join ( 'pessoa' ,  'pedido.IDPessoa = pessoa.IDPessoa' );        
+        $this->db->join ( 'tipopagamento' ,  'pedido.tipoPagamento = tipopagamento.IDTipoPagamento' );      
+              
         $this->db->order_by('IDPedido', 'desc');
-        return $this->db->get('Pedido')->result_array();
+        return $this->db->get()->result_array();
     }
         
     /*

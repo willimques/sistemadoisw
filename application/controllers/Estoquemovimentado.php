@@ -9,7 +9,17 @@ class Estoquemovimentado extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Estoquemovimentado_model');
+          
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){      
+            
+            redirect('login');
+        }
     } 
+    
 
     /*
      * Listing of estoquemovimentado

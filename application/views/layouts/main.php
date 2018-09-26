@@ -10,7 +10,7 @@
 
             <div id="content-wrapper">
 
-                <div class="container-fluid">
+                <div class="container-fluid">                                        
                     <?php	if(isset($_view) && $_view)
                     $this->load->view($_view); ?> 
                     <?php include_once "footer.php"?>

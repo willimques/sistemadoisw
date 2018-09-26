@@ -14,6 +14,17 @@ class Pessoa extends CI_Controller{
         $this->load->model('Contato_model');
         $this->load->model('PessoaFisica_model');
         $this->load->model('PessoaJuridica_model');
+        
+         
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){ 
+        
+            redirect('login');
+        
+        }
       
 
     } 

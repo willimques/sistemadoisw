@@ -8,7 +8,16 @@ class Marca extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        
         $this->load->model('Marca_model');
+        
+        $user = $this->session->userdata();  
+        
+        if($row==1){ 
+        
+            redirect('login');
+        
+        }
     } 
 
     /*

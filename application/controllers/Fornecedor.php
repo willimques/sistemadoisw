@@ -9,6 +9,17 @@ class Fornecedor extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Fornecedor_model');
+         
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){ 
+        
+            redirect('login');
+        
+        }
+        
     } 
 
     /*

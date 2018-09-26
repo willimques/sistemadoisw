@@ -8,7 +8,17 @@ class Categoria extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        
         $this->load->model('Categoria_model');
+        
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){   
+            
+            redirect('login');
+        }
     } 
 
     /*

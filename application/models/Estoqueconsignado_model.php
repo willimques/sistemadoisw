@@ -9,6 +9,7 @@ class Estoqueconsignado_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        
     }
     
     /*
@@ -51,6 +52,6 @@ class Estoqueconsignado_model extends CI_Model
      */
     function delete_estoqueconsignado($IDEstoqueConsignado)
     {
-        return $this->db->delete('EstoqueConsignado',array('IDEstoqueConsignado'=>$IDEstoqueConsignado));
+        return $this->db->delete('EstoqueConsignado',array('IDPedido'=>$IDEstoqueConsignado));
     }
 }

@@ -9,6 +9,12 @@ class Pedidopagamento extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Pedidopagamento_model');
+       
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){      
     } 
 
     /*

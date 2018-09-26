@@ -8,7 +8,15 @@ class Revendedor extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Revendedor_model');    
+        $this->load->model('Revendedor_model'); 
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){     
+            
+            redirect('login');
+        }
          
         
     } 

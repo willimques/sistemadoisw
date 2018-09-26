@@ -9,8 +9,19 @@ class Dashboard extends CI_Controller{
     {
         parent::__construct();
         
+        $user = $this->session->userdata();       
+         
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){ 
+        
+           redirect('login');
+        }
+        
     }
-
+  
     function index()
     {
         $data['_view'] = 'dashboard';

@@ -9,6 +9,16 @@ class Pessoa_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        
+        $user = $this->session->userdata();  
+        
+        $row = count($user);      
+              
+        if($row==1){  
+            
+             redirect('login');
+            
+        }
     }
     
     /*

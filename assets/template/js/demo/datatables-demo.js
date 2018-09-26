@@ -95,12 +95,14 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-
-
-    })
+        
+        
+    }) 
+   
 
 
 });
+
 
 $(document).ready(function() {
     $('#dataCheque').DataTable({
@@ -313,7 +315,7 @@ $(document).ready(function() {
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
         },
-
+        
 
     })
  

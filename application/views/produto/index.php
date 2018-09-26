@@ -35,7 +35,7 @@
                     <?php foreach($produtos as $P){ ?>
                     <tr>
 					    			
-		                <td><?php echo $P['nome']; ?></td>
+		                <td><?php echo $P['nome_produto']; ?></td>
 		                <td><?php echo $P['codigo']; ?></td>
 		                <td><?php echo $P['precoCusto']; ?></td>
 		                <td><?php echo $P['precoVenda']; ?></td>
@@ -44,10 +44,9 @@
 		                <td><?php echo $P['codBarras']; ?></td>
 		                <td><?php echo $P['foto']; ?></td>
 		                <td><?php echo $P['dataCadastro']; ?></td>
-                        <td>
-                        
-                        <a href="<?php echo site_url('produto/edit/'.$P['IDProduto']); ?>" class="btn btn-info btn-xs">Editar</a> 
-                        <a href="<?php echo site_url('produto/remove/'.$P['IDProduto']); ?>" class="btn btn-danger btn-xs">Remover</a>
+                        <td>                       
+                        <a href="<?php echo site_url('produto/edit/'.$P['IDProduto']); ?>" class="fas fa-edit"></a> 
+                        <a href="<?php echo site_url('produto/remove/'.$P['IDProduto']); ?>"  class="far fa-trash-alt"></a>
                         </td>
                     </tr>
                     <?php } ?>

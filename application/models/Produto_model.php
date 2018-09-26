@@ -23,9 +23,9 @@ class Produto_model extends CI_Model
 
     function get_like_produto($busca)   
     {
-        $this->db->select('IDProduto,nome');
+        $this->db->select('IDProduto,nome_produto');
         $this->db->from('produto');
-        $this->db->like("nome","$busca");
+        $this->db->like("nome_produto","$busca");
         $query=$this->db->get()->result_array(); 
         $row = $this->db->affected_rows();        
         if ( $row > 0){  

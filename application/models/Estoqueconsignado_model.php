@@ -9,6 +9,7 @@ class Estoqueconsignado_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+      
         
     }
     
@@ -17,7 +18,12 @@ class Estoqueconsignado_model extends CI_Model
      */
     function get_estoqueconsignado($IDEstoqueConsignado)
     {
-        return $this->db->get_where('EstoqueConsignado',array('IDEstoqueConsignado'=>$IDEstoqueConsignado))->row_array();
+        $this->db->select ( '*' ); 
+        $this->db->from ( 'estoqueconsignado' ); 
+        $this->db->join ( 'pessoa' ,  'Pessoa.IDPessoa = estoqueconsignado.IDPessoa' );         
+        $this->db->order_by('IDPessoa', 'desc');
+        return $query=$this->db->get ()->result_array();        
+        
     }
         
     /*
@@ -25,6 +31,8 @@ class Estoqueconsignado_model extends CI_Model
      */
     function get_all_estoqueconsignado()
     {
+        $this->db->join ( 'pessoa' ,  'Pessoa.IDPessoa = estoqueconsignado.IDPessoa' ); 
+        $this->db->join ( 'produto' ,  'produto.IDProduto = estoqueconsignado.IDProduto' ); 
         $this->db->order_by('IDEstoqueConsignado', 'desc');
         return $this->db->get('EstoqueConsignado')->result_array();
     }

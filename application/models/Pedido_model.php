@@ -31,6 +31,7 @@ class Pedido_model extends CI_Model
         $this->db->from ( 'pedido' ); 
         $this->db->join ( 'pessoa' ,  'pedido.IDPessoa = pessoa.IDPessoa' );        
         $this->db->join ( 'tipopagamento' ,  'pedido.tipoPagamento = tipopagamento.IDTipoPagamento' );      
+        $this->db->join ( 'tipopedido' ,  'pedido.tipoPedido = tipopedido.IDTipoPedido' );      
               
         $this->db->order_by('IDPedido', 'desc');
         return $this->db->get()->result_array();

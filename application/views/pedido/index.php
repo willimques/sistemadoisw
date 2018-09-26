@@ -30,20 +30,24 @@
         <div class="card-body"> 
 
             <table id="dataTable"class="table table-striped table-bordered">
+                <thead>
                 <tr>
                     <th>Pedido</th>
                     <th>Clientes</th>               
                     <th>Tipo Pagamento</th>
+                    <th>Tipo Pedido</th>
                     <th>Situacao Pedido</th>
                     <th>Data</th>
                     <th>Comissao</th>
                     <th>Ações</th>
                 </tr>
+                    </thead>
                 <?php foreach($pedidos as $P){ ?>
                 <tr>
                     <td><?php echo $P['IDPedido']; ?></td>
                     <td><?php echo $P['nome']; ?></td>                   
                     <td><?php echo $P['descricao']; ?></td>
+                    <td><?php echo $P['Descricao']; ?></td>
                     <td><?php echo $P['situacaoPedido']; ?></td>
                     <td><?php echo date('d/m/Y', strtotime($P['data'])); ?></td>  
                     <td><?php echo $P['comissao']; ?></td>

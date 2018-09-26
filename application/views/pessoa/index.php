@@ -26,7 +26,7 @@
                         <th>NomeFantasia</th>
                         <th>Data Cadastro</th>
                         <th>Situacao</th>
-                        <th>ação</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,8 +40,8 @@
                         <td><?php echo date('d/m/Y', strtotime ($P['data_cadastro'])); ?></td>
                         <td><?php echo $P['situacao']; ?></td>
                         <td>
-                        
-                        <a href="<?php echo site_url('pessoa/profile/'.$P['IDPessoa']); ?>" class="btn btn-info btn-xs">Visualizar</a> 
+                     
+                        <a href="<?php echo site_url('pessoa/profile/'.$P['IDPessoa']); ?>"  class="fas fa-info-circle fa-2x"></a> 
 
                         </td>
                     </tr>

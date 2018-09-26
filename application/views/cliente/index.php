@@ -44,7 +44,7 @@
                         <td>
                             <a href="<?php echo site_url('cliente/edit/'.$C['IDCliente']); ?>" class="btn btn-info btn-xs">Editar</a> 
                             <a href="<?php echo site_url('cliente/remove/'.$C['IDCliente']); ?>" class="btn btn-danger btn-xs">Remover</a>
-                            <a href="<?php echo site_url('pessoa/profile/'.$C['IDCliente']); ?>" class="btn btn-info btn-xs">Visualizar</a> 
+                            <a href="<?php echo site_url('pessoa/profile/'.$C['IDCliente']); ?>" class="fas fa-info-circle "></a> 
                         </td>
                     </tr>
                     <?php } ?>

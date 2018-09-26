@@ -42,8 +42,8 @@ class Produto extends CI_Controller{
                 'IDGrupo' => $this->input->post('IDGrupo'),
                 'IDCategoria' => $this->input->post('IDCategoria'),
                 'IDMarcas' => $this->input->post('IDMarcas'),
-                'IDfornecedor' => $this->input->post('IDfornecedor'),
-                'IDUnidade' => $this->input->post('IDUnidade'),
+                'IDFornecedor' => $this->input->post('IDfornecedor'),
+                'IDUnidade' => $this->input->post('IDUnidades'),
                 'nome' => $this->input->post('nome'),
                 'codigo' => $this->input->post('codigo'),
                 'precoCusto' => $this->input->post('precoCusto'),
@@ -54,7 +54,7 @@ class Produto extends CI_Controller{
                 'foto' => $this->input->post('foto'),
                 'dataCadastro' => $this->input->post('dataCadastro'),			
             );
-
+                
             $produto_id = $this->Produto_model->add_produto($params);
             redirect('produto/index');
         }

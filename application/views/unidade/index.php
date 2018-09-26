@@ -6,7 +6,6 @@
     </li>
     <li class="breadcrumb-item active">Unidade</li>
 </ol>
-
 <div class="card">
     <div class="card-header">
         <div class="card-title">
@@ -22,7 +21,6 @@
     </div>       
     <div class="container-fluid">
         <div class="card-body"> 
-
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -32,19 +30,14 @@
                      </thead>
                     <?php foreach($unidades as $U){ ?>
                     <tr>
-                        <td><?php echo $U['IDUnidades']; ?></td>
                         <td><?php echo $U['descricao']; ?></td>
                         <td>
                             <a href="<?php echo site_url('unidade/edit/'.$U['IDUnidades']); ?>" class="btn btn-info btn-xs">Edit</a> 
                             <a href="<?php echo site_url('unidade/remove/'.$U['IDUnidades']); ?>" class="btn btn-danger btn-xs">Delete</a>
                         </td>
                     </tr>
-                    <?php } ?>
-               
-                    </table>
-            
+                    <?php } ?>             
+             </table>        
         </div>
     </div>
 </div>
-
-          

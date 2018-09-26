@@ -73,6 +73,7 @@
                 <i class="fas fa-users"></i>
                 <span>Cadastros</span></a>
             <div class="dropdown-menu" aria-labelledby="menuCadastro">                
+                <a class="dropdown-item" href="<?php echo base_url('pessoa')?>">Pessoa</a>
                 <a class="dropdown-item" href="<?php echo base_url('cliente')?>">Cliente</a>
                 <a class="dropdown-item" href="<?php echo base_url('fornecedor')?>">Fornecedor</a>
                 <a class="dropdown-item" href="<?php echo base_url('revendedor')?>">Revendedor</a>
@@ -88,7 +89,8 @@
             <div class="dropdown-menu" aria-labelledby="menuEstoque">  
                 <a class="dropdown-item" href="<?php echo base_url('categoria')?>">Categoria</a>
                 <a class="dropdown-item" href="<?php echo base_url('produto')?>">Produto</a>
-                <a class="dropdown-item" href="<?php echo base_url('estoque')?>">Estoque</a>          
+                <a class="dropdown-item" href="<?php echo base_url('estoque')?>">Estoque Empresa</a>          
+                <a class="dropdown-item" href="<?php echo base_url('estoqueconsignado')?>">Estoque Consignado</a>          
             </div>
         </li> 
         <li class="nav-item dropdown">

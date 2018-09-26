@@ -11,7 +11,9 @@ class Marca extends CI_Controller{
         
         $this->load->model('Marca_model');
         
-        $user = $this->session->userdata();  
+        $user = $this->session->userdata(); 
+        
+        $row = count($user);
         
         if($row==1){ 
         

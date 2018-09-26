@@ -24,6 +24,8 @@ class Estoque_model extends CI_Model
      */
     function get_all_estoques()
     {
+       
+        $this->db->join ( 'produto' ,  'produto.IDProduto = estoque.IDProduto' ); 
         $this->db->order_by('IDEstoque', 'desc');
         return $this->db->get('Estoque')->result_array();
     }

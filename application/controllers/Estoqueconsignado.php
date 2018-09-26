@@ -9,6 +9,7 @@ class Estoqueconsignado extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Estoqueconsignado_model');
+        
          
         $user = $this->session->userdata();  
         
@@ -25,7 +26,7 @@ class Estoqueconsignado extends CI_Controller{
      */
     function index()
     {
-        $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_all_estoqueconsignado();
+        $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_all_estoqueconsignado();  
         
         $data['_view'] = 'estoqueconsignado/index';
         $this->load->view('layouts/main',$data);

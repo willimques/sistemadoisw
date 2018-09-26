@@ -340,7 +340,7 @@
                     }else{
 
                         for(i=0;i< quant; i++){
-                            $('#resultado_busca').append('<option value ='+dados[i].IDProduto+' ><a href="#" class="badge"> Codigo '+dados[i].IDProduto+' Nome '+dados[i].nome+'</a></br></option>');
+                            $('#resultado_busca').append('<option value ='+dados[i].IDProduto+' ><a href="#" class="badge"> Codigo '+dados[i].IDProduto+' Nome '+dados[i].nome_produto+'</a></br></option>');
 
                         }
 
@@ -384,7 +384,7 @@
 
                     $('#IDProduto').val(dados.IDProduto);
                     $('#codigo').val(dados.codigo);
-                    $('#descricao').val(dados.nome);
+                    $('#descricao').val(dados.nome_produto);
                     $('#un').val(dados.IDUnidade);
                     $('#precotab').val(dados.precoVenda);                  
 

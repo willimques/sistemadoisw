@@ -26,8 +26,21 @@ class Estoqueconsignado extends CI_Controller{
      */
     function index()
     {
-        $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_all_estoqueconsignado();  
         
+        
+            
+        $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_all_estoqueconsignado();                 
+        $data['listclientes'] = $this->Estoqueconsignado_model->get_listcliente();     
+        $data['_view'] = 'estoqueconsignado/index';
+        $this->load->view('layouts/main',$data);
+    }
+    
+    function get_cliente($IDPessoa)
+        
+    {
+        
+        $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_estoqueconsignado($IDPessoa); 
+        $data['listclientes'] = $this->Estoqueconsignado_model->get_listcliente();     
         $data['_view'] = 'estoqueconsignado/index';
         $this->load->view('layouts/main',$data);
     }
@@ -125,4 +138,20 @@ class Estoqueconsignado extends CI_Controller{
             show_error('The estoqueconsignado you are trying to delete does not exist.');
     }
     
+    
+    function fechamento($IDEstoqueConsignado){
+    
+    
+        $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_estoqueconsignado($IDEstoqueConsignado);      
+        $data['_view'] = 'estoqueconsignado/fechamento';
+        $data['date'] = date('Y-m-d'); 
+        $this->load->view('layouts/main',$data);
+    
+    
+    
+    
+    
+    
 }
+    
+}   

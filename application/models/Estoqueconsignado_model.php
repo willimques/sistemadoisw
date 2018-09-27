@@ -16,15 +16,29 @@ class Estoqueconsignado_model extends CI_Model
     /*
      * Get estoqueconsignado by IDEstoqueConsignado
      */
-    function get_estoqueconsignado($IDEstoqueConsignado)
+    function get_estoqueconsignado($IDPessoa)
     {
         $this->db->select ( '*' ); 
-        $this->db->from ( 'estoqueconsignado' ); 
-        $this->db->join ( 'pessoa' ,  'Pessoa.IDPessoa = estoqueconsignado.IDPessoa' );         
-        $this->db->order_by('IDPessoa', 'desc');
+        $this->db->from ( 'estoqueconsignado' );             
+        $this->db->join ( 'pessoa' , 'pessoa.IDPessoa = estoqueconsignado.IDPessoa' );  
+        $this->db->where('estoqueconsignado.IDPessoa',$IDPessoa);  
+        //$this->db->order_by('IDPessoa', 'desc');
         return $query=$this->db->get ()->result_array();        
         
     }
+    
+  
+    function get_listcliente()
+    {
+        $this->db->select ( 'estoqueconsignado.IDPessoa,nome' ); 
+        $this->db->distinct ( 'estoqueconsignado.IDPessoa' ); 
+        $this->db->from ( 'estoqueconsignado' ); 
+        $this->db->join ( 'pessoa' , 'pessoa.IDPessoa = estoqueconsignado.IDPessoa' );  
+        $this->db->order_by('estoqueconsignado.IDPessoa', 'desc');
+        return $query=$this->db->get ()->result_array();        
+        
+    }
+    
         
     /*
      * Get all estoqueconsignado

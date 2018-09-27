@@ -28,7 +28,9 @@
                         <th>IDProduto</th>                        
                         <th>Quantidade</th>                        
                         <th>Valor de Custo</th>                        
-                        <th>Total</th>                        
+                        <th>Valor de Tabela</th>                        
+                        <th>Total Custo </th>                        
+                        <th>Total Tabela </th>                        
                         <th>Estoque Minimo</th>
                         <th>Estoque Maximo</th>
 <!--                        <th>Ações</th>-->
@@ -40,7 +42,9 @@
                     <td><?php echo $E['nome_produto']; ?></td>              
                     <td><?php echo intval($E['quantidade']); ?></td>                   
                     <td><?php echo 'R$ '.number_format($E['precoCusto'], 2, ',', '.'); ?></td>              
+                    <td><?php echo 'R$ '.number_format($E['precoVenda'], 2, ',', '.'); ?></td>              
                     <td><?php echo 'R$ '.number_format($E['quantidade']*$E['precoCusto'], 2, ',', '.'); ?></td>              
+                    <td><?php echo 'R$ '.number_format($E['quantidade']*$E['precoVenda'], 2, ',', '.'); ?></td>              
                     <td><?php echo $E['estMinimo']; ?></td>
                     <td><?php echo $E['estMaximo']; ?></td>
 <!--

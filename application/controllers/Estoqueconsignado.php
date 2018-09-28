@@ -27,7 +27,6 @@ class Estoqueconsignado extends CI_Controller{
     function index()
     {
         
-        
             
         $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_all_estoqueconsignado();                 
         $data['listclientes'] = $this->Estoqueconsignado_model->get_listcliente();     
@@ -38,11 +37,10 @@ class Estoqueconsignado extends CI_Controller{
     function get_cliente($IDPessoa)
         
     {
-        
-        $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_estoqueconsignado($IDPessoa); 
-        $data['listclientes'] = $this->Estoqueconsignado_model->get_listcliente();     
-        $data['_view'] = 'estoqueconsignado/index';
-        $this->load->view('layouts/main',$data);
+        $data = $this->Estoqueconsignado_model->get_estoqueconsignado($IDPessoa); 
+      
+       
+     
     }
 
     /*

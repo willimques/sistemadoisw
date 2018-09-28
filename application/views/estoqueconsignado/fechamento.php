@@ -5,7 +5,7 @@
                 <div class="">
                     <h3>Cliente</h3>
                     
-                    <?php var_dump($listclientes)?>
+                    <?php var_dump($estoqueconsignado)?>
                 </div>
                 <div class="">
 
@@ -22,26 +22,23 @@
                 <table id="itensPedido"class="table table-striped" cellspacing="0" cellpadding="0">
                     <thead>
                         <tr>
-                           <th>Código</th>
-                            <th>Descrição</th>
-                            <th>Unidade</th>
-                            <th>Quantidade</th>
-                            <th>Preço</th>
-                            <th>Desc %</th>
-                            <th>Preço Un</th>
-                            <th>Preço Total</th>                                            
-                            <th class="actions">Ações</th>
+                        <th>Pedido</th>
+                        <th>Codigo</th>
+                        <th>Produto</th>                       
+                        <th>Quantidade</th>                     
+                        <th>Valor Unitario</th>                     
+                        <th>Valor Total</th>      
                         </tr>
                     </thead>
                     <tbody id="itens">
                         <?php foreach($estoqueconsignado as $E){ ?>
                         <tr>
-                            <td><?php echo $E['IDPedido']; ?></td>
-                            <td><?php echo $E['codigo']; ?></td>
-                            <td><?php echo $E['IDProduto']; ?></td>                  
-                            <td><?php echo $E['qtde']; ?></td>                   
-                            <td><?php echo $E['valor_unitario']; ?></td>                   
-                            <td class=".sum"><?php echo ($E['valor_unitario']*$E['qtde']);?></td>                  
+                        <td><?php echo $E['IDPedido']; ?></td>
+                        <td><?php echo $E['codigo']; ?></td>
+                        <td><?php echo $E['IDProduto']; ?></td>                  
+                        <td  contenteditable="true"<?php echo $E['qtde']; ?></td>                   
+                        <td><?php echo $E['valor_unitario']; ?></td>                   
+                        <td class=".sum"><?php echo ($E['valor_unitario']*$E['qtde']);?></td>                 
 
                         </tr>
                         <?php } ?>
@@ -174,3 +171,28 @@
 
     <?php echo form_close(); ?>
 </div>
+
+
+<script>
+ $(document).ready(function(){ 
+ 
+ 
+            quant = $('#qtd').val();
+            precotab = $('#precotab').val();
+            preco =  $('#precun').val();          
+            precototal = quant*preco; 
+            desc =  Math.ceil((1-(preco/precotab))*100);
+            $('#precototal').val(precototal);
+            $('#desc').val(desc);
+ 
+ 
+ 
+ 
+ 
+ 
+ });
+
+
+
+
+</script>

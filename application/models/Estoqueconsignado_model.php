@@ -76,4 +76,10 @@ class Estoqueconsignado_model extends CI_Model
     {
         return $this->db->delete('EstoqueConsignado',array('IDPedido'=>$IDEstoqueConsignado));
     }
+    
+      function add_fechamento($params)
+    {
+        $this->db->insert('fechamentoconsignado',$params);
+        return $this->db->insert_id();
+    }
 }

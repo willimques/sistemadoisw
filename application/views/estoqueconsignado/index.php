@@ -34,7 +34,7 @@
                                 <span class="text-danger"><?php echo form_error('IDPessoa');?></span>
 
                                 <div class="input-group-append">
-                                    <a id="btnbuscar"  class="btn btn-info" href="#" >Fazer fechamento</a>
+                                    <a id="fecha"  class="btn btn-info" href="#" >Fazer fechamento</a>
                                 </div>
 
                             </div>
@@ -89,15 +89,21 @@
 
 
 <script>
-
-    $(document).ready(function() {
-        
-         var cliente = $("#selCLiente").val() ;
+    
+    $(document).on( "click","#fecha",function(){ 
+    
+       var cliente = $("#selCLiente").val() ;
+        console.log(cliente);
          
         url = '<?php echo base_url('estoqueconsignado/fechamento')?>/'+cliente;
        
-         $("#btnbuscar").attr("href", url);   
+         $("#fecha").attr("href", url);   
      
+    });
+
+    $(document).ready(function() {
+        
+      
         $('#tabest').DataTable( {
             "dom": '<"row"<"col-md-6 "f><"#btntoogle.col-md-6"B>>t<"row"<"col-4"l><"col-4"i><"col-4"p>> ' ,
             buttons: [

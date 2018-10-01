@@ -139,6 +139,10 @@ class Estoqueconsignado extends CI_Controller{
 
     function fechamento($IDEstoqueConsignado){
 
+        if($IDEstoqueConsignado==null){
+
+            redirect('estoqueconsignado/index');
+        }
 
         $data['estoqueconsignado'] = $this->Estoqueconsignado_model->get_estoqueconsignado($IDEstoqueConsignado);      
         $data['_view'] = 'estoqueconsignado/fechamento';
@@ -147,11 +151,24 @@ class Estoqueconsignado extends CI_Controller{
 
 
     }
-     function fecha(){
-         
-        if(isset($_POST) && count($_POST) > 0)     
-        
+    function fecha(){
+
+
+        if(isset($_POST) && count($_POST) > 0)    
+          
         {   
+            $params = array(
+
+                'IDPessoa' => $this->input->post('id_pessoa') ,
+                'valor_total' => $this->input->post('total_fecha')                                
+
+            );
+
+            $this->load->model('estoqueconsignado_model');
+
+            $fechamento_id = $this->Estoqueconsignado_model->add_fechamento($params); 
+
+
             $prod = $this->input->post('produto');
 
             $produto = (json_decode($prod));
@@ -160,21 +177,24 @@ class Estoqueconsignado extends CI_Controller{
             for($i=0;$i<$tam;$i++){
 
                 $params = array(
-                    
-                    'IDProduto' => $produto[$i]->IDProduto,
-                    'datafecha' => $this->input->post('datafecha'),
-                    'qtde' => $produto[$i]->qtd,                  
 
+                    'IDItens_fechamento' => $fechamento_id,
+                    'IDProduto' => $produto[$i]->IDProduto ,
+                    'qtde' => $produto[$i]->qtd,
+                    'IDPedido' => $produto[$i]->ped,
+                    'valor_unitario' => $produto[$i]->val_un
                 );
 
                 $this->load->model('estoqueconsignado_model');
 
-                $fechamento_id = $this->Estoqueconsignado_model->add_fechamento($params); 
-                redirect('estoqueconsignado/index');
-        }
+                $fechamentoitens_id = $this->Estoqueconsignado_model->add_itens_fechamento($params); 
+            }
 
-      
+            redirect('estoqueconsignado/index');
+
+
+
+        }
     }
-     }
 
 }   

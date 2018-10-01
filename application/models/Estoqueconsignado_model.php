@@ -82,4 +82,10 @@ class Estoqueconsignado_model extends CI_Model
         $this->db->insert('fechamentoconsignado',$params);
         return $this->db->insert_id();
     }
+    
+     function add_itens_fechamento($params)
+    {
+        $this->db->insert('itens_fechamento',$params);
+        return $this->db->insert_id();
+    }
 }

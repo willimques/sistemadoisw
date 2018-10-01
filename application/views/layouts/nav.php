@@ -98,11 +98,13 @@
                <i class="fas fa-chart-bar"></i>
                 <span>Vendas</span></a>
             <div class="dropdown-menu" aria-labelledby="menuVenda">  
-                <a class="dropdown-item" href="<?php echo base_url('')?>">Venda</a>
+                <a class="dropdown-item" href="<?php echo base_url('pedido')?>">Venda</a>
+<!--
                 <a class="dropdown-item" href="<?php echo base_url('')?>">Venda Consignada</a>
                 <a class="dropdown-item" href="<?php echo base_url('')?>">Tabela de Preço</a>
-                <a class="dropdown-item" href="<?php echo base_url('')?>">Fechamento de Venda</a>
-                <a class="dropdown-item" href="<?php echo base_url('')?>">Devoluções</a>            
+-->
+                <a class="dropdown-item" href="<?php echo base_url('fechamento')?>">Fechamento de Venda</a>
+<!--                <a class="dropdown-item" href="<?php echo base_url('')?>">Devoluções</a>            -->
             </div>
         </li> 
         <li class="nav-item dropdown">

@@ -224,6 +224,23 @@ class Pedido extends CI_Controller{
         echo json_encode($produto);
 
     }
+    
+    function invoice($IDPedido){
+        
+        $data['pedido'] = $this->Pedido_model->get_pedido($IDPedido);     
+        
+        $this->load->model('Pedidoitem_model');
+        
+        $data['itenspedido'] = $this->Pedidoitem_model->get_pedidoitem($IDPedido);
+        
+        $IDPessoa =   $data['pedido']['IDPessoa'];
+        
+        $this->load->model('Endereco_model');
+        $data['endereco'] = $this->Endereco_model->get_endereco($IDPessoa);
+          
+        $data['_view'] = 'pedido/invoice';
+        $this->load->view('layouts/main',$data);
+    }
 
 
 }

@@ -16,7 +16,7 @@ class Pedidoitem_model extends CI_Model
      */
     function get_pedidoitem($IDPedidoItens)
     {
-        return $this->db->get_where('PedidoItens',array('IDPedidoItens'=>$IDPedidoItens))->row_array();
+        return $this->db->get_where('PedidoItens',array('IDPedidoItens'=>$IDPedidoItens))->result_array();
     }
         
     /*

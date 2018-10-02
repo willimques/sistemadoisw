@@ -38,9 +38,6 @@ class Pedido extends CI_Controller{
     function add()
     {   
 
-
-
-
         $this->load->library('form_validation');
         $this->form_validation->set_rules('tipoPedido','Tipo Pedido','required');        
         $this->form_validation->set_rules('IDPessoa','Cliente','required');        

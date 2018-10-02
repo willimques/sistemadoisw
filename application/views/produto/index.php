@@ -5,17 +5,14 @@
                 <div class="col-md-8">
                     <h3>Produto</h3>
                 </div>
-
                 <div class="col-md-4">
                     <a href="<?php echo site_url('produto/add'); ?>" class="btn btn-success float-right mr-4">Adicionar</a> 
                 </div>
             </div> 
-
         </div>
     </div> 
 <div class="container-fluid">
         <div class="card-body">         
-
             <table id="dataTable" class="table table-striped table-bordered" >
                 <thead>
                     <tr>         

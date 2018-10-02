@@ -83,7 +83,7 @@
 	<div class="form-group">
 		<label for="nome" class="col-md-4 control-label">Nome</label>
 		<div class="col-md-8">
-			<input type="text" name="nome" value="<?php echo ($this->input->post('nome') ? $this->input->post('nome') : $produto['nome']); ?>" class="form-control" id="nome" />
+			<input type="text" name="nome_produto" value="<?php echo ($this->input->post('nome_produto') ? $this->input->post('nome_produto') : $produto['nome_produto']); ?>" class="form-control" id="nome" />
 		</div>
 	</div>
 	<div class="form-group">

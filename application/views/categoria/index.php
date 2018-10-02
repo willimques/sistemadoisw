@@ -25,10 +25,6 @@
     </div>       
     <div class="container-fluid">
         <div class="card-body">  
-            <div class="pull-right">
-
-            </div>
-
             <table id="dataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>                     

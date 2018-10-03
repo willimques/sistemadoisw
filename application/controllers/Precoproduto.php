@@ -38,6 +38,8 @@ class Precoproduto extends CI_Controller{
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
+				'IDPreco' => $this->input->post('IDPreco'),
+				'IDProduto' => $this->input->post('IDProduto'),
 				'valor' => $this->input->post('valor'),
             );
             
@@ -45,7 +47,13 @@ class Precoproduto extends CI_Controller{
             redirect('precoproduto/index');
         }
         else
-        {            
+        {    
+            $this->load->model('Preco_model');
+            $data['all_tabelas'] = $this->Preco_model->get_all_precos();
+            $this->load->model('Produto_model');
+            $data['all_produtos'] = $this->Produto_model->get_all_produtos();
+                
+            
             $data['_view'] = 'precoproduto/add';
             $this->load->view('layouts/main',$data);
         }

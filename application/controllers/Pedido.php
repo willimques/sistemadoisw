@@ -46,12 +46,13 @@ class Pedido extends CI_Controller{
 
         if($this->form_validation->run())
         {   
-
+          
             $params = array(
                 'tipoPedido' => $this->input->post('tipoPedido'),
                 'IDPessoa' => $this->input->post('IDPessoa'),
                 'tipoPagamento' => $this->input->post('tipoPagamento'),				
                 'data' => $this->input->post('data'),				
+                'Valor_Pedido' => $this->input->post('total'),				
             );
 
             $pedido_id = $this->Pedido_model->add_pedido($params);
@@ -68,6 +69,7 @@ class Pedido extends CI_Controller{
                     'IDProduto' => $produto[$i]->IDProduto,
                     'dataVenda' => $this->input->post('data'),
                     'quantidade' => $produto[$i]->qtd,
+                    'preco_tab' => $produto[$i]->precotab,
                     'precoUnitario' => $produto[$i]->precoun,
                     'precoTotal' =>$produto[$i]->precototal,
                     'descontoUnitario' => $produto[$i]->desc,
@@ -111,7 +113,7 @@ class Pedido extends CI_Controller{
 
             }
 
-            redirect('pedido/index');
+          redirect('pedido/index');
         }
         else
         {
@@ -223,6 +225,23 @@ class Pedido extends CI_Controller{
 
         echo json_encode($produto);
 
+    }
+    
+    function invoice($IDPedido){
+        
+        $data['pedido'] = $this->Pedido_model->get_pedido($IDPedido);     
+        
+        $this->load->model('Pedidoitem_model');
+        
+        $data['itenspedido'] = $this->Pedidoitem_model->get_pedidoitem($IDPedido);
+        
+        $IDPessoa =   $data['pedido']['IDPessoa'];
+        
+        $this->load->model('Endereco_model');
+        $data['endereco'] = $this->Endereco_model->get_endereco($IDPessoa);
+          
+        $data['_view'] = 'pedido/invoice';
+        $this->load->view('layouts/main',$data);
     }
 
 

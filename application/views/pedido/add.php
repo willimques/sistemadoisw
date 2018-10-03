@@ -267,7 +267,7 @@
                     </div>               
 
                     <input hidden type="text" name="produto" value="" class="form-control" id="produto" />
-                    <span class="text-danger"><?php echo form_error('datafecha');?></span>
+                    <span class="text-danger"><?php echo form_error('produto');?></span>
 
 
 

@@ -38,7 +38,7 @@
                     <th>Tipo Pedido</th>
                     <th>Situacao Pedido</th>
                     <th>Data</th>
-                    <th>Comissao</th>
+                    <th>Valor Pedido</th>
                     <th>Ações</th>
                 </tr>
                     </thead>
@@ -50,10 +50,10 @@
                     <td><?php echo $P['Descricao']; ?></td>
                     <td><?php echo $P['situacaoPedido']; ?></td>
                     <td><?php echo date('d/m/Y', strtotime($P['data'])); ?></td>  
-                    <td><?php echo $P['comissao']; ?></td>
+                    <td><?php echo $P['Valor_Pedido']; ?></td>
                     <td>
-<!--                    <a href="<?php echo site_url('pedido/edit/'.$P['IDPedido']); ?>" class="btn btn-info btn-xs">Editar</a> -->
-                        <a href="<?php echo site_url('pedido/remove/'.$P['IDPedido']); ?>" class="btn btn-danger btn-xs">Deletar</a>
+                        <a href="<?php echo site_url('pedido/invoice/'.$P['IDPedido']); ?>" class="fas fa-info-circle"></a>
+                        <a href="<?php echo site_url('pedido/remove/'.$P['IDPedido']); ?>"class="fas fa-minus-circle"></a>
                     </td>
                 </tr>
                 <?php } ?>

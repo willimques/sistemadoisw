@@ -18,6 +18,7 @@ class Pedido_model extends CI_Model
      */
     function get_pedido($IDPedido)
     {
+                $this->db->join ( 'pessoa' ,  'pedido.IDPessoa = pessoa.IDPessoa' );    
         return $this->db->get_where('Pedido',array('IDPedido'=>$IDPedido))->row_array();
     }
   

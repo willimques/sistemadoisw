@@ -37,7 +37,7 @@
         <script src="<?php echo base_url('assets/jquery/jquery.min.js')?>"></script>
         <script src="<?php echo base_url('assets/js/accounting.min.js')?>"></script>
         <script src="<?php echo base_url('assets/datatables/datatables.min.js')?>"></script>
-        <script src="<?php echo base_url('assets/jQuery.print/dist/jQuery.print.min.js')?>"></script>
+        <script src="<?php echo base_url('assets/printThis/printThis.js')?>"></script>
         
         <!-- Custom CSS   -->
         <link rel="stylesheet" href = "<?php echo base_url('assets/css/style.css')?>">

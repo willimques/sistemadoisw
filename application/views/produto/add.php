@@ -31,7 +31,7 @@
 
         <!--Menu Dados Gerais -->
         <div class="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
-           <!-- <?php echo form_open('produto/add',array("class"=>"form-horizontal")); ?>-->
+            <?php echo form_open('produto/add',array("class"=>"form-horizontal")); ?>
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <div class="form-group">
@@ -304,16 +304,16 @@
         </div>
 
         <!--Menu Arquivos e imagens-->
-<div class="tab-pane fade show" id="arqImg" role="tabpanel" aria-labelledby="info-tab">
+        <div class="tab-pane fade show" id="arqImg" role="tabpanel" aria-labelledby="info-tab">
             <div class="form-group col-9">
                 <div class="form-label-group">
-                    <?php if(isset($error)):?>
+                    <!--  <?php if(isset($error)):?>
                     <div class="alert alert-error">
                         <?=$error?>
                     </div>
-                    <?php endif; ?>
+                    <?php endif; ?>  -->
                     <!--url com a rota (controler/função do controler)-->
-                    <form action="<?=base_url('Produto/Up')?>" method="POST" enctype="multipart/form-data">
+                    <!--  <form action="<?=base_url('Produto/Up')?>" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Selecione um arquivo (zip, rar, pdf, docx, xls, jpg, png, gif)</label>
                             <input type="file" name="arquivo" />
@@ -321,8 +321,8 @@
                         <div class="form-group">
                             <input type="submit" class="btn btn-success" value="Processar" />
                         </div>                
-                    </form>          
-                </div> 
+                    </form>     -->
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-12">
@@ -332,17 +332,7 @@
                     <button class="btn btn btn-danger" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
                 </div>
             </div>
-    <!-- <?php echo form_close(); ?>-->
+            <?php echo form_close(); ?>
         </div>
-        <script>
-            $(document).ready(
-                function() {
-                    $('#Grupo').change(function() {
-                        t = $('#Grupo').val()
-                        console.log(t)
-                    })
-                }
-            )
-        </script>
     </div>
 </div>

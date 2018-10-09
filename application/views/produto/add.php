@@ -306,7 +306,7 @@
         <div class="tab-pane fade show" id="arqImg" role="tabpanel" aria-labelledby="info-tab">
             <div class="form-group">
 
-                <div class="form-control-group" name="upload" action="<?=base_url('up/add')?>" method="POST" enctype="multipart/form-data">
+                <form class="form-control-group" name="upload" action="<?=base_url('up/add')?>" method="POST" enctype="multipart/form-data">
                     <div class="row-sm">
                         <label>Selecione um arquivo (jpg, png, gif)</label>
                         <input type="file" class="form-control" name="arquivo" lang id=arquivo />
@@ -314,7 +314,7 @@
                     <div>
                         <input type="submit" name="subir" value="Salvar imagem" />
                     </div>
-                </div>
+                </form>
 
                 <table id="dataTable" class="table table-striped table-bordered">
                     <?php foreach($up as $U){ ?>
@@ -339,11 +339,8 @@
                     <button class="btn btn btn-primary" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
                     <a href="<?php echo base_url()?>produto" class="btn btn btn-danger" role="button" aria-pressed="true">Cancelar</a>
                     
-                </div>
-                
-            </div>
-            
-        </div>
-         
+                </div>   
+            </div> 
+        </div> 
     </div>
 </div>

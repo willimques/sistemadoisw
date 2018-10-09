@@ -9,7 +9,6 @@
 				foreach($all_grupos as $grupo)
 				{
 					$selected = ($grupo['IDGrupo'] == $produto['IDGrupo']) ? ' selected="selected"' : "";
-
 					echo '<option value="'.$grupo['IDGrupo'].'" '.$selected.'>'.$grupo['descricao'].'</option>';
 				} 
 				?>

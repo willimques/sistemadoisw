@@ -1,3 +1,4 @@
+
 <div class="card">
  <div class="card-header">
         <div class="card-title">
@@ -11,6 +12,7 @@
             </div> 
         </div>
     </div> 
+    
 <div class="container-fluid">
         <div class="card-body">         
             <table id="dataTable" class="table table-striped table-bordered" >
@@ -31,7 +33,6 @@
                 <tbody>
                     <?php foreach($produtos as $P){ ?>
                     <tr>
-					    			
 		                <td><?php echo $P['nome_produto']; ?></td>
 		                <td><?php echo $P['codigo']; ?></td>
 		                <td><?php echo $P['precoCusto']; ?></td>
@@ -39,7 +40,7 @@
 		                <td><?php echo $P['situacao']; ?></td>
 		                <td><?php echo $P['descricao']; ?></td>
 		                <td><?php echo $P['codBarras']; ?></td>
-		                <td><?php echo $P['foto']; ?></td>
+		                <td><?php echo $P['arquivo']; ?></td>
 		                <td><?php echo $P['dataCadastro']; ?></td>
                         <td>                       
                         <a href="<?php echo site_url('produto/edit/'.$P['IDProduto']); ?>" class="fas fa-edit"></a> 

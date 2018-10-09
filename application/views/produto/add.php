@@ -28,10 +28,9 @@
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-
         <!--Menu Dados Gerais -->
         <div class="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
-            <?php echo form_open('produto/add',array("class"=>"form-horizontal")); ?>
+             <?php echo form_open('produto/add',array("class"=>"form-horizontal")); ?>
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <div class="form-group">
@@ -150,7 +149,7 @@
                 <div class="col-xs-12">
                     <br>
                     <button class="btn btn btn-primary" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
-                    <button class="btn btn btn-danger" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
+                    <a href="<?php echo base_url()?>produto" class="btn btn btn-danger" role="button" aria-pressed="true">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -212,7 +211,7 @@
                 <div class="col-xs-12">
                     <br>
                     <button class="btn btn btn-primary" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
-                    <button class="btn btn btn-danger" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
+                    <a href="<?php echo base_url()?>produto" class="btn btn btn-danger" role="button" aria-pressed="true">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -267,7 +266,7 @@
                 <div class="col-xs-12">
                     <br>
                     <button class="btn btn btn-primary" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
-                    <button class="btn btn btn-danger" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
+                    <a href="<?php echo base_url()?>produto" class="btn btn btn-danger" role="button" aria-pressed="true">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -298,41 +297,53 @@
                 <div class="col-xs-12">
                     <br>
                     <button class="btn btn btn-primary" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
-                    <button class="btn btn btn-danger" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
-                </div>
-            </div>
-        </div>
-
-        <!--Menu Arquivos e imagens-->
-        <div class="tab-pane fade show" id="arqImg" role="tabpanel" aria-labelledby="info-tab">
-            <div class="form-group col-9">
-                <div class="form-label-group">
-                    <!--  <?php if(isset($error)):?>
-                    <div class="alert alert-error">
-                        <?=$error?>
-                    </div>
-                    <?php endif; ?>  -->
-                    <!--url com a rota (controler/função do controler)-->
-                    <!--  <form action="<?=base_url('Produto/Up')?>" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Selecione um arquivo (zip, rar, pdf, docx, xls, jpg, png, gif)</label>
-                            <input type="file" name="arquivo" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Processar" />
-                        </div>                
-                    </form>     -->
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-12">
-                    <br>
-                    <button class="btn btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
-                    <button class="btn btn btn-primary" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
-                    <button class="btn btn btn-danger" type="cancel"><i class="glyphicon glyphicon-repeat"></i>Cancelar</button>
+                    <a href="<?php echo base_url()?>produto" class="btn btn btn-danger" role="button" aria-pressed="true">Cancelar</a>
                 </div>
             </div>
             <?php echo form_close(); ?>
         </div>
+        <!--Menu Arquivos e imagens-->
+        <div class="tab-pane fade show" id="arqImg" role="tabpanel" aria-labelledby="info-tab">
+            <div class="form-group">
+
+                <div class="form-control-group" name="upload" action="<?=base_url('up/add')?>" method="POST" enctype="multipart/form-data">
+                    <div class="row-sm">
+                        <label>Selecione um arquivo (jpg, png, gif)</label>
+                        <input type="file" class="form-control" name="arquivo" lang id=arquivo />
+                    </div><br>
+                    <div>
+                        <input type="submit" name="subir" value="Salvar imagem" />
+                    </div>
+                </div>
+
+                <table id="dataTable" class="table table-striped table-bordered">
+                    <?php foreach($up as $U){ ?>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <?php echo $U['nome']; ?>
+                            </td>
+                            <td>
+                                <!--<a href="</?php echo site_url('fornecedor/edit/'.$F['IDFornecedor']); ?>" class="btn btn-info btn-xs">Edit</a> -->
+                                <img class="img-responsive avatar-view" src="<?php echo base_url('/'.$U['nome'])?>" style="width: 100px; height: 100px;" alt="Avatar" title="imagem">
+                                <a href="<?php echo site_url('up/remove/'.$U['IDImagem']); ?>" class="btn btn-danger btn-xs">Remover</a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <div class="col-xs-12">
+                    
+                    <br>
+                    <button class="btn btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Salvar</button>
+                    <button class="btn btn btn-primary" type="reset"><i class="glyphicon glyphicon-repeat"></i>Limpar</button>
+                    <a href="<?php echo base_url()?>produto" class="btn btn btn-danger" role="button" aria-pressed="true">Cancelar</a>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+         
     </div>
 </div>

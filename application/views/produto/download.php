@@ -1,3 +1,4 @@
+
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -31,14 +32,13 @@
         <div class="container-fluid">
             <div class="card-body">
                 <div>
-                    <h3>Arquivo salvo com sucesso</h3>
+                    <h3>Imagem salva com sucesso</h3>
                     <?php foreach($dadosArquivo as $key => $value):
                     if($value): ?>
-                    <strong><?=$key?></strong>:
-                    <?=$value?>
+                    <strong><?=$key?></strong>: <?=$value?>
                     <?php endif; endforeach;?>
-                    <hr />
-                    <a href="<?=base_url("produto/add")?>" class="btn btn-info btn-xs">Novo arquivo</a>
+                    <hr/>
+                    <a href="<?php echo base_url()?>produto" class="btn btn" role="button" aria-pressed="true">Salvar formulario</a>
                     <a href="<?=$urlDownload?>" class="btn btn-info btn-xs">Download</a>
                 </div>
             </div>

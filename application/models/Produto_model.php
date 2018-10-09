@@ -41,7 +41,6 @@ class Produto_model extends CI_Model
 
     }
 
-
     /*
      * Get all produtos
      */
@@ -75,5 +74,33 @@ class Produto_model extends CI_Model
     function delete_produto($IDProduto)
     {
         return $this->db->delete('Produto',array('IDProduto'=>$IDProduto));
+    }
+    
+    function get_imagem($IDImagem)
+    {
+        return $this->db->get_where('Up',array('IDImagem'=>$IDImagem))->row_array();
+    }
+    
+    /*
+     * Get unidade by IDImagens
+     */
+    function get_all_imagens()
+    {
+        $this->db->order_by('IDImagem', 'desc');
+        return $this->db->get('up')->result_array(); 
+    }
+    
+    /*
+     * function to add new unidade
+     */
+    function add_imagem($params)
+    {                     //nome da tabela
+        $this->db->insert('up',$params);
+        return $this->db->insert_id();
+    }
+    
+    function delete_imagem($IDImagem)
+    {
+        return $this->db->delete('Up',array('IDImagem'=>$IDImagem));
     }
 }

@@ -18,7 +18,7 @@ class Produto_model extends CI_Model
      */
     function get_produto($IDProduto)
     {
-        return $this->db->get_where('Produto',array('IDProduto'=>$IDProduto))->row_array();
+        return $this->db->get_where('produto',array('IDProduto'=>$IDProduto))->row_array();
     }
 
     function get_like_produto($busca)   
@@ -41,13 +41,14 @@ class Produto_model extends CI_Model
 
     }
 
+
     /*
      * Get all produtos
      */
     function get_all_produtos()
     {
         $this->db->order_by('IDProduto', 'desc');
-        return $this->db->get('Produto')->result_array();
+        return $this->db->get('produto')->result_array();
     }
 
     /*
@@ -55,7 +56,7 @@ class Produto_model extends CI_Model
      */
     function add_produto($params)
     {
-        $this->db->insert('Produto',$params);
+        $this->db->insert('produto',$params);
         return $this->db->insert_id();
     }
 
@@ -65,7 +66,7 @@ class Produto_model extends CI_Model
     function update_produto($IDProduto,$params)
     {
         $this->db->where('IDProduto',$IDProduto);
-        return $this->db->update('Produto',$params);
+        return $this->db->update('produto',$params);
     }
 
     /*
@@ -73,34 +74,6 @@ class Produto_model extends CI_Model
      */
     function delete_produto($IDProduto)
     {
-        return $this->db->delete('Produto',array('IDProduto'=>$IDProduto));
-    }
-    
-    function get_imagem($IDImagem)
-    {
-        return $this->db->get_where('Up',array('IDImagem'=>$IDImagem))->row_array();
-    }
-    
-    /*
-     * Get unidade by IDImagens
-     */
-    function get_all_imagens()
-    {
-        $this->db->order_by('IDImagem', 'desc');
-        return $this->db->get('up')->result_array(); 
-    }
-    
-    /*
-     * function to add new unidade
-     */
-    function add_imagem($params)
-    {                     //nome da tabela
-        $this->db->insert('up',$params);
-        return $this->db->insert_id();
-    }
-    
-    function delete_imagem($IDImagem)
-    {
-        return $this->db->delete('Up',array('IDImagem'=>$IDImagem));
+        return $this->db->delete('produto',array('IDProduto'=>$IDProduto));
     }
 }

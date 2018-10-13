@@ -11,13 +11,11 @@ class Revendedor extends CI_Controller{
         $this->load->model('Revendedor_model'); 
         $user = $this->session->userdata();  
         
-        $row = count($user);      
-              
-        if($row==1){     
-            
+       if($user==false){ 
+        
             redirect('login');
+        
         }
-         
         
     } 
 

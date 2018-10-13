@@ -17,7 +17,7 @@ class Revendedor_model extends CI_Model
     function get_revendedor($IDRevendedor)
     {
         $this->db->join('pessoa', 'pessoa.IDPessoa = revendedor.IDRevendedor');        
-        return $this->db->get_where('Revendedor',array('IDRevendedor'=>$IDRevendedor))->row_array();
+        return $this->db->get_where('revendedor',array('IDRevendedor'=>$IDRevendedor))->row_array();
     }
         
     /*
@@ -29,7 +29,7 @@ class Revendedor_model extends CI_Model
     {
         $this->db->join('pessoa', 'pessoa.IDPessoa = revendedor.IDRevendedor');
         $this->db->order_by('IDRevendedor', 'desc');
-        return $this->db->get('Revendedor')->result_array();
+        return $this->db->get('revendedor')->result_array();
     }
         
     /*
@@ -37,7 +37,7 @@ class Revendedor_model extends CI_Model
      */
     function add_revendedor($params)
     {
-        $this->db->insert('Revendedor',$params);
+        $this->db->insert('revendedor',$params);
         return $this->db->insert_id();
     }
     
@@ -47,7 +47,7 @@ class Revendedor_model extends CI_Model
     function update_revendedor($IDRevendedor,$params)
     {
         $this->db->where('IDRevendedor',$IDRevendedor);
-        return $this->db->update('Revendedor',$params);
+        return $this->db->update('revendedor',$params);
     }
     
     /*
@@ -55,6 +55,6 @@ class Revendedor_model extends CI_Model
      */
     function delete_revendedor($IDRevendedor)
     {
-        return $this->db->delete('Revendedor',array('IDRevendedor'=>$IDRevendedor));
+        return $this->db->delete('revendedor',array('IDRevendedor'=>$IDRevendedor));
     }
 }

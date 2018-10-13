@@ -16,7 +16,7 @@ class Pedidoitem_model extends CI_Model
      */
     function get_pedidoitem($IDPedidoItens)
     {
-        return $this->db->get_where('PedidoItens',array('IDPedidoItens'=>$IDPedidoItens))->result_array();
+        return $this->db->get_where('pedidoitens',array('IDPedidoItens'=>$IDPedidoItens))->result_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Pedidoitem_model extends CI_Model
     function get_all_pedidoitens()
     {
         $this->db->order_by('IDPedidoItens', 'desc');
-        return $this->db->get('PedidoItens')->result_array();
+        return $this->db->get('pedidoitens')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Pedidoitem_model extends CI_Model
      */
     function add_pedidoitem($params)
     {
-        $this->db->insert('PedidoItens',$params);
+        $this->db->insert('pedidoitens',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Pedidoitem_model extends CI_Model
     function update_pedidoitem($IDPedidoItens,$params)
     {
         $this->db->where('IDPedidoItens',$IDPedidoItens);
-        return $this->db->update('PedidoItens',$params);
+        return $this->db->update('pedidoitens',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Pedidoitem_model extends CI_Model
      */
     function delete_pedidoitem($IDPedidoItens)
     {
-        return $this->db->delete('PedidoItens',array('IDPedidoItens'=>$IDPedidoItens));
+        return $this->db->delete('pedidoitens',array('IDPedidoItens'=>$IDPedidoItens));
     }
 }

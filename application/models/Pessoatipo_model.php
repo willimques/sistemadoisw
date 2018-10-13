@@ -16,7 +16,7 @@ class Pessoatipo_model extends CI_Model
      */
     function get_pessoatipo($IDPessoaTipo)
     {
-        return $this->db->get_where('PessoaTipo',array('IDPessoaTipo'=>$IDPessoaTipo))->row_array();
+        return $this->db->get_where('pessoatipo',array('IDPessoaTipo'=>$IDPessoaTipo))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Pessoatipo_model extends CI_Model
     function get_all_pessoatipos()
     {
         $this->db->order_by('IDPessoaTipo', 'desc');
-        return $this->db->get('PessoaTipo')->result_array();
+        return $this->db->get('pessoatipo')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Pessoatipo_model extends CI_Model
      */
     function add_pessoatipo($params)
     {
-        $this->db->insert('PessoaTipo',$params);
+        $this->db->insert('pessoatipo',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Pessoatipo_model extends CI_Model
     function update_pessoatipo($IDPessoaTipo,$params)
     {
         $this->db->where('IDPessoaTipo',$IDPessoaTipo);
-        return $this->db->update('PessoaTipo',$params);
+        return $this->db->update('pessoatipo',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Pessoatipo_model extends CI_Model
      */
     function delete_pessoatipo($IDPessoaTipo)
     {
-        return $this->db->delete('PessoaTipo',array('IDPessoaTipo'=>$IDPessoaTipo));
+        return $this->db->delete('pessoatipo',array('IDPessoaTipo'=>$IDPessoaTipo));
     }
 }

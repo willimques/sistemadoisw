@@ -16,7 +16,7 @@ class Precoproduto_model extends CI_Model
      */
     function get_precoproduto($IDPreco)
     {
-        return $this->db->get_where('PrecoProduto',array('IDPreco'=>$IDPreco))->row_array();
+        return $this->db->get_where('precoproduto',array('IDPreco'=>$IDPreco))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Precoproduto_model extends CI_Model
     function get_all_precoprodutos()
     {
         $this->db->order_by('IDPreco', 'desc');
-        return $this->db->get('PrecoProduto')->result_array();
+        return $this->db->get('precoproduto')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Precoproduto_model extends CI_Model
      */
     function add_precoproduto($params)
     {
-        $this->db->insert('PrecoProduto',$params);
+        $this->db->insert('precoproduto',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Precoproduto_model extends CI_Model
     function update_precoproduto($IDPreco,$params)
     {
         $this->db->where('IDPreco',$IDPreco);
-        return $this->db->update('PrecoProduto',$params);
+        return $this->db->update('precoproduto',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Precoproduto_model extends CI_Model
      */
     function delete_precoproduto($IDPreco)
     {
-        return $this->db->delete('PrecoProduto',array('IDPreco'=>$IDPreco));
+        return $this->db->delete('precoproduto',array('IDPreco'=>$IDPreco));
     }
 }

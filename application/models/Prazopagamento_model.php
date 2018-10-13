@@ -16,7 +16,7 @@ class Prazopagamento_model extends CI_Model
      */
     function get_prazopagamento($IDPrazoPag)
     {
-        return $this->db->get_where('PrazoPagamento',array('IDPrazoPag'=>$IDPrazoPag))->row_array();
+        return $this->db->get_where('prazopagamento',array('IDPrazoPag'=>$IDPrazoPag))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Prazopagamento_model extends CI_Model
     function get_all_prazopagamentos()
     {
         $this->db->order_by('IDPrazoPag', 'desc');
-        return $this->db->get('PrazoPagamento')->result_array();
+        return $this->db->get('prazopagamento')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Prazopagamento_model extends CI_Model
      */
     function add_prazopagamento($params)
     {
-        $this->db->insert('PrazoPagamento',$params);
+        $this->db->insert('prazopagamento',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Prazopagamento_model extends CI_Model
     function update_prazopagamento($IDPrazoPag,$params)
     {
         $this->db->where('IDPrazoPag',$IDPrazoPag);
-        return $this->db->update('PrazoPagamento',$params);
+        return $this->db->update('prazopagamento',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Prazopagamento_model extends CI_Model
      */
     function delete_prazopagamento($IDPrazoPag)
     {
-        return $this->db->delete('PrazoPagamento',array('IDPrazoPag'=>$IDPrazoPag));
+        return $this->db->delete('prazopagamento',array('IDPrazoPag'=>$IDPrazoPag));
     }
 }

@@ -13,23 +13,25 @@ class Login extends CI_Controller
 
             $email = $this->input->post('email');            
             $senha = md5($this->input->post('senha')); 
-            $usuario_id = $this->Login_model->get_user($email,$senha);             
-
+            $usuario_id = $this->Login_model->get_user($email,$senha); 
+           
+            
             if($usuario_id) { 
-                $this->session->set_userdata("usuario",$usuario_id);
+                $user = $this->session->set_userdata("usuario",$usuario_id);
                 $this->session->set_flashdata("sucess","logado com sucesso");
-                redirect('dashboard');               
+                              
+                redirect('dashboard');                  
 
             }else{
-
                
-                $this->session->set_flashdata("danger","Usuario ou senha Inválido");
-                redirect('login');
+            $this->session->set_flashdata("danger","Usuario ou senha Inválido");
+            redirect('login');
+                
             }
 
 
         }else{ 
-
+            
             $this->load->view('layouts/header');
             $this->load->view('layouts/login');  
 

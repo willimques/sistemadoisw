@@ -16,7 +16,7 @@ class Marca_model extends CI_Model
      */
     function get_marca($IDMarcas)
     {
-        return $this->db->get_where('Marcas',array('IDMarcas'=>$IDMarcas))->row_array();
+        return $this->db->get_where('marcas',array('IDMarcas'=>$IDMarcas))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Marca_model extends CI_Model
     function get_all_marcas()
     {
         $this->db->order_by('IDMarcas', 'desc');
-        return $this->db->get('Marcas')->result_array();
+        return $this->db->get('marcas')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Marca_model extends CI_Model
      */
     function add_marca($params)
     {
-        $this->db->insert('Marcas',$params);
+        $this->db->insert('marcas',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Marca_model extends CI_Model
     function update_marca($IDMarcas,$params)
     {
         $this->db->where('IDMarcas',$IDMarcas);
-        return $this->db->update('Marcas',$params);
+        return $this->db->update('marcas',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Marca_model extends CI_Model
      */
     function delete_marca($IDMarcas)
     {
-        return $this->db->delete('Marcas',array('IDMarcas'=>$IDMarcas));
+        return $this->db->delete('marcas',array('IDMarcas'=>$IDMarcas));
     }
 }

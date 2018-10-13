@@ -16,7 +16,7 @@ class Preco_model extends CI_Model
      */
     function get_preco($IDPreco)
     {
-        return $this->db->get_where('Preco',array('IDPreco'=>$IDPreco))->row_array();
+        return $this->db->get_where('preco',array('IDPreco'=>$IDPreco))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Preco_model extends CI_Model
     function get_all_precos()
     {
         $this->db->order_by('IDPreco', 'desc');
-        return $this->db->get('Preco')->result_array();
+        return $this->db->get('preco')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Preco_model extends CI_Model
      */
     function add_preco($params)
     {
-        $this->db->insert('Preco',$params);
+        $this->db->insert('preco',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Preco_model extends CI_Model
     function update_preco($IDPreco,$params)
     {
         $this->db->where('IDPreco',$IDPreco);
-        return $this->db->update('Preco',$params);
+        return $this->db->update('preco',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Preco_model extends CI_Model
      */
     function delete_preco($IDPreco)
     {
-        return $this->db->delete('Preco',array('IDPreco'=>$IDPreco));
+        return $this->db->delete('preco',array('IDPreco'=>$IDPreco));
     }
 }

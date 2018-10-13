@@ -5,6 +5,7 @@
  */
 
 class Pessoa extends CI_Controller{
+    
     function __construct()
     {
         parent::__construct();
@@ -12,15 +13,12 @@ class Pessoa extends CI_Controller{
         $this->load->model('Pessoa_model');
         $this->load->model('Endereco_model');
         $this->load->model('Contato_model');
-        $this->load->model('PessoaFisica_model');
-        $this->load->model('PessoaJuridica_model');
-        
+        $this->load->model('Pessoafisica_model');
+        $this->load->model('Pessoajuridica_model');       
          
         $user = $this->session->userdata();  
-        
-        $row = count($user);      
-              
-        if($row==1){ 
+                       
+        if($user==false){ 
         
             redirect('login');
         
@@ -35,7 +33,6 @@ class Pessoa extends CI_Controller{
     function index()
     {
         $data['pessoas'] = $this->Pessoa_model->get_all_pessoas();
-
         $data['_view'] = 'pessoa/index';          
         $this->load->view('layouts/main',$data);
     }
@@ -179,8 +176,8 @@ class Pessoa extends CI_Controller{
 
             $data['endereco'] = $this->Endereco_model->get_endereco($IDPessoa);
             $data['contato'] = $this->Contato_model->get_contato($IDPessoa);
-            $data['dadosPF'] = $this->PessoaFisica_model->get_pessoafisica($IDPessoa);
-            $data['dadosPJ'] = $this->PessoaJuridica_model->get_pessoajuridica($IDPessoa);
+            $data['dadosPF'] = $this->Pessoafisica_model->get_pessoafisica($IDPessoa);
+            $data['dadosPJ'] = $this->Pessoajuridica_model->get_pessoajuridica($IDPessoa);
 
             $data['_view'] = 'pessoa/profile';
             $data['_custom'] = 'assets/pessoa/custom'; 
@@ -208,8 +205,8 @@ class Pessoa extends CI_Controller{
 
             $data['endereco'] = $this->Endereco_model->get_endereco($IDPessoa);
             $data['contato'] = $this->Contato_model->get_contato($IDPessoa);
-            $data['pessoafisica'] = $this->PessoaFisica_model->get_pessoafisica($IDPessoa);
-            $data['pessoajuridica'] = $this->PessoaJuridica_model->get_pessoajuridica($IDPessoa);
+            $data['pessoafisica'] = $this->Pessoafisica_model->get_pessoafisica($IDPessoa);
+            $data['pessoajuridica'] = $this->Pessoajuridica_model->get_pessoajuridica($IDPessoa);
 
             $this->load->library('form_validation');  
 
@@ -318,9 +315,9 @@ class Pessoa extends CI_Controller{
 
             $this->Contato_model->delete_contato($IDPessoa); 
 
-            $this->PessoaFisica_model->delete_pessoafisica($IDPessoa);  
+            $this->Pessoafisica_model->delete_pessoafisica($IDPessoa);  
 
-            $this->PessoaJuridica_model->delete_pessoajuridica($IDPessoa);            
+            $this->Pessoajuridica_model->delete_pessoajuridica($IDPessoa);            
 
             $this->Pessoa_model->delete_pessoa($IDPessoa);
                        

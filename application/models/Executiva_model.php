@@ -17,7 +17,7 @@ class Executiva_model extends CI_Model
     function get_executiva($IDExecutiva)
     {           
                 $this->db->join('pessoa', 'pessoa.IDPessoa = executiva.IDExecutiva');
-        return $this->db->get_where('Executiva',array('IDExecutiva'=>$IDExecutiva))->row_array();
+        return $this->db->get_where('executiva',array('IDExecutiva'=>$IDExecutiva))->row_array();
     }
         
     /*
@@ -27,7 +27,7 @@ class Executiva_model extends CI_Model
     {
         $this->db->join('pessoa', 'pessoa.IDPessoa = executiva.IDExecutiva');
         $this->db->order_by('IDExecutiva', 'desc');
-        return $this->db->get('Executiva')->result_array();
+        return $this->db->get('executiva')->result_array();
     }
         
     /*
@@ -35,7 +35,7 @@ class Executiva_model extends CI_Model
      */
     function add_executiva($params)
     {
-        $this->db->insert('Executiva',$params);
+        $this->db->insert('executiva',$params);
         return $this->db->insert_id();
     }
     
@@ -45,7 +45,7 @@ class Executiva_model extends CI_Model
     function update_executiva($IDExecutiva,$params)
     {
         $this->db->where('IDExecutiva',$IDExecutiva);
-        return $this->db->update('Executiva',$params);
+        return $this->db->update('executiva',$params);
     }
     
     /*
@@ -53,6 +53,6 @@ class Executiva_model extends CI_Model
      */
     function delete_executiva($IDExecutiva)
     {
-        return $this->db->delete('Executiva',array('IDExecutiva'=>$IDExecutiva));
+        return $this->db->delete('executiva',array('IDExecutiva'=>$IDExecutiva));
     }
 }

@@ -10,15 +10,6 @@ class Pessoa_model extends CI_Model
     {
         parent::__construct();
         
-        $user = $this->session->userdata();  
-        
-        $row = count($user);      
-              
-        if($row==1){  
-            
-             redirect('login');
-            
-        }
     }
     
     /*
@@ -27,7 +18,7 @@ class Pessoa_model extends CI_Model
     function get_pessoa($IDPessoa)
     {
                              
-        return $this->db->get_where('Pessoa',array('IDPessoa'=>$IDPessoa))->row_array();
+        return $this->db->get_where('pessoa',array('IDPessoa'=>$IDPessoa))->row_array();
         
     }
     
@@ -39,8 +30,8 @@ class Pessoa_model extends CI_Model
         
     {        
         $this->db->select ( '*' ); 
-        $this->db->from ( 'Pessoa' ); 
-        $this->db->join ( 'PessoaTipo' ,  'Pessoa.IDPessoaTipo = PessoaTipo.IDPessoaTipo' ); 
+        $this->db->from ( 'pessoa' ); 
+        $this->db->join ( 'pessoatipo' ,  'pessoa.IDPessoaTipo = pessoatipo.IDPessoaTipo' ); 
         $this->db->order_by('IDPessoa', 'desc');
         return $query=$this->db->get ()->result_array();
     }
@@ -49,9 +40,9 @@ class Pessoa_model extends CI_Model
         
     {        
         $this->db->select ( '*' ); 
-        $this->db->from ( 'Pessoa' ); 
+        $this->db->from ( 'pessoa' ); 
         $this->db->where('IDTipoCadastro',0);
-        $this->db->join ( 'PessoaTipo' ,  'Pessoa.IDPessoaTipo = PessoaTipo.IDPessoaTipo' ); 
+        $this->db->join ( 'pessoatipo' ,  'pessoa.IDPessoaTipo = pessoatipo.IDPessoaTipo' ); 
         $this->db->order_by('IDPessoa', 'desc');
         return $query=$this->db->get ()->result_array();;
     }
@@ -60,7 +51,7 @@ class Pessoa_model extends CI_Model
      */
     function add_pessoa($params)
     {
-        $this->db->insert('Pessoa',$params);
+        $this->db->insert('pessoa',$params);
         return $this->db->insert_id();
     }
     
@@ -70,7 +61,7 @@ class Pessoa_model extends CI_Model
     function update_pessoa($IDPessoa,$params)
     {
         $this->db->where('IDPessoa',$IDPessoa);
-        return $this->db->update('Pessoa',$params);
+        return $this->db->update('pessoa',$params);
     }
     
     /*
@@ -78,6 +69,6 @@ class Pessoa_model extends CI_Model
      */
     function delete_pessoa($IDPessoa)
     {
-        return $this->db->delete('Pessoa',array('IDPessoa'=>$IDPessoa));
+        return $this->db->delete('pessoa',array('IDPessoa'=>$IDPessoa));
     }
 }

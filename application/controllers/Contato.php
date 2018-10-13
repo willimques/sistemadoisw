@@ -11,11 +11,11 @@ class Contato extends CI_Controller{
         $this->load->model('Contato_model');
         
         $user = $this->session->userdata();  
+     
+       if($user==false){ 
         
-        $row = count($user);      
-              
-        if($row==1){                  
             redirect('login');
+        
         }
     } 
 

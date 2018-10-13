@@ -16,7 +16,7 @@ class Unidade_model extends CI_Model
      */
     function get_unidade($IDUnidades)
     {
-        return $this->db->get_where('Unidade',array('IDUnidades'=>$IDUnidades))->row_array();
+        return $this->db->get_where('unidade',array('IDUnidades'=>$IDUnidades))->row_array();
     }
     
     /*
@@ -24,7 +24,7 @@ class Unidade_model extends CI_Model
      */
     function get_all_unidades_count()
     {
-        $this->db->from('Unidade');
+        $this->db->from('unidade');
         return $this->db->count_all_results();
     }
         
@@ -38,7 +38,7 @@ class Unidade_model extends CI_Model
         {
             $this->db->limit($params['limit'], $params['offset']);
         }
-        return $this->db->get('Unidade')->result_array();
+        return $this->db->get('unidade')->result_array();
     }
         
     /*
@@ -46,7 +46,7 @@ class Unidade_model extends CI_Model
      */
     function add_unidade($params)
     {
-        $this->db->insert('Unidade',$params);
+        $this->db->insert('unidade',$params);
         return $this->db->insert_id();
     }
     
@@ -56,7 +56,7 @@ class Unidade_model extends CI_Model
     function update_unidade($IDUnidades,$params)
     {
         $this->db->where('IDUnidades',$IDUnidades);
-        return $this->db->update('Unidade',$params);
+        return $this->db->update('unidade',$params);
     }
     
     /*
@@ -64,6 +64,6 @@ class Unidade_model extends CI_Model
      */
     function delete_unidade($IDUnidades)
     {
-        return $this->db->delete('Unidade',array('IDUnidades'=>$IDUnidades));
+        return $this->db->delete('unidade',array('IDUnidades'=>$IDUnidades));
     }
 }

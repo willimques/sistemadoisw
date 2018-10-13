@@ -45,10 +45,10 @@ class Estoqueconsignado_model extends CI_Model
      */
     function get_all_estoqueconsignado()
     {
-        $this->db->join ( 'pessoa' ,  'Pessoa.IDPessoa = estoqueconsignado.IDPessoa' ); 
+        $this->db->join ( 'pessoa' ,  'pessoa.IDPessoa = estoqueconsignado.IDPessoa' ); 
         $this->db->join ( 'produto' ,  'produto.IDProduto = estoqueconsignado.IDProduto' ); 
         $this->db->order_by('IDEstoqueConsignado', 'desc');
-        return $this->db->get('EstoqueConsignado')->result_array();
+        return $this->db->get('estoqueconsignado')->result_array();
     }
         
     /*
@@ -56,7 +56,7 @@ class Estoqueconsignado_model extends CI_Model
      */
     function add_estoqueconsignado($params)
     {
-        $this->db->insert('EstoqueConsignado',$params);
+        $this->db->insert('estoqueconsignado',$params);
         return $this->db->insert_id();
     }
     
@@ -66,7 +66,7 @@ class Estoqueconsignado_model extends CI_Model
     function update_estoqueconsignado($IDEstoqueConsignado,$params)
     {
         $this->db->where('IDEstoqueConsignado',$IDEstoqueConsignado);
-        return $this->db->update('EstoqueConsignado',$params);
+        return $this->db->update('estoqueconsignado',$params);
     }
     
     /*
@@ -74,7 +74,7 @@ class Estoqueconsignado_model extends CI_Model
      */
     function delete_estoqueconsignado($IDEstoqueConsignado)
     {
-        return $this->db->delete('EstoqueConsignado',array('IDPedido'=>$IDEstoqueConsignado));
+        return $this->db->delete('estoqueconsignado',array('IDPedido'=>$IDEstoqueConsignado));
     }
     
       function add_fechamento($params)

@@ -18,7 +18,7 @@ class Fornecedor_model extends CI_Model
     function get_fornecedor($IDFornecedor)
     {
             $this->db->join('pessoa', 'pessoa.IDPessoa = fornecedor.IDFornecedor');
-        return $this->db->get_where('Fornecedor',array('IDFornecedor'=>$IDFornecedor))->row_array();
+        return $this->db->get_where('fornecedor',array('IDFornecedor'=>$IDFornecedor))->row_array();
     }
         
     /*
@@ -28,7 +28,7 @@ class Fornecedor_model extends CI_Model
     {
         $this->db->join('pessoa', 'pessoa.IDPessoa = fornecedor.IDFornecedor');
         $this->db->order_by('IDFornecedor', 'desc');
-        return $this->db->get('Fornecedor')->result_array();
+        return $this->db->get('fornecedor')->result_array();
     }
         
     /*
@@ -36,7 +36,7 @@ class Fornecedor_model extends CI_Model
      */
     function add_fornecedor($params)
     {
-        $this->db->insert('Fornecedor',$params);
+        $this->db->insert('fornecedor',$params);
         return $this->db->insert_id();
     }
     
@@ -46,7 +46,7 @@ class Fornecedor_model extends CI_Model
     function update_fornecedor($IDFornecedor,$params)
     {
         $this->db->where('IDFornecedor',$IDFornecedor);
-        return $this->db->update('Fornecedor',$params);
+        return $this->db->update('fornecedor',$params);
     }
     
     /*
@@ -54,6 +54,6 @@ class Fornecedor_model extends CI_Model
      */
     function delete_fornecedor($IDFornecedor)
     {
-        return $this->db->delete('Fornecedor',array('IDFornecedor'=>$IDFornecedor));
+        return $this->db->delete('fornecedor',array('IDFornecedor'=>$IDFornecedor));
     }
 }

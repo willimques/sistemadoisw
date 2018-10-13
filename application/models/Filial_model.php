@@ -17,7 +17,7 @@ class Filial_model extends CI_Model
      */
     function get_filial($IDFilial)
     {
-        return $this->db->get_where('Filial',array('IDFilial'=>$IDFilial))->row_array();
+        return $this->db->get_where('filial',array('IDFilial'=>$IDFilial))->row_array();
     }
         
     /*
@@ -26,7 +26,7 @@ class Filial_model extends CI_Model
     function get_all_filiais()
     {
         $this->db->order_by('IDFilial', 'desc');
-        return $this->db->get('Filial')->result_array();
+        return $this->db->get('filial')->result_array();
     }
         
     /*
@@ -34,7 +34,7 @@ class Filial_model extends CI_Model
      */
     function add_filial($params)
     {
-        $this->db->insert('Filial',$params);
+        $this->db->insert('filial',$params);
         return $this->db->insert_id();
     }
     
@@ -44,7 +44,7 @@ class Filial_model extends CI_Model
     function update_filial($IDFilial,$params)
     {
         $this->db->where('IDFilial',$IDFilial);
-        return $this->db->update('Filial',$params);
+        return $this->db->update('filial',$params);
     }
     
     /*
@@ -52,6 +52,6 @@ class Filial_model extends CI_Model
      */
     function delete_filial($IDFilial)
     {
-        return $this->db->delete('Filial',array('IDFilial'=>$IDFilial));
+        return $this->db->delete('filial',array('IDFilial'=>$IDFilial));
     }
 }

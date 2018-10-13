@@ -11,13 +11,12 @@ class Executiva extends CI_Controller{
         
         $this->load->model('Executiva_model');
          
-        $user = $this->session->userdata();  
+        $user = $this->session->userdata(); 
         
-        $row = count($user);      
-              
-        if($row==1){  
-            
+     if($user==false){ 
+        
             redirect('login');
+        
         }
     } 
 

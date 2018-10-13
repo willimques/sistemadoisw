@@ -19,7 +19,7 @@ class Cliente_model extends CI_Model
         
     {
         $this->db->join('pessoa', 'pessoa.IDPessoa = cliente.IDCliente');
-        return $this->db->get_where('Cliente',array('IDCliente'=>$IDCliente))->row_array();
+        return $this->db->get_where('cliente',array('IDCliente'=>$IDCliente))->row_array();
     }
         
     /*
@@ -30,7 +30,7 @@ class Cliente_model extends CI_Model
     {   
         $this->db->join('pessoa', 'pessoa.IDPessoa = cliente.IDCliente');
         $this->db->order_by('IDCliente', 'desc');
-        return $this->db->get('Cliente')->result_array();
+        return $this->db->get('cliente')->result_array();
     }
         
     /*
@@ -38,7 +38,7 @@ class Cliente_model extends CI_Model
      */
     function add_cliente($params)
     {
-        $this->db->insert('Cliente',$params);
+        $this->db->insert('cliente',$params);
         return $this->db->insert_id();
     }
     
@@ -48,7 +48,7 @@ class Cliente_model extends CI_Model
     function update_cliente($IDCliente,$params)
     {
         $this->db->where('IDCliente',$IDCliente);
-        return $this->db->update('Cliente',$params);
+        return $this->db->update('cliente',$params);
     }
     
     /*
@@ -56,6 +56,6 @@ class Cliente_model extends CI_Model
      */
     function delete_cliente($IDCliente)
     {
-        return $this->db->delete('Cliente',array('IDCliente'=>$IDCliente));
+        return $this->db->delete('cliente',array('IDCliente'=>$IDCliente));
     }
 }

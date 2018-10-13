@@ -17,7 +17,7 @@ class Categoria_model extends CI_Model
      */
     function get_categoria($IDCategoria)
     {
-        return $this->db->get_where('Categoria',array('IDCategoria'=>$IDCategoria))->row_array();
+        return $this->db->get_where('categoria',array('IDCategoria'=>$IDCategoria))->row_array();
     }
         
     /*
@@ -26,7 +26,7 @@ class Categoria_model extends CI_Model
     function get_all_categorias()
     {
         $this->db->order_by('IDCategoria', 'desc');
-        return $this->db->get('Categoria')->result_array();
+        return $this->db->get('categoria')->result_array();
     }
         
     /*
@@ -34,7 +34,7 @@ class Categoria_model extends CI_Model
      */
     function add_categoria($params)
     {
-        $this->db->insert('Categoria',$params);
+        $this->db->insert('categoria',$params);
         return $this->db->insert_id();
     }
     
@@ -44,7 +44,7 @@ class Categoria_model extends CI_Model
     function update_categoria($IDCategoria,$params)
     {
         $this->db->where('IDCategoria',$IDCategoria);
-        return $this->db->update('Categoria',$params);
+        return $this->db->update('categoria',$params);
     }
     
     /*
@@ -52,6 +52,6 @@ class Categoria_model extends CI_Model
      */
     function delete_categoria($IDCategoria)
     {
-        return $this->db->delete('Categoria',array('IDCategoria'=>$IDCategoria));
+        return $this->db->delete('categoria',array('IDCategoria'=>$IDCategoria));
     }
 }

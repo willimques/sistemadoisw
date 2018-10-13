@@ -12,12 +12,11 @@ class Empresaria extends CI_Controller{
         
          
         $user = $this->session->userdata();  
+      
+        if($user==false){ 
         
-        $row = count($user);      
-              
-        if($row==1){      
-            
             redirect('login');
+        
         }
     } 
 

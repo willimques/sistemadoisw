@@ -16,7 +16,7 @@ class Tipopedido_model extends CI_Model
      */
     function get_tipopedido($IDTipoPedido)
     {
-        return $this->db->get_where('TipoPedido',array('IDTipoPedido'=>$IDTipoPedido))->row_array();
+        return $this->db->get_where('tipopedido',array('IDTipoPedido'=>$IDTipoPedido))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Tipopedido_model extends CI_Model
     function get_all_tipopedidos()
     {
         $this->db->order_by('IDTipoPedido', 'desc');
-        return $this->db->get('TipoPedido')->result_array();
+        return $this->db->get('tipopedido')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Tipopedido_model extends CI_Model
      */
     function add_tipopedido($params)
     {
-        $this->db->insert('TipoPedido',$params);
+        $this->db->insert('tipopedido',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Tipopedido_model extends CI_Model
     function update_tipopedido($IDTipoPedido,$params)
     {
         $this->db->where('IDTipoPedido',$IDTipoPedido);
-        return $this->db->update('TipoPedido',$params);
+        return $this->db->update('tipopedido',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Tipopedido_model extends CI_Model
      */
     function delete_tipopedido($IDTipoPedido)
     {
-        return $this->db->delete('TipoPedido',array('IDTipoPedido'=>$IDTipoPedido));
+        return $this->db->delete('tipopedido',array('IDTipoPedido'=>$IDTipoPedido));
     }
 }

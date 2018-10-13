@@ -19,7 +19,7 @@ class Pedido_model extends CI_Model
     function get_pedido($IDPedido)
     {
                 $this->db->join ( 'pessoa' ,  'pedido.IDPessoa = pessoa.IDPessoa' );    
-        return $this->db->get_where('Pedido',array('IDPedido'=>$IDPedido))->row_array();
+        return $this->db->get_where('pedido',array('IDPedido'=>$IDPedido))->row_array();
     }
   
     /*
@@ -43,7 +43,7 @@ class Pedido_model extends CI_Model
      */
     function add_pedido($params)
     {
-        $this->db->insert('Pedido',$params);
+        $this->db->insert('pedido',$params);
         return $this->db->insert_id();
     }
     
@@ -53,7 +53,7 @@ class Pedido_model extends CI_Model
     function update_pedido($IDPedido,$params)
     {
         $this->db->where('IDPedido',$IDPedido);
-        return $this->db->update('Pedido',$params);
+        return $this->db->update('pedido',$params);
     }
     
     /*
@@ -61,38 +61,9 @@ class Pedido_model extends CI_Model
      */
     function delete_pedido($IDPedido)
     {
-        return $this->db->delete('Pedido',array('IDPedido'=>$IDPedido));
+        return $this->db->delete('pedido',array('IDPedido'=>$IDPedido));
     }
     
     
-    
-       public function autoCompleteProduto($q)
-    {
 
-        $this->db->select('*');
-        $this->db->limit(5);
-        $this->db->like('nome', $q);
-        $query = $this->db->get('produto');
-        if ($query->num_rows() > 0) {
-            foreach ($query->result_array() as $row) {
-                $row_set[] = array('label'=>$row['descricao'].' | Preço: R$ '.$row['precoVenda'],'id'=>$row['IDProduto'],'preco'=>$row['precoVenda']);
-            }
-            echo json_encode($row_set);
-        }
-    }
-
-    public function autoCompleteCliente($q)
-    {
-
-        $this->db->select('*');
-        $this->db->limit(5);
-        $this->db->like('nomeCliente', $q);
-        $query = $this->db->get('clientes');
-        if ($query->num_rows() > 0) {
-            foreach ($query->result_array() as $row) {
-                $row_set[] = array('label'=>$row['nomeCliente'].' | Telefone: '.$row['telefone'],'id'=>$row['idClientes']);
-            }
-            echo json_encode($row_set);
-        }
-    }
 }

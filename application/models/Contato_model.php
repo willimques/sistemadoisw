@@ -17,7 +17,7 @@ class Contato_model extends CI_Model
      */
     function get_contato($IDPessoa)
     {
-        return $this->db->get_where('Contato',array('IDPessoa'=>$IDPessoa))->row_array();
+        return $this->db->get_where('contato',array('IDPessoa'=>$IDPessoa))->row_array();
     }
         
     /*
@@ -26,7 +26,7 @@ class Contato_model extends CI_Model
     function get_all_contatos()
     {
         $this->db->order_by('IDContato', 'desc');
-        return $this->db->get('Contato')->result_array();
+        return $this->db->get('contato')->result_array();
     }
         
     /*
@@ -34,7 +34,7 @@ class Contato_model extends CI_Model
      */
     function add_contato($params)
     {
-        $this->db->insert('Contato',$params);
+        $this->db->insert('contato',$params);
         return $this->db->insert_id();
     }
     
@@ -44,7 +44,7 @@ class Contato_model extends CI_Model
     function update_contato($IDContato,$params)
     {
         $this->db->where('IDPessoa',$IDContato);
-        return $this->db->update('Contato',$params);
+        return $this->db->update('contato',$params);
     }
     
     /*
@@ -52,6 +52,6 @@ class Contato_model extends CI_Model
      */
     function delete_contato($IDContato)
     {
-        return $this->db->delete('Contato',array('IDPessoa'=>$IDContato));
+        return $this->db->delete('contato',array('IDPessoa'=>$IDContato));
     }
 }

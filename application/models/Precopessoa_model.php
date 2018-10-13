@@ -17,7 +17,7 @@ class Precopessoa_model extends CI_Model
     function get_precopessoa($IDPreco)
     {
         $this->db->join('preco', 'preco.IDpreco = precopessoa.IDpreco');
-        return $this->db->get_where('PrecoPessoa',array('IDPessoa'=>$IDPreco))->row_array();
+        return $this->db->get_where('precopessoa',array('IDPessoa'=>$IDPreco))->row_array();
     }
         
     /*
@@ -26,7 +26,7 @@ class Precopessoa_model extends CI_Model
     function get_all_precopessoas()
     {
         $this->db->order_by('IDPreco', 'desc');
-        return $this->db->get('PrecoPessoa')->result_array();
+        return $this->db->get('precopessoa')->result_array();
     }
         
     /*
@@ -34,7 +34,7 @@ class Precopessoa_model extends CI_Model
      */
     function add_precopessoa($params)
     {
-        $this->db->insert('PrecoPessoa',$params);
+        $this->db->insert('precopessoa',$params);
         return $this->db->insert_id();
     }
     
@@ -44,7 +44,7 @@ class Precopessoa_model extends CI_Model
     function update_precopessoa($IDPreco,$params)
     {
         $this->db->where('IDPessoa',$IDPreco);
-        return $this->db->update('PrecoPessoa',$params);
+        return $this->db->update('precopessoa',$params);
     }
     
     /*
@@ -52,6 +52,6 @@ class Precopessoa_model extends CI_Model
      */
     function delete_precopessoa($IDPreco)
     {
-        return $this->db->delete('PrecoPessoa',array('IDPessoa'=>$IDPreco));
+        return $this->db->delete('precopessoa',array('IDPessoa'=>$IDPreco));
     }
 }

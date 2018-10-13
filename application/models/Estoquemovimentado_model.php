@@ -16,7 +16,7 @@ class Estoquemovimentado_model extends CI_Model
      */
     function get_estoquemovimentado($IDEstoqueMovimentado)
     {
-        return $this->db->get_where('EstoqueMovimentado',array('IDEstoqueMovimentado'=>$IDEstoqueMovimentado))->row_array();
+        return $this->db->get_where('estoquemovimentado',array('IDEstoqueMovimentado'=>$IDEstoqueMovimentado))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Estoquemovimentado_model extends CI_Model
     function get_all_estoquemovimentado()
     {
         $this->db->order_by('IDEstoqueMovimentado', 'desc');
-        return $this->db->get('EstoqueMovimentado')->result_array();
+        return $this->db->get('estoquemovimentado')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Estoquemovimentado_model extends CI_Model
      */
     function add_estoquemovimentado($params)
     {
-        $this->db->insert('EstoqueMovimentado',$params);
+        $this->db->insert('estoquemovimentado',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Estoquemovimentado_model extends CI_Model
     function update_estoquemovimentado($IDEstoqueMovimentado,$params)
     {
         $this->db->where('IDEstoqueMovimentado',$IDEstoqueMovimentado);
-        return $this->db->update('EstoqueMovimentado',$params);
+        return $this->db->update('estoquemovimentado',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Estoquemovimentado_model extends CI_Model
      */
     function delete_estoquemovimentado($IDEstoqueMovimentado)
     {
-        return $this->db->delete('EstoqueMovimentado',array('IDEstoqueMovimentado'=>$IDEstoqueMovimentado));
+        return $this->db->delete('estoquemovimentado',array('IDEstoqueMovimentado'=>$IDEstoqueMovimentado));
     }
 }

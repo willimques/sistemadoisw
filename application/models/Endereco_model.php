@@ -16,7 +16,7 @@ class Endereco_model extends CI_Model
      */
     function get_endereco($IDPessoa)
     {
-        return $this->db->get_where('Endereco',array('IDPessoa'=>$IDPessoa))->row_array();
+        return $this->db->get_where('endereco',array('IDPessoa'=>$IDPessoa))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Endereco_model extends CI_Model
     function get_all_enderecos()
     {
         $this->db->order_by('IDEndereco', 'desc');
-        return $this->db->get('Endereco')->result_array();
+        return $this->db->get('endereco')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Endereco_model extends CI_Model
      */
     function add_endereco($params)
     {
-        $this->db->insert('Endereco',$params);
+        $this->db->insert('endereco',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Endereco_model extends CI_Model
     function update_endereco($IDEndereco,$params)
     {
         $this->db->where('IDPessoa',$IDEndereco);
-        return $this->db->update('Endereco',$params);
+        return $this->db->update('endereco',$params);
     }
     
     /*
@@ -52,6 +52,6 @@ class Endereco_model extends CI_Model
     function delete_endereco($IDEndereco)
         
     {
-        return $this->db->delete('Endereco',array('IDPessoa'=>$IDEndereco));
+        return $this->db->delete('endereco',array('IDPessoa'=>$IDEndereco));
     }
 }

@@ -17,7 +17,7 @@ class Grupo_model extends CI_Model
      */
     function get_grupo($IDGrupo)
     {
-        return $this->db->get_where('Grupo',array('IDGrupo'=>$IDGrupo))->row_array();
+        return $this->db->get_where('grupo',array('IDGrupo'=>$IDGrupo))->row_array();
     }
         
     /*
@@ -26,7 +26,7 @@ class Grupo_model extends CI_Model
     function get_all_grupos()
     {
         $this->db->order_by('IDGrupo', 'desc');
-        return $this->db->get('Grupo')->result_array();
+        return $this->db->get('grupo')->result_array();
     }
         
     /*
@@ -34,7 +34,7 @@ class Grupo_model extends CI_Model
      */
     function add_grupo($params)
     {
-        $this->db->insert('Grupo',$params);
+        $this->db->insert('grupo',$params);
         return $this->db->insert_id();
     }
     
@@ -44,7 +44,7 @@ class Grupo_model extends CI_Model
     function update_grupo($IDGrupo,$params)
     {
         $this->db->where('IDGrupo',$IDGrupo);
-        return $this->db->update('Grupo',$params);
+        return $this->db->update('grupo',$params);
     }
     
     /*
@@ -52,6 +52,6 @@ class Grupo_model extends CI_Model
      */
     function delete_grupo($IDGrupo)
     {
-        return $this->db->delete('Grupo',array('IDGrupo'=>$IDGrupo));
+        return $this->db->delete('grupo',array('IDGrupo'=>$IDGrupo));
     }
 }

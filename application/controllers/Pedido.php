@@ -11,9 +11,7 @@ class Pedido extends CI_Controller{
         $this->load->model('Pedido_model');
           
         $user = $this->session->userdata();  
-        $row = count($user);  
-      
-        if($row==1){ 
+      if($user==false){ 
         
             redirect('login');
         

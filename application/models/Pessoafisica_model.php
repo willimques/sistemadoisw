@@ -16,7 +16,7 @@ class Pessoafisica_model extends CI_Model
      */
     function get_pessoafisica($IDPessoa)
     {
-        return $this->db->get_where('PessoaFisica',array('IDPessoaFisica'=>$IDPessoa))->row_array();
+        return $this->db->get_where('pessoafisica',array('IDPessoaFisica'=>$IDPessoa))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Pessoafisica_model extends CI_Model
     function get_all_pessoafisicas()
     {
         $this->db->order_by('IDPessoaFisica', 'desc');
-        return $this->db->get('PessoaFisica')->result_array();
+        return $this->db->get('pessoafisica')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Pessoafisica_model extends CI_Model
      */
     function add_pessoafisica($params)
     {
-        $this->db->insert('PessoaFisica',$params);
+        $this->db->insert('pessoafisica',$params);
         return $this->db->insert_id();
     }
     
@@ -44,7 +44,7 @@ class Pessoafisica_model extends CI_Model
     {
 
         $this->db->where('IDPessoaFisica',$IDPessoaFisica);
-        return $this->db->update('PessoaFisica',$params);
+        return $this->db->update('pessoafisica',$params);
     }
     
     /*
@@ -52,6 +52,6 @@ class Pessoafisica_model extends CI_Model
      */
     function delete_pessoafisica($IDPessoaFisica)
     {
-        return $this->db->delete('PessoaFisica',array('IDPessoaFisica'=>$IDPessoaFisica));
+        return $this->db->delete('pessoafisica',array('IDPessoaFisica'=>$IDPessoaFisica));
     }
 }

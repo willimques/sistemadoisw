@@ -16,7 +16,7 @@ class Situacaopedido_model extends CI_Model
      */
     function get_situacaopedido($IDSituacao)
     {
-        return $this->db->get_where('situacaoPedido',array('IDSituacao'=>$IDSituacao))->row_array();
+        return $this->db->get_where('situacaopedido',array('IDSituacao'=>$IDSituacao))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Situacaopedido_model extends CI_Model
     function get_all_situacaopedidos()
     {
         $this->db->order_by('IDSituacao', 'desc');
-        return $this->db->get('situacaoPedido')->result_array();
+        return $this->db->get('situacaopedido')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Situacaopedido_model extends CI_Model
      */
     function add_situacaopedido($params)
     {
-        $this->db->insert('situacaoPedido',$params);
+        $this->db->insert('situacaopedido',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Situacaopedido_model extends CI_Model
     function update_situacaopedido($IDSituacao,$params)
     {
         $this->db->where('IDSituacao',$IDSituacao);
-        return $this->db->update('situacaoPedido',$params);
+        return $this->db->update('situacaopedido',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Situacaopedido_model extends CI_Model
      */
     function delete_situacaopedido($IDSituacao)
     {
-        return $this->db->delete('situacaoPedido',array('IDSituacao'=>$IDSituacao));
+        return $this->db->delete('situacaopedido',array('IDSituacao'=>$IDSituacao));
     }
 }

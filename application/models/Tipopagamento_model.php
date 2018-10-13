@@ -16,7 +16,7 @@ class Tipopagamento_model extends CI_Model
      */
     function get_tipopagamento($IDTipoPagamento)
     {
-        return $this->db->get_where('TipoPagamento',array('IDTipoPagamento'=>$IDTipoPagamento))->row_array();
+        return $this->db->get_where('tipopagamento',array('IDTipoPagamento'=>$IDTipoPagamento))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Tipopagamento_model extends CI_Model
     function get_all_tipopagamentos()
     {
         $this->db->order_by('IDTipoPagamento', 'desc');
-        return $this->db->get('TipoPagamento')->result_array();
+        return $this->db->get('tipopagamento')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Tipopagamento_model extends CI_Model
      */
     function add_tipopagamento($params)
     {
-        $this->db->insert('TipoPagamento',$params);
+        $this->db->insert('tipopagamento',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Tipopagamento_model extends CI_Model
     function update_tipopagamento($IDTipoPagamento,$params)
     {
         $this->db->where('IDTipoPagamento',$IDTipoPagamento);
-        return $this->db->update('TipoPagamento',$params);
+        return $this->db->update('tipopagamento',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Tipopagamento_model extends CI_Model
      */
     function delete_tipopagamento($IDTipoPagamento)
     {
-        return $this->db->delete('TipoPagamento',array('IDTipoPagamento'=>$IDTipoPagamento));
+        return $this->db->delete('tipopagamento',array('IDTipoPagamento'=>$IDTipoPagamento));
     }
 }

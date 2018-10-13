@@ -18,7 +18,7 @@ class Empresaria_model extends CI_Model
     function get_empresaria($IDEmpresaria)
     {           
          $this->db->join('pessoa', 'pessoa.IDPessoa = empresaria.IDEmpresaria');
-        return $this->db->get_where('Empresaria',array('IDEmpresaria'=>$IDEmpresaria))->row_array();
+        return $this->db->get_where('empresaria',array('IDEmpresaria'=>$IDEmpresaria))->row_array();
     }
         
     /*
@@ -28,7 +28,7 @@ class Empresaria_model extends CI_Model
     {   
         $this->db->join('pessoa', 'pessoa.IDPessoa = empresaria.IDEmpresaria');
         $this->db->order_by('IDEmpresaria', 'desc');
-        return $this->db->get('Empresaria')->result_array();
+        return $this->db->get('empresaria')->result_array();
     }
         
     /*
@@ -36,7 +36,7 @@ class Empresaria_model extends CI_Model
      */
     function add_empresaria($params)
     {
-        $this->db->insert('Empresaria',$params);
+        $this->db->insert('empresaria',$params);
         return $this->db->insert_id();
     }
     
@@ -46,7 +46,7 @@ class Empresaria_model extends CI_Model
     function update_empresaria($IDEmpresaria,$params)
     {
         $this->db->where('IDEmpresaria',$IDEmpresaria);
-        return $this->db->update('Empresaria',$params);
+        return $this->db->update('empresaria',$params);
     }
     
     /*
@@ -54,6 +54,6 @@ class Empresaria_model extends CI_Model
      */
     function delete_empresaria($IDEmpresaria)
     {
-        return $this->db->delete('Empresaria',array('IDEmpresaria'=>$IDEmpresaria));
+        return $this->db->delete('empresaria',array('IDEmpresaria'=>$IDEmpresaria));
     }
 }

@@ -16,7 +16,7 @@ class Pessoajuridica_model extends CI_Model
      */
     function get_pessoajuridica($IDPessoa)
     {
-        return $this->db->get_where('PessoaJuridica',array('IDPessoaJuridica'=>$IDPessoa))->row_array();
+        return $this->db->get_where('pessoajuridica',array('IDPessoaJuridica'=>$IDPessoa))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Pessoajuridica_model extends CI_Model
     function get_all_pessoajuridicas()
     {
         $this->db->order_by('IDPessoaJuridica', 'desc');
-        return $this->db->get('PessoaJuridica')->result_array();
+        return $this->db->get('pessoajuridica')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Pessoajuridica_model extends CI_Model
      */
     function add_pessoajuridica($params)
     {
-        $this->db->insert('PessoaJuridica',$params);
+        $this->db->insert('pessoajuridica',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Pessoajuridica_model extends CI_Model
     function update_pessoajuridica($IDPessoaJuridica,$params)
     {
         $this->db->where('IDPessoaJuridica', $IDPessoaJuridica);
-        return $this->db->update('PessoaJuridica',$params);
+        return $this->db->update('pessoajuridica',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Pessoajuridica_model extends CI_Model
      */
     function delete_pessoajuridica($IDPessoaJuridica)
     {
-        return $this->db->delete('PessoaJuridica',array('IDPessoaJuridica'=>$IDPessoaJuridica));
+        return $this->db->delete('pessoajuridica',array('IDPessoaJuridica'=>$IDPessoaJuridica));
     }
 }

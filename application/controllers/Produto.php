@@ -11,11 +11,10 @@ class Produto extends CI_Controller{
         $this->load->model('Produto_model');
         $user = $this->session->userdata();  
         
-        $row = count($user);      
-              
-        if($row==1){     
-            
+         if($user==false){ 
+        
             redirect('login');
+        
         }
 
     } 
@@ -26,6 +25,7 @@ class Produto extends CI_Controller{
     function index()
     {
         $data['produtos'] = $this->Produto_model->get_all_produtos();
+
         $data['_view'] = 'produto/index';
         $this->load->view('layouts/main',$data);
     }
@@ -33,18 +33,10 @@ class Produto extends CI_Controller{
     /*
      * Adding a new produto
      */
-    
     function add()
-    {  
-        $data['up'] = $this->Produto_model->get_all_imagens(); //não será preciso carregar a (up/index)  
-        
-        $this->load->library('form_validation');
-		$this->form_validation->set_rules('IDGrupo','Grupo','required');
-        
-		if($this->form_validation->run())  
-        //if(isset($_POST) && count($_POST) > 0)     
+    {   
+        if(isset($_POST) && count($_POST) > 0)     
         {   
-            
             $params = array(
                 'IDGrupo' => $this->input->post('IDGrupo'),
                 'IDCategoria' => $this->input->post('IDCategoria'),
@@ -58,13 +50,14 @@ class Produto extends CI_Controller{
                 'situacao' => $this->input->post('situacao'),
                 'descricao' => $this->input->post('descricao'),
                 'codBarras' => $this->input->post('codBarras'),
+                'foto' => $this->input->post('foto'),
                 'dataCadastro' => $this->input->post('dataCadastro'),			
             );
-              
+                
             $produto_id = $this->Produto_model->add_produto($params);
             redirect('produto/index');
         }
-        
+
         else
         {
             $this->load->model('Grupo_model');
@@ -85,8 +78,6 @@ class Produto extends CI_Controller{
             $data['_view'] = 'produto/add';
             $this->load->view('layouts/main',$data);
         }
-          
-      
     } 
 
     /*
@@ -146,7 +137,69 @@ class Produto extends CI_Controller{
             show_error('The produto you are trying to edit does not exist.');
     } 
 
-        
+    
+    // Método que processar o upload do arquivo
+    public function Up(){
+ 
+        // definimos um nome aleatório para o diretório 
+        $folder = random_string('alpha');
+        // definimos o path onde o arquivo será gravado
+        $path = "./uploads/".$folder;
+ 
+        // verificamos se o diretório existe
+        // se não existe criamos com permissão de leitura e escrita
+        if ( ! is_dir($path)) {
+        mkdir($path, 0777, $recursive = true);
+    }
+ 
+        // definimos as configurações para o upload
+        // determinamos o path para gravar o arquivo
+        $configUpload['upload_path']   = $path;
+        // definimos - através da extensão - 
+        // os tipos de arquivos suportados
+        $configUpload['allowed_types'] = 'jpg|png|gif|pdf|zip|rar|docx|xls';
+        // definimos que o nome do arquivo
+        // será alterado para um nome criptografado
+        $configUpload['encrypt_name']  = TRUE;
+ 
+        // passamos as configurações para a library upload
+        $this->upload->initialize($configUpload);
+ 
+        // verificamos se o upload foi processado com sucesso
+        if ( ! $this->upload->do_upload('arquivo'))
+        {
+            // em caso de erro retornamos os mesmos para uma variável
+            // e enviamos para a home
+            $data= array('error' => $this->upload->display_errors());
+            $data['_view'] = 'produto/add';
+            $this->load->view('layouts/main',$data);
+        }
+        else
+        {
+            //se correu tudo bem, recuperamos os dados do arquivo
+            $data['dadosArquivo'] = $this->upload->data();
+            // definimos o path original do arquivo
+            $arquivoPath = 'uploads/'.$folder."/".$data['dadosArquivo']['file_name'];
+            // passando para o array '$data'
+            $data['urlArquivo'] = base_url($arquivoPath);
+            // definimos a URL para download
+            $downloadPath = 'download/'.$folder."/".$data['dadosArquivo']['file_name'];
+            // passando para o array '$data'
+            $data['urlDownload'] = base_url($downloadPath);
+ 
+            // carregamos a view com as informações e link para download
+            $data['_view'] = 'produto/download';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     /*
      * Deleting produto
      */

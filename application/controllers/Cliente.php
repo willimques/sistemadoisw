@@ -12,12 +12,11 @@ class Cliente extends CI_Controller{
         
         $user = $this->session->userdata();  
         
-        $row = count($user);      
-              
-        if($row==1){                
+      if($user==false){ 
+        
             redirect('login');
+        
         }
-
     } 
 
     /*

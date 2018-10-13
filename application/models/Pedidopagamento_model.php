@@ -16,7 +16,7 @@ class Pedidopagamento_model extends CI_Model
      */
     function get_pedidopagamento($IDPedido)
     {
-        return $this->db->get_where('PedidoPagamento',array('IDPedido'=>$IDPedido))->row_array();
+        return $this->db->get_where('pedidopagamento',array('IDPedido'=>$IDPedido))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Pedidopagamento_model extends CI_Model
     function get_all_pedidopagamentos()
     {
         $this->db->order_by('IDPedido', 'desc');
-        return $this->db->get('PedidoPagamento')->result_array();
+        return $this->db->get('pedidopagamento')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Pedidopagamento_model extends CI_Model
      */
     function add_pedidopagamento($params)
     {
-        $this->db->insert('PedidoPagamento',$params);
+        $this->db->insert('pedidopagamento',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Pedidopagamento_model extends CI_Model
     function update_pedidopagamento($IDPedido,$params)
     {
         $this->db->where('IDPedido',$IDPedido);
-        return $this->db->update('PedidoPagamento',$params);
+        return $this->db->update('pedidopagamento',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Pedidopagamento_model extends CI_Model
      */
     function delete_pedidopagamento($IDPedido)
     {
-        return $this->db->delete('PedidoPagamento',array('IDPedido'=>$IDPedido));
+        return $this->db->delete('pedidopagamento',array('IDPedido'=>$IDPedido));
     }
 }

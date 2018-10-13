@@ -16,7 +16,7 @@ class Estoque_model extends CI_Model
      */
     function get_estoque($IDEstoque)
     {
-        return $this->db->get_where('Estoque',array('IDEstoque'=>$IDEstoque))->row_array();
+        return $this->db->get_where('estoque',array('IDEstoque'=>$IDEstoque))->row_array();
     }
         
     /*
@@ -27,7 +27,7 @@ class Estoque_model extends CI_Model
        
         $this->db->join ( 'produto' ,  'produto.IDProduto = estoque.IDProduto' ); 
         $this->db->order_by('IDEstoque', 'desc');
-        return $this->db->get('Estoque')->result_array();
+        return $this->db->get('estoque')->result_array();
     }
         
     /*
@@ -45,7 +45,7 @@ class Estoque_model extends CI_Model
     function update_estoque($IDEstoque,$params)
     {
         $this->db->where('est_saida_produto',$IDEstoque);
-        return $this->db->update('Estoque',$params);
+        return $this->db->update('estoque',$params);
     }
     
     /*

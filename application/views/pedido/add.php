@@ -397,14 +397,14 @@
             quant = $('#qtd').val();
             preco = $('#precotab').val();
             precototal = quant*preco;
-            $('#precototal').val(precototal);
+            $('#precototal').val(parseFloat(precototal).toFixed(2));
         });
 
         $('#desc').blur(function(){            
             desc = $('#desc').val(); 
             precotab = $('#precotab').val();
             precoun =  precotab-(precotab * (desc/100));         
-            $('#precun').val(precoun);
+            $('#precun').val(parseFloat(precoun).toFixed(2));
 
         });
 
@@ -414,7 +414,7 @@
             preco =  $('#precun').val();          
             precototal = quant*preco; 
             desc =  Math.ceil((1-(preco/precotab))*100);
-            $('#precototal').val(precototal);
+            $('#precototal').val(parseFloat(precototal).toFixed(2));
             $('#desc').val(desc);
         });
 
@@ -493,10 +493,10 @@
 
                 tdesc = (tsubt-total) + parseFloat(tdesc);
 
-                $("#subt").val(accounting.formatMoney(tsubt,"R$ ", 2, ".", ","));
-                $("#tdesc").val(accounting.formatMoney(tdesc,"R$ ", 2, ".", ","));
-                $("#total").val(accounting.formatMoney(total,"R$ ", 2, ".", ","));
-                $("#sqtd").val(tqtd);
+                $("#subt").val(parseFloat(tsubt).toFixed(2));
+                $("#tdesc").val(parseFloat(tdesc).toFixed(2));
+                $("#total").val(parseFloat(total).toFixed(2));
+                $("#sqtd").val(parseFloat(tqtd).toFixed(2));
 
             }    
 
@@ -681,10 +681,11 @@
                 listprod.splice(ind,1);
                 tr.remove();
 
-                $("#subt").val(accounting.formatMoney(tsubt,"R$ ", 2, ".", ","));
-                $("#tdesc").val(accounting.formatMoney(tdesc,"R$ ", 2, ".", ","));
-                $("#total").val(accounting.formatMoney(total,"R$ ", 2, ".", ","));
-                $("#sqtd").val(tqtd);
+                $("#subt").val(parseFloat(tsubt).toFixed(2));
+                $("#tdesc").val(parseFloat(tdesc).toFixed(2));
+                $("#total").val(parseFloat(total).toFixed(2));
+                $("#sqtd").val(parseFloat(tqtd).toFixed(2));
+
 
             }
         }

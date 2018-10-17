@@ -45,12 +45,22 @@ class Pedido extends CI_Controller{
         if($this->form_validation->run())
         {   
           
+             $tdesc = $this->input->post('tdesc');
+             $subped = $this->input->post('subt');
+             $pdesc = ($tdesc/$subped);
+             $pdesc = $pdesc*100;          
+            
+                
+            
             $params = array(
                 'tipoPedido' => $this->input->post('tipoPedido'),
                 'IDPessoa' => $this->input->post('IDPessoa'),
                 'tipoPagamento' => $this->input->post('tipoPagamento'),				
                 'data' => $this->input->post('data'),				
                 'Valor_Pedido' => $this->input->post('total'),				
+                'subtotal' => $this->input->post('subt'),				
+                'percentual' => $pdesc		
+            
             );
 
             $pedido_id = $this->Pedido_model->add_pedido($params);

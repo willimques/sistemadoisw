@@ -78,16 +78,16 @@
                             
                             <div class="py-3 px-5 text-right">
                                 <div class="mb-2">Total</div>
-                                <div class="h2 font-weight-light">R$<?php echo ($I['precoTotal']); ?></div>
+                                <div class="h2 font-weight-light">R$<?php echo ($pedido['Valor_Pedido']); ?></div>
                             </div>
                             <div class="py-3 px-5 text-right">
                                 <div class="mb-2">Desconto</div>
-                                <div class="h2 font-weight-light"><?php echo  (1-($I['precoTotal']/($I['quantidade']*$I['preco_tab'])))*100; ?>%</div>
+                                <div class="h2 font-weight-light"><?php echo ($pedido['percentual']);?>%</div>
                             </div>
                             
                             <div class="py-3 px-5 text-right">
                                 <div class="mb-2">SubTotal</div>
-                                <div class="h2 font-weight-light">R$<?php echo ($I['quantidade']*$I['preco_tab']); ?></div>
+                                <div class="h2 font-weight-light">R$<?php echo ($pedido['subtotal']); ?></div>
                             </div>
 
 
@@ -99,7 +99,7 @@
                             <div class="h3 font-weight-light  mb-5">Informações</div>
                             <div class="container">
                                 <div class="row justify-content-center">
-                               Declaro que rcebi os produtos acima, que as informacoes prestadas por mim sao verdadeiras e declaro que pagarei a ELLSY COSMETICS, CNPJ 28.668.491/0001-62, Esta nota promissoria no valor total de: R$<?php echo ($I['precoTotal']); ?> , nos vencimentos abaixo descrito, caso nao haja a devolução dos produtos na data do acerto autorizo a ELLSY COSMETICSa faturar o produto contra minha pessoa em caso de falta de pagamento na data do vencimento / acerto abaixo:
+                               Declaro que rcebi os produtos acima, que as informacoes prestadas por mim sao verdadeiras e declaro que pagarei a ELLSY COSMETICS, CNPJ 28.668.491/0001-62, Esta nota promissoria no valor total de: R$<?php echo ($pedido['Valor_Pedido']); ?> , nos vencimentos abaixo descrito, caso nao haja a devolução dos produtos na data do acerto autorizo a ELLSY COSMETICSa faturar o produto contra minha pessoa em caso de falta de pagamento na data do vencimento / acerto abaixo:
                                 </div>
                                 <div class="row mt-5">
                                 <p class= "col-6">data de entrega:____________________________________</p>

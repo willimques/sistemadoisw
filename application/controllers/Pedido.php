@@ -9,14 +9,14 @@ class Pedido extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Pedido_model');
-          
+
         $user = $this->session->userdata();  
-      if($user==false){ 
-        
+        if($user==false){ 
+
             redirect('login');
-        
+
         }
-        
+
     } 
 
     /*
@@ -44,14 +44,14 @@ class Pedido extends CI_Controller{
 
         if($this->form_validation->run())
         {   
-          
-             $tdesc = $this->input->post('tdesc');
-             $subped = $this->input->post('subt');
-             $pdesc = ($tdesc/$subped);
-             $pdesc = $pdesc*100;          
-            
-                
-            
+
+            $tdesc = $this->input->post('tdesc');
+            $subped = $this->input->post('subt');
+            $pdesc = ($tdesc/$subped);
+            $pdesc = $pdesc*100;          
+
+
+
             $params = array(
                 'tipoPedido' => $this->input->post('tipoPedido'),
                 'IDPessoa' => $this->input->post('IDPessoa'),
@@ -60,7 +60,7 @@ class Pedido extends CI_Controller{
                 'Valor_Pedido' => $this->input->post('total'),				
                 'subtotal' => $this->input->post('subt'),				
                 'percentual' => $pdesc		
-            
+
             );
 
             $pedido_id = $this->Pedido_model->add_pedido($params);
@@ -121,7 +121,7 @@ class Pedido extends CI_Controller{
 
             }
 
-          redirect('pedido/index');
+            redirect('pedido/index');
         }
         else
         {
@@ -174,6 +174,12 @@ class Pedido extends CI_Controller{
             }
             else
             {
+                $data['pedido'] = $this->Pedido_model->get_pedido($IDPedido);     
+
+                $this->load->model('Pedidoitem_model');
+
+                $data['itenspedido'] = $this->Pedidoitem_model->get_pedidoitem($IDPedido);
+
                 $this->load->model('Pessoa_model');
                 $data['all_pessoas'] = $this->Pessoa_model->get_all_pessoas();
 
@@ -204,10 +210,10 @@ class Pedido extends CI_Controller{
         // check if the pedido exists before trying to delete it
         if(isset($pedido['IDPedido']))
         {
-            
+
             $this->load->model('Estoqueconsignado_model');
             $this->Estoqueconsignado_model->delete_estoqueconsignado($IDPedido);
-            
+
             $this->load->model('Pedidoitem_model');
             $this->Pedidoitem_model->delete_pedidoitem($IDPedido);
 
@@ -215,8 +221,8 @@ class Pedido extends CI_Controller{
             $this->Estoque_model->delete_estoque($IDPedido);
 
             $this->Pedido_model->delete_pedido($IDPedido);
-            
-           
+
+
 
             redirect('pedido/index');
         }
@@ -234,20 +240,20 @@ class Pedido extends CI_Controller{
         echo json_encode($produto);
 
     }
-    
+
     function invoice($IDPedido){
-        
+
         $data['pedido'] = $this->Pedido_model->get_pedido($IDPedido);     
-        
+
         $this->load->model('Pedidoitem_model');
-        
+
         $data['itenspedido'] = $this->Pedidoitem_model->get_pedidoitem($IDPedido);
-        
+
         $IDPessoa =   $data['pedido']['IDPessoa'];
-        
+
         $this->load->model('Endereco_model');
         $data['endereco'] = $this->Endereco_model->get_endereco($IDPessoa);
-          
+
         $data['_view'] = 'pedido/invoice';
         $this->load->view('layouts/main',$data);
     }
